@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.2"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="WorkflowInput">
+        <Name>Source1</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:RenderCubemap">
+          <gl:RenderState />
+          <gl:ClearColor>#404040</gl:ClearColor>
+          <gl:ClearMask>DepthBufferBit ColorBufferBit</gl:ClearMask>
+          <gl:FaceSize xsi:nil="true" />
+          <gl:InternalFormat>Rgb</gl:InternalFormat>
+          <gl:MinFilter>Linear</gl:MinFilter>
+          <gl:MagFilter>Linear</gl:MagFilter>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.ViewWindow.bonsai">
+        <Width>15</Width>
+        <Height>19.5</Height>
+        <Rotation>
+          <X>0</X>
+          <Y>60.000001669652114</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Translation>
+          <X>-12</X>
+          <Y>0</Y>
+          <Z>-9</Z>
+        </Translation>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.GammaCorrection.bonsai">
+        <ClearColor>Gray</ClearColor>
+        <GammaLut>C:\Users\saleem_lab\Desktop\Sonali-2PStim\HALFINTENSITY_LUT_NoRed_SALEEM20_20250219.bmp</GammaLut>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.DrawViewport.bonsai">
+        <X>0</X>
+        <Y>0</Y>
+        <Width>0.334</Width>
+        <Height>1</Height>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:UpdateRenderState">
+          <gl:RenderState>
+            <gl:StateConfiguration xsi:type="gl:ViewportState">
+              <gl:X>0</gl:X>
+              <gl:Y>0</gl:Y>
+              <gl:Width>0.333</gl:Width>
+              <gl:Height>1</gl:Height>
+            </gl:StateConfiguration>
+          </gl:RenderState>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.ViewWindow.bonsai">
+        <Width>15</Width>
+        <Height>19.5</Height>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Translation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-15</Z>
+        </Translation>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.GammaCorrection.bonsai">
+        <ClearColor>Gray</ClearColor>
+        <GammaLut>C:\Users\saleem_lab\Desktop\Sonali-2PStim\HALFINTENSITY_LUT_NoRed_SALEEM20_20250219.bmp</GammaLut>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.DrawViewport.bonsai">
+        <X>0.334</X>
+        <Y>0</Y>
+        <Width>0.334</Width>
+        <Height>1</Height>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:UpdateRenderState">
+          <gl:RenderState>
+            <gl:StateConfiguration xsi:type="gl:ViewportState">
+              <gl:X>0.333</gl:X>
+              <gl:Y>0</gl:Y>
+              <gl:Width>0.333</gl:Width>
+              <gl:Height>1</gl:Height>
+            </gl:StateConfiguration>
+          </gl:RenderState>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.ViewWindow.bonsai">
+        <Width>15</Width>
+        <Height>19.5</Height>
+        <Rotation>
+          <X>0</X>
+          <Y>-60.000001669652114</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Translation>
+          <X>12</X>
+          <Y>0</Y>
+          <Z>-9</Z>
+        </Translation>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.GammaCorrection.bonsai">
+        <ClearColor>Gray</ClearColor>
+        <GammaLut>C:\Users\saleem_lab\Desktop\Sonali-2PStim\HALFINTENSITY_LUT_NoRed_SALEEM20_20250219.bmp</GammaLut>
+      </Expression>
+      <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.DrawViewport.bonsai">
+        <X>0.668</X>
+        <Y>0</Y>
+        <Width>0.334</Width>
+        <Height>1</Height>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:UpdateRenderState">
+          <gl:RenderState>
+            <gl:StateConfiguration xsi:type="gl:ViewportState">
+              <gl:X>0.665</gl:X>
+              <gl:Y>0</gl:Y>
+              <gl:Width>0.333</gl:Width>
+              <gl:Height>1</gl:Height>
+            </gl:StateConfiguration>
+          </gl:RenderState>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="GroupWorkflow">
+          <Name>PDSync</Name>
+          <Workflow>
+            <Nodes>
+              <Expression xsi:type="SubscribeSubject">
+                <Name>DrawStimuli</Name>
+              </Expression>
+              <Expression xsi:type="SubscribeSubject">
+                <Name>PDSync</Name>
+              </Expression>
+              <Expression xsi:type="PropertyMapping">
+                <PropertyMappings>
+                  <Property Name="ColorR" />
+                  <Property Name="ColorG" />
+                  <Property Name="ColorB" />
+                </PropertyMappings>
+              </Expression>
+              <Expression xsi:type="ExternalizedMapping">
+                <Property Name="ExtentX" DisplayName="Sync_Xsize" />
+                <Property Name="ExtentY" DisplayName="Sync_Ysize" />
+                <Property Name="LocationX" DisplayName="Sych_Xpos" />
+                <Property Name="LocationY" DisplayName="Synch_Ypos" />
+              </Expression>
+              <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawQuad.bonsai">
+                <ExtentX>10</ExtentX>
+                <ExtentY>10</ExtentY>
+                <LocationX>-75</LocationX>
+                <LocationY>-30</LocationY>
+                <Layer>1</Layer>
+                <Angle>0</Angle>
+                <ColorR>0</ColorR>
+                <ColorG>0</ColorG>
+                <ColorB>0</ColorB>
+                <ColorA>1</ColorA>
+              </Expression>
+              <Expression xsi:type="WorkflowOutput" />
+            </Nodes>
+            <Edges>
+              <Edge From="0" To="4" Label="Source1" />
+              <Edge From="1" To="2" Label="Source1" />
+              <Edge From="2" To="4" Label="Source2" />
+              <Edge From="3" To="4" Label="Source3" />
+              <Edge From="4" To="5" Label="Source1" />
+            </Edges>
+          </Workflow>
+        </Builder>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="1" To="6" Label="Source1" />
+      <Edge From="1" To="10" Label="Source1" />
+      <Edge From="2" To="3" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="8" To="9" Label="Source1" />
+      <Edge From="10" To="11" Label="Source1" />
+      <Edge From="11" To="12" Label="Source1" />
+      <Edge From="12" To="13" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>

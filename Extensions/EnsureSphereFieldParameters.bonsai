@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.6.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="WorkflowInput">
+        <Name>Source1</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:ElementIndex" />
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Index</Selector>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.Duration</Selector>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="DotSize" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Colour1" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Colour2" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="numDots1" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="numDots2" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="dotLifeBool" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="dotLifetime" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Contrast" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="VelY" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="VelZ" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Coherence" />
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="Duration" />
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.Size</Selector>
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.Colour1</Selector>
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.Colour2</Selector>
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.numDots1</Selector>
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.numDots2</Selector>
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Zip" />
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.dotLifeBool</Selector>
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="IntProperty">
+          <Value>0</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.dotLifetime</Selector>
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="IntProperty">
+          <Value>0</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.Contrast</Selector>
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Zip" />
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.VelX</Selector>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="Value" DisplayName="VelX" />
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.VelY</Selector>
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.VelZ</Selector>
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Value.Coherence</Selector>
+      </Expression>
+      <Expression xsi:type="GetValueOrDefault">
+        <Operand xsi:type="FloatProperty">
+          <Value>1</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Zip" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Zip" />
+      </Expression>
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Expression>new(
+Item1.Item1 as Id,
+Item1.Item2 as Duration,
+Item1.Item3 as Size,
+Item1.Item4 as Colour1,
+Item1.Item5 as Colour2,
+Item1.Item6 as numDots1,
+Item1.Item7 as numDots2,
+Item2.Item1 as dotLifeBool,
+Item2.Item2 as dotLifetime,
+Item2.Item3 as Contrast,
+Item3.Item1 as VelX,
+Item3.Item2 as VelY,
+Item3.Item3 as VelZ,
+Item3.Item4 as Coherence)</scr:Expression>
+      </Expression>
+      <Expression xsi:type="WorkflowOutput" />
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="1" To="3" Label="Source1" />
+      <Edge From="1" To="17" Label="Source1" />
+      <Edge From="1" To="19" Label="Source1" />
+      <Edge From="1" To="21" Label="Source1" />
+      <Edge From="1" To="23" Label="Source1" />
+      <Edge From="1" To="25" Label="Source1" />
+      <Edge From="1" To="28" Label="Source1" />
+      <Edge From="1" To="30" Label="Source1" />
+      <Edge From="1" To="32" Label="Source1" />
+      <Edge From="1" To="35" Label="Source1" />
+      <Edge From="1" To="38" Label="Source1" />
+      <Edge From="1" To="40" Label="Source1" />
+      <Edge From="1" To="42" Label="Source1" />
+      <Edge From="2" To="27" Label="Source1" />
+      <Edge From="3" To="16" Label="Source1" />
+      <Edge From="4" To="18" Label="Source2" />
+      <Edge From="5" To="20" Label="Source2" />
+      <Edge From="6" To="22" Label="Source2" />
+      <Edge From="7" To="24" Label="Source2" />
+      <Edge From="8" To="26" Label="Source2" />
+      <Edge From="9" To="29" Label="Source2" />
+      <Edge From="10" To="31" Label="Source2" />
+      <Edge From="11" To="33" Label="Source2" />
+      <Edge From="12" To="39" Label="Source2" />
+      <Edge From="13" To="41" Label="Source2" />
+      <Edge From="14" To="43" Label="Source2" />
+      <Edge From="15" To="16" Label="Source2" />
+      <Edge From="16" To="27" Label="Source2" />
+      <Edge From="17" To="18" Label="Source1" />
+      <Edge From="18" To="27" Label="Source3" />
+      <Edge From="19" To="20" Label="Source1" />
+      <Edge From="20" To="27" Label="Source4" />
+      <Edge From="21" To="22" Label="Source1" />
+      <Edge From="22" To="27" Label="Source5" />
+      <Edge From="23" To="24" Label="Source1" />
+      <Edge From="24" To="27" Label="Source6" />
+      <Edge From="25" To="26" Label="Source1" />
+      <Edge From="26" To="27" Label="Source7" />
+      <Edge From="27" To="45" Label="Source1" />
+      <Edge From="28" To="29" Label="Source1" />
+      <Edge From="29" To="34" Label="Source1" />
+      <Edge From="30" To="31" Label="Source1" />
+      <Edge From="31" To="34" Label="Source2" />
+      <Edge From="32" To="33" Label="Source1" />
+      <Edge From="33" To="34" Label="Source3" />
+      <Edge From="34" To="45" Label="Source2" />
+      <Edge From="35" To="37" Label="Source1" />
+      <Edge From="36" To="37" Label="Source2" />
+      <Edge From="37" To="44" Label="Source1" />
+      <Edge From="38" To="39" Label="Source1" />
+      <Edge From="39" To="44" Label="Source2" />
+      <Edge From="40" To="41" Label="Source1" />
+      <Edge From="41" To="44" Label="Source3" />
+      <Edge From="42" To="43" Label="Source1" />
+      <Edge From="43" To="44" Label="Source4" />
+      <Edge From="44" To="45" Label="Source3" />
+      <Edge From="45" To="46" Label="Source1" />
+      <Edge From="46" To="47" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>
