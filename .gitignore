@@ -1,0 +1,5 @@
+# Bonsai installation
+.bonsai/Extensions
+.bonsai/Gallery
+.bonsai/Packages
+.bonsai/Bonsai.exe*
