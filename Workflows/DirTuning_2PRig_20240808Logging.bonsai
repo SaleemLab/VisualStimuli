@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.8.5"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
@@ -118,7 +118,7 @@
             <Expression xsi:type="rx:PublishSubject">
               <Name>DrawStimuli</Name>
             </Expression>
-            <Expression xsi:type="IncludeWorkflow" Path="Extensions\DisplaySettingsCopy2.bonsai" />
+            <Expression xsi:type="IncludeWorkflow" Path="Extensions\DisplaySettings.bonsai" />
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
           <Edges>
