@@ -1,0 +1,103 @@
+{
+    "$id": "DirectionTuning",
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "title": "DirectionTuningStimuliFeatures",
+    "description": "Parameters to configure a stimulus series to determine direction tuning",
+    "definitions": {
+        "point2d": {
+            "type": "object",
+            "properties": {
+                "x": {
+                    "type": "number"
+                },
+                "y": {
+                    "type": "number"
+                }
+            },
+            "required": ["x", "y"]
+        }
+    },
+    "properties": {
+        "StimulusParameters": {
+            "type": "object",
+            "properties": {
+                "PositionSizeFeatures": {
+                    "type": "object",
+                    "description": "Parameters to define the position and size of the grating stimulus",
+                    "properties": {
+                        "Extent": { 
+                            "$ref": "#/definitions/point2d",
+                            "description": "The extent of the gratings in the x and y axes, in pixels" 
+                        },
+                        "Location": { "$ref": "#/definitions/point2d",
+                        "description": "The translation of the gratings in the x and y axes, in pixels" },
+                        "Radius": {
+                            "type": "number",
+                            "description": "The normalized radius of the clipping mask applied to the stimulus"
+                        },
+                        "Aperture": {
+                            "type": [ "number",
+                                "null"
+                            ],
+                            "description": "The optional variance of the gaussian mask applied to the stimulus. A value of zero specifies that no mask should be applied",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["Extent", "Location", "Radius", "Aperture"]
+                },
+                "GratingFeatures": {
+                    "type": "object",
+                    "description": "Parameters to define the features of the grating stimulus",
+                    "properties": {
+                        "SquareWave": {
+                            "type": "boolean"
+                        },
+                        "Contrast": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        },
+                        "SpatialFrequency": {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        "TemporalFrequency": {
+                            "type": "number",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["SquareWave", "Contrast", "SpatialFrequency", "TemporalFrequency"]
+                },
+                "DirTuningFeatures": {
+                    "type": "object",
+                    "description": "Parameters to define the structure and timing of grating stimuli series",
+                    "properties": {
+                        "NumDirs": {
+                            "type": "number",
+                            "description": "The number of distinct directional stimuli to display",
+                            "minimum": 1
+                        },
+                        "NumRepeats": {
+                            "type": "number",
+                            "description": "The number of repeats of the stimulus series to display",
+                            "minimum": 1
+                        },
+                        "ONTime": {
+                            "type": "number",
+                            "description": "The time, in seconds, that each stimulus is displayed",
+                            "minimum": 0
+                        },
+                        "OFFTime": {
+                            "type": "number",
+                            "description": "The time, in seconds, that each stimulus is displayed", 
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["NumDirs", "NumRepeats", "ONTime", "OFFTime"]
+                }
+            },
+            "required": ["PositionSizeFeatures", "GratingFeatures", "DirTuningFeatures"]
+        }
+    },
+    "required": ["StimulusParameters"]
+}  

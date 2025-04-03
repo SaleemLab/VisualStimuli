@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=./DirectionTuningFeatures.json
+StimulusParameters:
+  PositionSizeFeatures:
+    Extent:
+      x: 180
+      y: 90
+    Location:
+      x: 0
+      y: 0
+    Radius: 100
+    Aperture: 0.1
+  GratingFeatures:
+    SquareWave: False
+    Contrast: 1
+    SpatialFrequency: 0.031
+    TemporalFrequency: 3
+  DirTuningFeatures:
+    NumDirs: 8
+    NumRepeats: 10
+    ONTime: 1
+    OFFTime: 2 # TODO: check the actual utility / neccessity of this
