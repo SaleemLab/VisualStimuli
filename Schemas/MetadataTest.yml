@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=./Metadata.json
+animalId: plimbo
+rootPath: C:/temp/
+stimulusId: debug

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.8.5"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
@@ -118,7 +118,194 @@
             <Expression xsi:type="rx:PublishSubject">
               <Name>DrawStimuli</Name>
             </Expression>
-            <Expression xsi:type="IncludeWorkflow" Path="Extensions\DisplaySettings.bonsai" />
+            <Expression xsi:type="GroupWorkflow">
+              <Name>DisplaySettings</Name>
+              <Workflow>
+                <Nodes>
+                  <Expression xsi:type="WorkflowInput">
+                    <Name>Source1</Name>
+                  </Expression>
+                  <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.SphereMapping.bonsai">
+                    <ClearColor>Gray</ClearColor>
+                    <Width xsi:nil="true" />
+                    <Height xsi:nil="true" />
+                    <RotationZ>0</RotationZ>
+                    <RotationY>0</RotationY>
+                    <RotationX>0</RotationX>
+                    <FaceSize xsi:nil="true" />
+                  </Expression>
+                  <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.ViewWindow.bonsai">
+                    <Width>15</Width>
+                    <Height>19.5</Height>
+                    <Rotation>
+                      <X>0</X>
+                      <Y>0</Y>
+                      <Z>0</Z>
+                    </Rotation>
+                    <Translation>
+                      <X>0</X>
+                      <Y>0</Y>
+                      <Z>-15</Z>
+                    </Translation>
+                  </Expression>
+                  <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.GammaCorrection.bonsai">
+                    <ClearColor>Gray</ClearColor>
+                    <GammaLut>C:\Users\neurogears\source\repos\SaleemLab\VisualStimuli\New_HALFINTENSITY_LUT_SALEEM20_20241118.bmp</GammaLut>
+                  </Expression>
+                  <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.DrawViewport.bonsai">
+                    <X>0</X>
+                    <Y>0</Y>
+                    <Width>0.334</Width>
+                    <Height>1</Height>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="gl:UpdateRenderState">
+                      <gl:RenderState>
+                        <gl:StateConfiguration xsi:type="gl:ViewportState">
+                          <gl:X>0.333</gl:X>
+                          <gl:Y>0</gl:Y>
+                          <gl:Width>0.333</gl:Width>
+                          <gl:Height>1</gl:Height>
+                        </gl:StateConfiguration>
+                      </gl:RenderState>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.ViewWindow.bonsai">
+                    <Width>15</Width>
+                    <Height>19.5</Height>
+                    <Rotation>
+                      <X>0</X>
+                      <Y>-60.000001669652114</Y>
+                      <Z>0</Z>
+                    </Rotation>
+                    <Translation>
+                      <X>12</X>
+                      <Y>0</Y>
+                      <Z>-9</Z>
+                    </Translation>
+                  </Expression>
+                  <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.GammaCorrection.bonsai">
+                    <ClearColor>Gray</ClearColor>
+                    <GammaLut>C:\Users\neurogears\source\repos\SaleemLab\VisualStimuli\New_HALFINTENSITY_LUT_SALEEM20_20241118.bmp</GammaLut>
+                  </Expression>
+                  <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.DrawViewport.bonsai">
+                    <X>0.333</X>
+                    <Y>0</Y>
+                    <Width>0.334</Width>
+                    <Height>1</Height>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="gl:UpdateRenderState">
+                      <gl:RenderState>
+                        <gl:StateConfiguration xsi:type="gl:ViewportState">
+                          <gl:X>0.665</gl:X>
+                          <gl:Y>0</gl:Y>
+                          <gl:Width>0.333</gl:Width>
+                          <gl:Height>1</gl:Height>
+                        </gl:StateConfiguration>
+                      </gl:RenderState>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.ViewWindow.bonsai">
+                    <Width>15</Width>
+                    <Height>19.5</Height>
+                    <Rotation>
+                      <X>0</X>
+                      <Y>60.000001669652114</Y>
+                      <Z>0</Z>
+                    </Rotation>
+                    <Translation>
+                      <X>-12</X>
+                      <Y>0</Y>
+                      <Z>-9</Z>
+                    </Translation>
+                  </Expression>
+                  <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.GammaCorrection.bonsai">
+                    <ClearColor>Gray</ClearColor>
+                    <GammaLut>C:\Users\neurogears\source\repos\SaleemLab\VisualStimuli\New_HALFINTENSITY_LUT_SALEEM20_20241118.bmp</GammaLut>
+                  </Expression>
+                  <Expression xsi:type="IncludeWorkflow" Path="BonVision:Environment.DrawViewport.bonsai">
+                    <X>0.667</X>
+                    <Y>0</Y>
+                    <Width>0.334</Width>
+                    <Height>1</Height>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="gl:UpdateRenderState">
+                      <gl:RenderState>
+                        <gl:StateConfiguration xsi:type="gl:ViewportState">
+                          <gl:X>0</gl:X>
+                          <gl:Y>0</gl:Y>
+                          <gl:Width>0.333</gl:Width>
+                          <gl:Height>1</gl:Height>
+                        </gl:StateConfiguration>
+                      </gl:RenderState>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="GroupWorkflow">
+                    <Name>PDSync</Name>
+                    <Workflow>
+                      <Nodes>
+                        <Expression xsi:type="SubscribeSubject">
+                          <Name>DrawStimuli</Name>
+                        </Expression>
+                        <Expression xsi:type="SubscribeSubject">
+                          <Name>PDSync</Name>
+                        </Expression>
+                        <Expression xsi:type="PropertyMapping">
+                          <PropertyMappings>
+                            <Property Name="ColorR" />
+                            <Property Name="ColorG" />
+                            <Property Name="ColorB" />
+                          </PropertyMappings>
+                        </Expression>
+                        <Expression xsi:type="ExternalizedMapping">
+                          <Property Name="ExtentX" DisplayName="Sync_Xsize" />
+                          <Property Name="ExtentY" DisplayName="Sync_Ysize" />
+                          <Property Name="LocationX" DisplayName="Sych_Xpos" />
+                          <Property Name="LocationY" DisplayName="Synch_Ypos" />
+                        </Expression>
+                        <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawQuad.bonsai">
+                          <ExtentX>15</ExtentX>
+                          <ExtentY>10</ExtentY>
+                          <LocationX>10</LocationX>
+                          <LocationY>-30</LocationY>
+                          <Layer>1</Layer>
+                          <Angle>0</Angle>
+                          <ColorR>0</ColorR>
+                          <ColorG>0</ColorG>
+                          <ColorB>0</ColorB>
+                          <ColorA>1</ColorA>
+                        </Expression>
+                        <Expression xsi:type="WorkflowOutput" />
+                      </Nodes>
+                      <Edges>
+                        <Edge From="0" To="4" Label="Source1" />
+                        <Edge From="1" To="2" Label="Source1" />
+                        <Edge From="2" To="4" Label="Source2" />
+                        <Edge From="3" To="4" Label="Source3" />
+                        <Edge From="4" To="5" Label="Source1" />
+                      </Edges>
+                    </Workflow>
+                  </Expression>
+                </Nodes>
+                <Edges>
+                  <Edge From="0" To="1" Label="Source1" />
+                  <Edge From="1" To="2" Label="Source1" />
+                  <Edge From="1" To="6" Label="Source1" />
+                  <Edge From="1" To="10" Label="Source1" />
+                  <Edge From="2" To="3" Label="Source1" />
+                  <Edge From="3" To="4" Label="Source1" />
+                  <Edge From="4" To="5" Label="Source1" />
+                  <Edge From="6" To="7" Label="Source1" />
+                  <Edge From="7" To="8" Label="Source1" />
+                  <Edge From="8" To="9" Label="Source1" />
+                  <Edge From="10" To="11" Label="Source1" />
+                  <Edge From="11" To="12" Label="Source1" />
+                  <Edge From="12" To="13" Label="Source1" />
+                </Edges>
+              </Workflow>
+            </Expression>
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
           <Edges>
@@ -447,7 +634,7 @@
                           <SpatialFrequency>0.031</SpatialFrequency>
                           <TemporalFrequency>3</TemporalFrequency>
                           <Phase>0</Phase>
-                          <Angle>315</Angle>
+                          <Angle>225</Angle>
                           <SquareWave>false</SquareWave>
                           <Contrast>1</Contrast>
                           <DutyCycle xsi:nil="true" />
@@ -980,188 +1167,445 @@ Item4 as OFFTime)</scr:Expression>
           </Edges>
         </Workflow>
       </Expression>
-      <Expression xsi:type="GroupWorkflow">
-        <Name>Arduino</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="PortName" />
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="port:CreateSerialPort">
-                <port:Name>ArduinoSerial</port:Name>
-                <port:PortName>COM3</port:PortName>
-                <port:BaudRate>1000000</port:BaudRate>
-                <port:Encoding>utf-8</port:Encoding>
-                <port:NewLine>\r\n</port:NewLine>
-                <port:Parity>None</port:Parity>
-                <port:ParityReplace>63</port:ParityReplace>
-                <port:DataBits>8</port:DataBits>
-                <port:StopBits>One</port:StopBits>
-                <port:Handshake>None</port:Handshake>
-                <port:DiscardNull>false</port:DiscardNull>
-                <port:DtrEnable>true</port:DtrEnable>
-                <port:RtsEnable>false</port:RtsEnable>
-                <port:ReadBufferSize>4096</port:ReadBufferSize>
-                <port:WriteBufferSize>2048</port:WriteBufferSize>
-                <port:ReceivedBytesThreshold>1</port:ReceivedBytesThreshold>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="port:SerialReadLine">
-                <port:PortName>ArduinoSerial</port:PortName>
-                <port:NewLine>\n</port:NewLine>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Parse">
-              <Pattern>%i\t%i\t%i\t%i\t%f\t%i\t%i\t%i</Pattern>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Retry" />
-            </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>Item1</Selector>
-            </Expression>
-            <Expression xsi:type="Disable">
-              <Builder xsi:type="MulticastSubject">
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="GroupWorkflow">
+          <Name>Arduino</Name>
+          <Workflow>
+            <Nodes>
+              <Expression xsi:type="ExternalizedMapping">
+                <Property Name="PortName" />
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="port:CreateSerialPort">
+                  <port:Name>ArduinoSerial</port:Name>
+                  <port:PortName>COM3</port:PortName>
+                  <port:BaudRate>1000000</port:BaudRate>
+                  <port:Encoding>utf-8</port:Encoding>
+                  <port:NewLine>\r\n</port:NewLine>
+                  <port:Parity>None</port:Parity>
+                  <port:ParityReplace>63</port:ParityReplace>
+                  <port:DataBits>8</port:DataBits>
+                  <port:StopBits>One</port:StopBits>
+                  <port:Handshake>None</port:Handshake>
+                  <port:DiscardNull>false</port:DiscardNull>
+                  <port:DtrEnable>true</port:DtrEnable>
+                  <port:RtsEnable>false</port:RtsEnable>
+                  <port:ReadBufferSize>4096</port:ReadBufferSize>
+                  <port:WriteBufferSize>2048</port:WriteBufferSize>
+                  <port:ReceivedBytesThreshold>1</port:ReceivedBytesThreshold>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="port:SerialReadLine">
+                  <port:PortName>ArduinoSerial</port:PortName>
+                  <port:NewLine>\n</port:NewLine>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="Parse">
+                <Pattern>%i\t%i\t%i\t%i\t%f\t%i\t%i\t%i</Pattern>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:Retry" />
+              </Expression>
+              <Expression xsi:type="MemberSelector">
+                <Selector>Item1</Selector>
+              </Expression>
+              <Expression xsi:type="Disable">
+                <Builder xsi:type="MulticastSubject">
+                  <Name>WheelInput</Name>
+                </Builder>
+              </Expression>
+              <Expression xsi:type="rx:BehaviorSubject">
                 <Name>WheelInput</Name>
-              </Builder>
-            </Expression>
-            <Expression xsi:type="rx:BehaviorSubject">
-              <Name>WheelInput</Name>
-            </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>Item2</Selector>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:DistinctUntilChanged" />
-            </Expression>
-            <Expression xsi:type="Disable">
-              <Builder xsi:type="MulticastSubject">
+              </Expression>
+              <Expression xsi:type="MemberSelector">
+                <Selector>Item2</Selector>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:DistinctUntilChanged" />
+              </Expression>
+              <Expression xsi:type="Disable">
+                <Builder xsi:type="MulticastSubject">
+                  <Name>LeftLick</Name>
+                </Builder>
+              </Expression>
+              <Expression xsi:type="rx:BehaviorSubject">
                 <Name>LeftLick</Name>
-              </Builder>
-            </Expression>
-            <Expression xsi:type="rx:BehaviorSubject">
-              <Name>LeftLick</Name>
-            </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>Item3</Selector>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:DistinctUntilChanged" />
-            </Expression>
-            <Expression xsi:type="Disable">
-              <Builder xsi:type="MulticastSubject">
+              </Expression>
+              <Expression xsi:type="MemberSelector">
+                <Selector>Item3</Selector>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:DistinctUntilChanged" />
+              </Expression>
+              <Expression xsi:type="Disable">
+                <Builder xsi:type="MulticastSubject">
+                  <Name>RightLick</Name>
+                </Builder>
+              </Expression>
+              <Expression xsi:type="rx:BehaviorSubject">
                 <Name>RightLick</Name>
-              </Builder>
-            </Expression>
-            <Expression xsi:type="rx:BehaviorSubject">
-              <Name>RightLick</Name>
-            </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>Item4</Selector>
-            </Expression>
-            <Expression xsi:type="Disable">
-              <Builder xsi:type="MulticastSubject">
+              </Expression>
+              <Expression xsi:type="MemberSelector">
+                <Selector>Item4</Selector>
+              </Expression>
+              <Expression xsi:type="Disable">
+                <Builder xsi:type="MulticastSubject">
+                  <Name>LastSyncPulseTime</Name>
+                </Builder>
+              </Expression>
+              <Expression xsi:type="rx:BehaviorSubject">
                 <Name>LastSyncPulseTime</Name>
-              </Builder>
-            </Expression>
-            <Expression xsi:type="rx:BehaviorSubject">
-              <Name>LastSyncPulseTime</Name>
-            </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>Item5</Selector>
-            </Expression>
-            <Expression xsi:type="Disable">
-              <Builder xsi:type="MulticastSubject">
+              </Expression>
+              <Expression xsi:type="MemberSelector">
+                <Selector>Item5</Selector>
+              </Expression>
+              <Expression xsi:type="Disable">
+                <Builder xsi:type="MulticastSubject">
+                  <Name>Photodiode</Name>
+                </Builder>
+              </Expression>
+              <Expression xsi:type="rx:BehaviorSubject">
                 <Name>Photodiode</Name>
-              </Builder>
-            </Expression>
-            <Expression xsi:type="rx:BehaviorSubject">
-              <Name>Photodiode</Name>
-            </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>Item6</Selector>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:DistinctUntilChanged" />
-            </Expression>
-            <Expression xsi:type="Disable">
-              <Builder xsi:type="MulticastSubject">
+              </Expression>
+              <Expression xsi:type="MemberSelector">
+                <Selector>Item6</Selector>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:DistinctUntilChanged" />
+              </Expression>
+              <Expression xsi:type="Disable">
+                <Builder xsi:type="MulticastSubject">
+                  <Name>TwoPFrameTime</Name>
+                </Builder>
+              </Expression>
+              <Expression xsi:type="rx:BehaviorSubject">
                 <Name>TwoPFrameTime</Name>
-              </Builder>
-            </Expression>
-            <Expression xsi:type="rx:BehaviorSubject">
-              <Name>TwoPFrameTime</Name>
-            </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>Item7</Selector>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:DistinctUntilChanged" />
-            </Expression>
-            <Expression xsi:type="Disable">
-              <Builder xsi:type="MulticastSubject">
+              </Expression>
+              <Expression xsi:type="MemberSelector">
+                <Selector>Item7</Selector>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:DistinctUntilChanged" />
+              </Expression>
+              <Expression xsi:type="Disable">
+                <Builder xsi:type="MulticastSubject">
+                  <Name>WideFieldFrameTime</Name>
+                </Builder>
+              </Expression>
+              <Expression xsi:type="rx:BehaviorSubject">
                 <Name>WideFieldFrameTime</Name>
-              </Builder>
-            </Expression>
-            <Expression xsi:type="rx:BehaviorSubject">
-              <Name>WideFieldFrameTime</Name>
-            </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>Rest.Item1</Selector>
-            </Expression>
-            <Expression xsi:type="Disable">
-              <Builder xsi:type="MulticastSubject">
+              </Expression>
+              <Expression xsi:type="MemberSelector">
+                <Selector>Rest.Item1</Selector>
+              </Expression>
+              <Expression xsi:type="Disable">
+                <Builder xsi:type="MulticastSubject">
+                  <Name>ArduinoTime</Name>
+                </Builder>
+              </Expression>
+              <Expression xsi:type="rx:BehaviorSubject">
                 <Name>ArduinoTime</Name>
-              </Builder>
-            </Expression>
-            <Expression xsi:type="rx:BehaviorSubject">
-              <Name>ArduinoTime</Name>
-            </Expression>
-          </Nodes>
-          <Edges>
-            <Edge From="0" To="1" Label="Source1" />
-            <Edge From="2" To="3" Label="Source1" />
-            <Edge From="3" To="4" Label="Source1" />
-            <Edge From="4" To="5" Label="Source1" />
-            <Edge From="4" To="8" Label="Source1" />
-            <Edge From="4" To="12" Label="Source1" />
-            <Edge From="4" To="16" Label="Source1" />
-            <Edge From="4" To="19" Label="Source1" />
-            <Edge From="4" To="22" Label="Source1" />
-            <Edge From="4" To="26" Label="Source1" />
-            <Edge From="4" To="30" Label="Source1" />
-            <Edge From="5" To="6" Label="Source1" />
-            <Edge From="6" To="7" Label="Source1" />
-            <Edge From="8" To="9" Label="Source1" />
-            <Edge From="9" To="10" Label="Source1" />
-            <Edge From="10" To="11" Label="Source1" />
-            <Edge From="12" To="13" Label="Source1" />
-            <Edge From="13" To="14" Label="Source1" />
-            <Edge From="14" To="15" Label="Source1" />
-            <Edge From="16" To="17" Label="Source1" />
-            <Edge From="17" To="18" Label="Source1" />
-            <Edge From="19" To="20" Label="Source1" />
-            <Edge From="20" To="21" Label="Source1" />
-            <Edge From="22" To="23" Label="Source1" />
-            <Edge From="23" To="24" Label="Source1" />
-            <Edge From="24" To="25" Label="Source1" />
-            <Edge From="26" To="27" Label="Source1" />
-            <Edge From="27" To="28" Label="Source1" />
-            <Edge From="28" To="29" Label="Source1" />
-            <Edge From="30" To="31" Label="Source1" />
-            <Edge From="31" To="32" Label="Source1" />
-          </Edges>
-        </Workflow>
+              </Expression>
+            </Nodes>
+            <Edges>
+              <Edge From="0" To="1" Label="Source1" />
+              <Edge From="2" To="3" Label="Source1" />
+              <Edge From="3" To="4" Label="Source1" />
+              <Edge From="4" To="5" Label="Source1" />
+              <Edge From="4" To="8" Label="Source1" />
+              <Edge From="4" To="12" Label="Source1" />
+              <Edge From="4" To="16" Label="Source1" />
+              <Edge From="4" To="19" Label="Source1" />
+              <Edge From="4" To="22" Label="Source1" />
+              <Edge From="4" To="26" Label="Source1" />
+              <Edge From="4" To="30" Label="Source1" />
+              <Edge From="5" To="6" Label="Source1" />
+              <Edge From="6" To="7" Label="Source1" />
+              <Edge From="8" To="9" Label="Source1" />
+              <Edge From="9" To="10" Label="Source1" />
+              <Edge From="10" To="11" Label="Source1" />
+              <Edge From="12" To="13" Label="Source1" />
+              <Edge From="13" To="14" Label="Source1" />
+              <Edge From="14" To="15" Label="Source1" />
+              <Edge From="16" To="17" Label="Source1" />
+              <Edge From="17" To="18" Label="Source1" />
+              <Edge From="19" To="20" Label="Source1" />
+              <Edge From="20" To="21" Label="Source1" />
+              <Edge From="22" To="23" Label="Source1" />
+              <Edge From="23" To="24" Label="Source1" />
+              <Edge From="24" To="25" Label="Source1" />
+              <Edge From="26" To="27" Label="Source1" />
+              <Edge From="27" To="28" Label="Source1" />
+              <Edge From="28" To="29" Label="Source1" />
+              <Edge From="30" To="31" Label="Source1" />
+              <Edge From="31" To="32" Label="Source1" />
+            </Edges>
+          </Workflow>
+        </Builder>
       </Expression>
-      <Expression xsi:type="GroupWorkflow">
-        <Name>Logging</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="Disable">
-              <Builder xsi:type="GroupWorkflow">
-                <Name>TrialLogger</Name>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="GroupWorkflow">
+          <Name>Logging</Name>
+          <Workflow>
+            <Nodes>
+              <Expression xsi:type="Disable">
+                <Builder xsi:type="GroupWorkflow">
+                  <Name>TrialLogger</Name>
+                  <Description>Creates and initializes a CSV file, and matching behavior subject, on which to timestamp and log events.</Description>
+                  <Workflow>
+                    <Nodes>
+                      <Expression xsi:type="SubscribeSubject">
+                        <Name>FilenamePrefix</Name>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="StringProperty">
+                          <Value>_TrialParams</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Expression>
+                      <Expression xsi:type="scr:ExpressionTransform">
+                        <scr:Expression>it.Item1+it.Item2</scr:Expression>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Take">
+                          <rx:Count>1</rx:Count>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Format">
+                        <Format>{0}.csv</Format>
+                      </Expression>
+                      <Expression xsi:type="PropertyMapping">
+                        <PropertyMappings>
+                          <Property Name="FileName" />
+                        </PropertyMappings>
+                      </Expression>
+                      <Expression xsi:type="ExternalizedMapping">
+                        <Property Name="Overwrite" />
+                      </Expression>
+                      <Expression xsi:type="ExternalizedMapping">
+                        <Property Name="Suffix" />
+                      </Expression>
+                      <Expression xsi:type="SubscribeSubject">
+                        <Name>TrialParams</Name>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Timestamp" />
+                      </Expression>
+                      <Expression xsi:type="MemberSelector">
+                        <Selector>Timestamp.DateTime.TimeOfDay</Selector>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Expression>
+                      <Expression xsi:type="SubscribeSubject">
+                        <Name>ArduinoTime</Name>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="rx:WithLatestFrom" />
+                      </Expression>
+                      <Expression xsi:type="Disable">
+                        <Builder xsi:type="scr:ExpressionTransform">
+                          <scr:Expression>new(Item1.Item1.TrialType as TrialType, Item1.Item1.Response as Response, Item1.Item1.TrialResult as TrialResult, Item1.Item1.LeftVel as LeftVel, Item1.Item1.RightVel as RightVel, Item2 as ArduinoTime, Item1.Item2 as BonsaiTime)</scr:Expression>
+                        </Builder>
+                      </Expression>
+                      <Expression xsi:type="io:CsvWriter">
+                        <io:FileName>C:\DATA\Subjects\M24043\Bonsai\20240815\M24043_E1_1_DirTuning_TrialParams.csv</io:FileName>
+                        <io:Delimiter>,</io:Delimiter>
+                        <io:Append>false</io:Append>
+                        <io:Overwrite>false</io:Overwrite>
+                        <io:Suffix>Timestamp</io:Suffix>
+                        <io:IncludeHeader>true</io:IncludeHeader>
+                        <io:Selector />
+                      </Expression>
+                    </Nodes>
+                    <Edges>
+                      <Edge From="0" To="2" Label="Source1" />
+                      <Edge From="1" To="2" Label="Source2" />
+                      <Edge From="2" To="3" Label="Source1" />
+                      <Edge From="3" To="4" Label="Source1" />
+                      <Edge From="4" To="5" Label="Source1" />
+                      <Edge From="5" To="6" Label="Source1" />
+                      <Edge From="6" To="16" Label="Source1" />
+                      <Edge From="7" To="16" Label="Source2" />
+                      <Edge From="8" To="16" Label="Source3" />
+                      <Edge From="9" To="10" Label="Source1" />
+                      <Edge From="9" To="12" Label="Source1" />
+                      <Edge From="10" To="11" Label="Source1" />
+                      <Edge From="11" To="12" Label="Source2" />
+                      <Edge From="12" To="14" Label="Source1" />
+                      <Edge From="13" To="14" Label="Source2" />
+                      <Edge From="14" To="15" Label="Source1" />
+                      <Edge From="15" To="16" Label="Source4" />
+                    </Edges>
+                  </Workflow>
+                </Builder>
+              </Expression>
+              <Expression xsi:type="Disable">
+                <Builder xsi:type="GroupWorkflow">
+                  <Name>IntialiseTrialParams</Name>
+                  <Workflow>
+                    <Nodes>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="IntProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="IntProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="IntProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="FloatProperty">
+                          <Value>0</Value>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Expression>
+                      <Expression xsi:type="scr:ExpressionTransform">
+                        <scr:Expression>new(
+Item1.Item1 as Id,
+Item1.Item2 as Duration,
+Item1.Item3 as Size,
+Item1.Item4 as Colour1,
+Item1.Item5 as Colour2,
+Item1.Item6 as numDots1,
+Item1.Item7 as numDots2,
+
+Item2.Item1 as dotLifeBool,
+Item2.Item2 as dotLifetime,
+Item2.Item3 as Contrast1,
+Item2.Item4 as Contrast2,
+Item2.Item5 as VelX1,
+Item2.Item6 as VelX2,
+Item2.Item7 as VelY1,
+
+Item3.Item1 as VelY2,
+Item3.Item2 as Coherence1,
+Item3.Item3 as Coherence2)</scr:Expression>
+                      </Expression>
+                      <Expression xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Skip">
+                          <rx:Count>1</rx:Count>
+                        </Combinator>
+                      </Expression>
+                      <Expression xsi:type="rx:BehaviorSubject">
+                        <Name>TrialParams</Name>
+                      </Expression>
+                    </Nodes>
+                    <Edges>
+                      <Edge From="0" To="7" Label="Source1" />
+                      <Edge From="1" To="7" Label="Source2" />
+                      <Edge From="2" To="7" Label="Source3" />
+                      <Edge From="3" To="7" Label="Source4" />
+                      <Edge From="4" To="7" Label="Source5" />
+                      <Edge From="5" To="7" Label="Source6" />
+                      <Edge From="6" To="7" Label="Source7" />
+                      <Edge From="7" To="20" Label="Source1" />
+                      <Edge From="8" To="15" Label="Source1" />
+                      <Edge From="9" To="15" Label="Source2" />
+                      <Edge From="10" To="15" Label="Source3" />
+                      <Edge From="11" To="15" Label="Source4" />
+                      <Edge From="12" To="15" Label="Source5" />
+                      <Edge From="13" To="15" Label="Source6" />
+                      <Edge From="14" To="15" Label="Source7" />
+                      <Edge From="15" To="20" Label="Source2" />
+                      <Edge From="16" To="19" Label="Source1" />
+                      <Edge From="17" To="19" Label="Source2" />
+                      <Edge From="18" To="19" Label="Source3" />
+                      <Edge From="19" To="20" Label="Source3" />
+                      <Edge From="20" To="21" Label="Source1" />
+                      <Edge From="21" To="22" Label="Source1" />
+                      <Edge From="22" To="23" Label="Source1" />
+                    </Edges>
+                  </Workflow>
+                </Builder>
+              </Expression>
+              <Expression xsi:type="GroupWorkflow">
+                <Name>WheelLogger</Name>
                 <Description>Creates and initializes a CSV file, and matching behavior subject, on which to timestamp and log events.</Description>
                 <Workflow>
                   <Nodes>
@@ -1170,7 +1614,7 @@ Item4 as OFFTime)</scr:Expression>
                     </Expression>
                     <Expression xsi:type="Combinator">
                       <Combinator xsi:type="StringProperty">
-                        <Value>_TrialParams</Value>
+                        <Value>_Wheel</Value>
                       </Combinator>
                     </Expression>
                     <Expression xsi:type="Combinator">
@@ -1198,31 +1642,14 @@ Item4 as OFFTime)</scr:Expression>
                     <Expression xsi:type="ExternalizedMapping">
                       <Property Name="Suffix" />
                     </Expression>
-                    <Expression xsi:type="SubscribeSubject">
-                      <Name>TrialParams</Name>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="rx:Timestamp" />
-                    </Expression>
-                    <Expression xsi:type="MemberSelector">
-                      <Selector>Timestamp.DateTime.TimeOfDay</Selector>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="rx:Zip" />
+                    <Expression xsi:type="ExternalizedMapping">
+                      <Property Name="Name" />
                     </Expression>
                     <Expression xsi:type="SubscribeSubject">
-                      <Name>ArduinoTime</Name>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="rx:WithLatestFrom" />
-                    </Expression>
-                    <Expression xsi:type="Disable">
-                      <Builder xsi:type="scr:ExpressionTransform">
-                        <scr:Expression>new(Item1.Item1.TrialType as TrialType, Item1.Item1.Response as Response, Item1.Item1.TrialResult as TrialResult, Item1.Item1.LeftVel as LeftVel, Item1.Item1.RightVel as RightVel, Item2 as ArduinoTime, Item1.Item2 as BonsaiTime)</scr:Expression>
-                      </Builder>
+                      <Name>WheelLog</Name>
                     </Expression>
                     <Expression xsi:type="io:CsvWriter">
-                      <io:FileName>C:\DATA\Subjects\M24043\Bonsai\20240815\M24043_E1_1_DirTuning_TrialParams.csv</io:FileName>
+                      <io:FileName>C:\DATA\Subjects\M24046\Bonsai\20240815\M24046_E1_1_DirTuning_Wheel.csv</io:FileName>
                       <io:Delimiter>,</io:Delimiter>
                       <io:Append>false</io:Append>
                       <io:Overwrite>false</io:Overwrite>
@@ -1238,1259 +1665,1023 @@ Item4 as OFFTime)</scr:Expression>
                     <Edge From="3" To="4" Label="Source1" />
                     <Edge From="4" To="5" Label="Source1" />
                     <Edge From="5" To="6" Label="Source1" />
-                    <Edge From="6" To="16" Label="Source1" />
-                    <Edge From="7" To="16" Label="Source2" />
-                    <Edge From="8" To="16" Label="Source3" />
+                    <Edge From="6" To="11" Label="Source1" />
+                    <Edge From="7" To="11" Label="Source2" />
+                    <Edge From="8" To="11" Label="Source3" />
                     <Edge From="9" To="10" Label="Source1" />
-                    <Edge From="9" To="12" Label="Source1" />
-                    <Edge From="10" To="11" Label="Source1" />
-                    <Edge From="11" To="12" Label="Source2" />
-                    <Edge From="12" To="14" Label="Source1" />
-                    <Edge From="13" To="14" Label="Source2" />
-                    <Edge From="14" To="15" Label="Source1" />
-                    <Edge From="15" To="16" Label="Source4" />
+                    <Edge From="10" To="11" Label="Source4" />
                   </Edges>
                 </Workflow>
-              </Builder>
-            </Expression>
-            <Expression xsi:type="Disable">
-              <Builder xsi:type="GroupWorkflow">
-                <Name>IntialiseTrialParams</Name>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="wie:KeyDown">
+                  <wie:Filter>MButton Back Clear D H L Shift</wie:Filter>
+                  <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:SubscribeWhen" />
+              </Expression>
+              <Expression xsi:type="GroupWorkflow">
+                <Name>TwoPLogger</Name>
+                <Description>Creates and initializes a CSV file, and matching behavior subject, on which to timestamp and log events.</Description>
                 <Workflow>
                   <Nodes>
+                    <Expression xsi:type="SubscribeSubject">
+                      <Name>FilenamePrefix</Name>
+                    </Expression>
+                    <Expression xsi:type="ExternalizedMapping">
+                      <Property Name="Value" DisplayName="FileEnding" />
+                    </Expression>
                     <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="IntProperty">
-                        <Value>0</Value>
+                      <Combinator xsi:type="StringProperty">
+                        <Value>_2P</Value>
                       </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="rx:Zip" />
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="IntProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="IntProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="rx:Zip" />
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="FloatProperty">
-                        <Value>0</Value>
-                      </Combinator>
-                    </Expression>
-                    <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="rx:Zip" />
                     </Expression>
                     <Expression xsi:type="Combinator">
                       <Combinator xsi:type="rx:Zip" />
                     </Expression>
                     <Expression xsi:type="scr:ExpressionTransform">
-                      <scr:Expression>new(
-Item1.Item1 as Id,
-Item1.Item2 as Duration,
-Item1.Item3 as Size,
-Item1.Item4 as Colour1,
-Item1.Item5 as Colour2,
-Item1.Item6 as numDots1,
-Item1.Item7 as numDots2,
-
-Item2.Item1 as dotLifeBool,
-Item2.Item2 as dotLifetime,
-Item2.Item3 as Contrast1,
-Item2.Item4 as Contrast2,
-Item2.Item5 as VelX1,
-Item2.Item6 as VelX2,
-Item2.Item7 as VelY1,
-
-Item3.Item1 as VelY2,
-Item3.Item2 as Coherence1,
-Item3.Item3 as Coherence2)</scr:Expression>
+                      <scr:Expression>it.Item1+it.Item2</scr:Expression>
                     </Expression>
                     <Expression xsi:type="Combinator">
-                      <Combinator xsi:type="rx:Skip">
+                      <Combinator xsi:type="rx:Take">
                         <rx:Count>1</rx:Count>
                       </Combinator>
                     </Expression>
-                    <Expression xsi:type="rx:BehaviorSubject">
-                      <Name>TrialParams</Name>
+                    <Expression xsi:type="Format">
+                      <Format>{0}.csv</Format>
+                    </Expression>
+                    <Expression xsi:type="PropertyMapping">
+                      <PropertyMappings>
+                        <Property Name="FileName" />
+                      </PropertyMappings>
+                    </Expression>
+                    <Expression xsi:type="ExternalizedMapping">
+                      <Property Name="Overwrite" />
+                    </Expression>
+                    <Expression xsi:type="ExternalizedMapping">
+                      <Property Name="Suffix" />
+                    </Expression>
+                    <Expression xsi:type="ExternalizedMapping">
+                      <Property Name="Name" />
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
+                      <Name>TwoPLog</Name>
+                    </Expression>
+                    <Expression xsi:type="io:CsvWriter">
+                      <io:FileName>C:\DATA\Subjects\M24046\Bonsai\20240815\M24046_E1_1_DirTuning_2P.csv</io:FileName>
+                      <io:Delimiter>,</io:Delimiter>
+                      <io:Append>false</io:Append>
+                      <io:Overwrite>false</io:Overwrite>
+                      <io:Suffix>Timestamp</io:Suffix>
+                      <io:IncludeHeader>true</io:IncludeHeader>
+                      <io:Selector />
                     </Expression>
                   </Nodes>
                   <Edges>
-                    <Edge From="0" To="7" Label="Source1" />
-                    <Edge From="1" To="7" Label="Source2" />
-                    <Edge From="2" To="7" Label="Source3" />
-                    <Edge From="3" To="7" Label="Source4" />
-                    <Edge From="4" To="7" Label="Source5" />
-                    <Edge From="5" To="7" Label="Source6" />
-                    <Edge From="6" To="7" Label="Source7" />
-                    <Edge From="7" To="20" Label="Source1" />
-                    <Edge From="8" To="15" Label="Source1" />
-                    <Edge From="9" To="15" Label="Source2" />
-                    <Edge From="10" To="15" Label="Source3" />
-                    <Edge From="11" To="15" Label="Source4" />
-                    <Edge From="12" To="15" Label="Source5" />
-                    <Edge From="13" To="15" Label="Source6" />
-                    <Edge From="14" To="15" Label="Source7" />
-                    <Edge From="15" To="20" Label="Source2" />
-                    <Edge From="16" To="19" Label="Source1" />
-                    <Edge From="17" To="19" Label="Source2" />
-                    <Edge From="18" To="19" Label="Source3" />
-                    <Edge From="19" To="20" Label="Source3" />
-                    <Edge From="20" To="21" Label="Source1" />
-                    <Edge From="21" To="22" Label="Source1" />
-                    <Edge From="22" To="23" Label="Source1" />
+                    <Edge From="0" To="3" Label="Source1" />
+                    <Edge From="1" To="2" Label="Source1" />
+                    <Edge From="2" To="3" Label="Source2" />
+                    <Edge From="3" To="4" Label="Source1" />
+                    <Edge From="4" To="5" Label="Source1" />
+                    <Edge From="5" To="6" Label="Source1" />
+                    <Edge From="6" To="7" Label="Source1" />
+                    <Edge From="7" To="12" Label="Source1" />
+                    <Edge From="8" To="12" Label="Source2" />
+                    <Edge From="9" To="12" Label="Source3" />
+                    <Edge From="10" To="11" Label="Source1" />
+                    <Edge From="11" To="12" Label="Source4" />
                   </Edges>
                 </Workflow>
-              </Builder>
-            </Expression>
-            <Expression xsi:type="GroupWorkflow">
-              <Name>WheelLogger</Name>
-              <Description>Creates and initializes a CSV file, and matching behavior subject, on which to timestamp and log events.</Description>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>FilenamePrefix</Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="StringProperty">
-                      <Value>_Wheel</Value>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Zip" />
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Expression>it.Item1+it.Item2</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Take">
-                      <rx:Count>1</rx:Count>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Format">
-                    <Format>{0}.csv</Format>
-                  </Expression>
-                  <Expression xsi:type="PropertyMapping">
-                    <PropertyMappings>
-                      <Property Name="FileName" />
-                    </PropertyMappings>
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Overwrite" />
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Suffix" />
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Name" />
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>WheelLog</Name>
-                  </Expression>
-                  <Expression xsi:type="io:CsvWriter">
-                    <io:FileName>C:\DATA\Subjects\M24046\Bonsai\20240815\M24046_E1_1_DirTuning_Wheel.csv</io:FileName>
-                    <io:Delimiter>,</io:Delimiter>
-                    <io:Append>false</io:Append>
-                    <io:Overwrite>false</io:Overwrite>
-                    <io:Suffix>Timestamp</io:Suffix>
-                    <io:IncludeHeader>true</io:IncludeHeader>
-                    <io:Selector />
-                  </Expression>
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="2" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source2" />
-                  <Edge From="2" To="3" Label="Source1" />
-                  <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="4" To="5" Label="Source1" />
-                  <Edge From="5" To="6" Label="Source1" />
-                  <Edge From="6" To="11" Label="Source1" />
-                  <Edge From="7" To="11" Label="Source2" />
-                  <Edge From="8" To="11" Label="Source3" />
-                  <Edge From="9" To="10" Label="Source1" />
-                  <Edge From="10" To="11" Label="Source4" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="wie:KeyDown">
-                <wie:Filter>MButton Back Clear D H L Shift</wie:Filter>
-                <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:SubscribeWhen" />
-            </Expression>
-            <Expression xsi:type="GroupWorkflow">
-              <Name>TwoPLogger</Name>
-              <Description>Creates and initializes a CSV file, and matching behavior subject, on which to timestamp and log events.</Description>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>FilenamePrefix</Name>
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Value" DisplayName="FileEnding" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="StringProperty">
-                      <Value>_2P</Value>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Zip" />
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Expression>it.Item1+it.Item2</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Take">
-                      <rx:Count>1</rx:Count>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Format">
-                    <Format>{0}.csv</Format>
-                  </Expression>
-                  <Expression xsi:type="PropertyMapping">
-                    <PropertyMappings>
-                      <Property Name="FileName" />
-                    </PropertyMappings>
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Overwrite" />
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Suffix" />
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Name" />
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>TwoPLog</Name>
-                  </Expression>
-                  <Expression xsi:type="io:CsvWriter">
-                    <io:FileName>C:\DATA\Subjects\M24046\Bonsai\20240815\M24046_E1_1_DirTuning_2P.csv</io:FileName>
-                    <io:Delimiter>,</io:Delimiter>
-                    <io:Append>false</io:Append>
-                    <io:Overwrite>false</io:Overwrite>
-                    <io:Suffix>Timestamp</io:Suffix>
-                    <io:IncludeHeader>true</io:IncludeHeader>
-                    <io:Selector />
-                  </Expression>
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="3" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source1" />
-                  <Edge From="2" To="3" Label="Source2" />
-                  <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="4" To="5" Label="Source1" />
-                  <Edge From="5" To="6" Label="Source1" />
-                  <Edge From="6" To="7" Label="Source1" />
-                  <Edge From="7" To="12" Label="Source1" />
-                  <Edge From="8" To="12" Label="Source2" />
-                  <Edge From="9" To="12" Label="Source3" />
-                  <Edge From="10" To="11" Label="Source1" />
-                  <Edge From="11" To="12" Label="Source4" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:SubscribeWhen" />
-            </Expression>
-            <Expression xsi:type="GroupWorkflow">
-              <Name>PhotodiodeLogger</Name>
-              <Description>Creates and initializes a CSV file, and matching behavior subject, on which to timestamp and log events.</Description>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>FilenamePrefix</Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="StringProperty">
-                      <Value>_Photodiode</Value>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Zip" />
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Expression>it.Item1+it.Item2</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Take">
-                      <rx:Count>1</rx:Count>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Format">
-                    <Format>{0}.csv</Format>
-                  </Expression>
-                  <Expression xsi:type="PropertyMapping">
-                    <PropertyMappings>
-                      <Property Name="FileName" />
-                    </PropertyMappings>
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Overwrite" />
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Suffix" />
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Name" />
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>PDLog</Name>
-                  </Expression>
-                  <Expression xsi:type="io:CsvWriter">
-                    <io:FileName>C:\DATA\Subjects\M24046\Bonsai\20240815\M24046_E1_1_DirTuning_Photodiode.csv</io:FileName>
-                    <io:Delimiter>,</io:Delimiter>
-                    <io:Append>false</io:Append>
-                    <io:Overwrite>false</io:Overwrite>
-                    <io:Suffix>Timestamp</io:Suffix>
-                    <io:IncludeHeader>true</io:IncludeHeader>
-                    <io:Selector />
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:SubscribeWhen" />
+              </Expression>
+              <Expression xsi:type="GroupWorkflow">
+                <Name>PhotodiodeLogger</Name>
+                <Description>Creates and initializes a CSV file, and matching behavior subject, on which to timestamp and log events.</Description>
+                <Workflow>
+                  <Nodes>
+                    <Expression xsi:type="SubscribeSubject">
                       <Name>FilenamePrefix</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="StringProperty">
                         <Value>_Photodiode</Value>
                       </Combinator>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="rx:Zip" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="scr:ExpressionTransform">
+                    </Expression>
+                    <Expression xsi:type="scr:ExpressionTransform">
                       <scr:Expression>it.Item1+it.Item2</scr:Expression>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="rx:Take">
                         <rx:Count>1</rx:Count>
                       </Combinator>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Format">
+                    </Expression>
+                    <Expression xsi:type="Format">
                       <Format>{0}.csv</Format>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="PropertyMapping">
+                    </Expression>
+                    <Expression xsi:type="PropertyMapping">
                       <PropertyMappings>
                         <Property Name="FileName" />
                       </PropertyMappings>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="ExternalizedMapping">
+                    </Expression>
+                    <Expression xsi:type="ExternalizedMapping">
                       <Property Name="Overwrite" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="ExternalizedMapping">
+                    </Expression>
+                    <Expression xsi:type="ExternalizedMapping">
                       <Property Name="Suffix" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="ExternalizedMapping">
+                    </Expression>
+                    <Expression xsi:type="ExternalizedMapping">
                       <Property Name="Name" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
                       <Name>PDLog</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="io:CsvWriter">
-                      <io:FileName>M24019_DotMotion_SpeedTuning_Photodiode.csv</io:FileName>
+                    </Expression>
+                    <Expression xsi:type="io:CsvWriter">
+                      <io:FileName>C:\DATA\Subjects\M24046\Bonsai\20240815\M24046_E1_1_DirTuning_Photodiode.csv</io:FileName>
                       <io:Delimiter>,</io:Delimiter>
                       <io:Append>false</io:Append>
                       <io:Overwrite>false</io:Overwrite>
                       <io:Suffix>Timestamp</io:Suffix>
                       <io:IncludeHeader>true</io:IncludeHeader>
                       <io:Selector />
-                    </Builder>
-                  </Expression>
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="2" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source2" />
-                  <Edge From="2" To="3" Label="Source1" />
-                  <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="4" To="5" Label="Source1" />
-                  <Edge From="5" To="6" Label="Source1" />
-                  <Edge From="6" To="11" Label="Source1" />
-                  <Edge From="7" To="11" Label="Source2" />
-                  <Edge From="8" To="11" Label="Source3" />
-                  <Edge From="9" To="10" Label="Source1" />
-                  <Edge From="10" To="11" Label="Source4" />
-                  <Edge From="12" To="14" Label="Source1" />
-                  <Edge From="13" To="14" Label="Source2" />
-                  <Edge From="14" To="15" Label="Source1" />
-                  <Edge From="15" To="16" Label="Source1" />
-                  <Edge From="16" To="17" Label="Source1" />
-                  <Edge From="17" To="18" Label="Source1" />
-                  <Edge From="18" To="23" Label="Source1" />
-                  <Edge From="19" To="23" Label="Source2" />
-                  <Edge From="20" To="23" Label="Source3" />
-                  <Edge From="21" To="22" Label="Source1" />
-                  <Edge From="22" To="23" Label="Source4" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:SubscribeWhen" />
-            </Expression>
-            <Expression xsi:type="GroupWorkflow">
-              <Name>QuadLogger</Name>
-              <Description>Creates and initializes a CSV file, and matching behavior subject, on which to timestamp and log events.</Description>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>FilenamePrefix</Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="StringProperty">
-                      <Value>_Quad</Value>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Zip" />
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Expression>it.Item1+it.Item2</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Take">
-                      <rx:Count>1</rx:Count>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Format">
-                    <Format>{0}.csv</Format>
-                  </Expression>
-                  <Expression xsi:type="PropertyMapping">
-                    <PropertyMappings>
-                      <Property Name="FileName" />
-                    </PropertyMappings>
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Overwrite" />
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Suffix" />
-                  </Expression>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Name" />
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>QuadLog</Name>
-                  </Expression>
-                  <Expression xsi:type="io:CsvWriter">
-                    <io:FileName>C:\DATA\Subjects\M24046\Bonsai\20240815\M24046_E1_1_DirTuning_Quad.csv</io:FileName>
-                    <io:Delimiter>,</io:Delimiter>
-                    <io:Append>false</io:Append>
-                    <io:Overwrite>false</io:Overwrite>
-                    <io:Suffix>Timestamp</io:Suffix>
-                    <io:IncludeHeader>true</io:IncludeHeader>
-                    <io:Selector />
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>FilenamePrefix</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="StringProperty">
+                          <Value>_Photodiode</Value>
+                        </Combinator>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="scr:ExpressionTransform">
+                        <scr:Expression>it.Item1+it.Item2</scr:Expression>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Take">
+                          <rx:Count>1</rx:Count>
+                        </Combinator>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Format">
+                        <Format>{0}.csv</Format>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="PropertyMapping">
+                        <PropertyMappings>
+                          <Property Name="FileName" />
+                        </PropertyMappings>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="ExternalizedMapping">
+                        <Property Name="Overwrite" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="ExternalizedMapping">
+                        <Property Name="Suffix" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="ExternalizedMapping">
+                        <Property Name="Name" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>PDLog</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="io:CsvWriter">
+                        <io:FileName>M24019_DotMotion_SpeedTuning_Photodiode.csv</io:FileName>
+                        <io:Delimiter>,</io:Delimiter>
+                        <io:Append>false</io:Append>
+                        <io:Overwrite>false</io:Overwrite>
+                        <io:Suffix>Timestamp</io:Suffix>
+                        <io:IncludeHeader>true</io:IncludeHeader>
+                        <io:Selector />
+                      </Builder>
+                    </Expression>
+                  </Nodes>
+                  <Edges>
+                    <Edge From="0" To="2" Label="Source1" />
+                    <Edge From="1" To="2" Label="Source2" />
+                    <Edge From="2" To="3" Label="Source1" />
+                    <Edge From="3" To="4" Label="Source1" />
+                    <Edge From="4" To="5" Label="Source1" />
+                    <Edge From="5" To="6" Label="Source1" />
+                    <Edge From="6" To="11" Label="Source1" />
+                    <Edge From="7" To="11" Label="Source2" />
+                    <Edge From="8" To="11" Label="Source3" />
+                    <Edge From="9" To="10" Label="Source1" />
+                    <Edge From="10" To="11" Label="Source4" />
+                    <Edge From="12" To="14" Label="Source1" />
+                    <Edge From="13" To="14" Label="Source2" />
+                    <Edge From="14" To="15" Label="Source1" />
+                    <Edge From="15" To="16" Label="Source1" />
+                    <Edge From="16" To="17" Label="Source1" />
+                    <Edge From="17" To="18" Label="Source1" />
+                    <Edge From="18" To="23" Label="Source1" />
+                    <Edge From="19" To="23" Label="Source2" />
+                    <Edge From="20" To="23" Label="Source3" />
+                    <Edge From="21" To="22" Label="Source1" />
+                    <Edge From="22" To="23" Label="Source4" />
+                  </Edges>
+                </Workflow>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:SubscribeWhen" />
+              </Expression>
+              <Expression xsi:type="GroupWorkflow">
+                <Name>QuadLogger</Name>
+                <Description>Creates and initializes a CSV file, and matching behavior subject, on which to timestamp and log events.</Description>
+                <Workflow>
+                  <Nodes>
+                    <Expression xsi:type="SubscribeSubject">
                       <Name>FilenamePrefix</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="StringProperty">
-                        <Value>_Photodiode</Value>
+                        <Value>_Quad</Value>
                       </Combinator>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="rx:Zip" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="scr:ExpressionTransform">
+                    </Expression>
+                    <Expression xsi:type="scr:ExpressionTransform">
                       <scr:Expression>it.Item1+it.Item2</scr:Expression>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="rx:Take">
                         <rx:Count>1</rx:Count>
                       </Combinator>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Format">
+                    </Expression>
+                    <Expression xsi:type="Format">
                       <Format>{0}.csv</Format>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="PropertyMapping">
+                    </Expression>
+                    <Expression xsi:type="PropertyMapping">
                       <PropertyMappings>
                         <Property Name="FileName" />
                       </PropertyMappings>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="ExternalizedMapping">
+                    </Expression>
+                    <Expression xsi:type="ExternalizedMapping">
                       <Property Name="Overwrite" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="ExternalizedMapping">
+                    </Expression>
+                    <Expression xsi:type="ExternalizedMapping">
                       <Property Name="Suffix" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="ExternalizedMapping">
+                    </Expression>
+                    <Expression xsi:type="ExternalizedMapping">
                       <Property Name="Name" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>PDLog</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="io:CsvWriter">
-                      <io:FileName>M24019_DotMotion_SpeedTuning_Photodiode.csv</io:FileName>
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
+                      <Name>QuadLog</Name>
+                    </Expression>
+                    <Expression xsi:type="io:CsvWriter">
+                      <io:FileName>C:\DATA\Subjects\M24046\Bonsai\20240815\M24046_E1_1_DirTuning_Quad.csv</io:FileName>
                       <io:Delimiter>,</io:Delimiter>
                       <io:Append>false</io:Append>
                       <io:Overwrite>false</io:Overwrite>
                       <io:Suffix>Timestamp</io:Suffix>
                       <io:IncludeHeader>true</io:IncludeHeader>
                       <io:Selector />
-                    </Builder>
-                  </Expression>
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="2" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source2" />
-                  <Edge From="2" To="3" Label="Source1" />
-                  <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="4" To="5" Label="Source1" />
-                  <Edge From="5" To="6" Label="Source1" />
-                  <Edge From="6" To="11" Label="Source1" />
-                  <Edge From="7" To="11" Label="Source2" />
-                  <Edge From="8" To="11" Label="Source3" />
-                  <Edge From="9" To="10" Label="Source1" />
-                  <Edge From="10" To="11" Label="Source4" />
-                  <Edge From="12" To="14" Label="Source1" />
-                  <Edge From="13" To="14" Label="Source2" />
-                  <Edge From="14" To="15" Label="Source1" />
-                  <Edge From="15" To="16" Label="Source1" />
-                  <Edge From="16" To="17" Label="Source1" />
-                  <Edge From="17" To="18" Label="Source1" />
-                  <Edge From="18" To="23" Label="Source1" />
-                  <Edge From="19" To="23" Label="Source2" />
-                  <Edge From="20" To="23" Label="Source3" />
-                  <Edge From="21" To="22" Label="Source1" />
-                  <Edge From="22" To="23" Label="Source4" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:SubscribeWhen" />
-            </Expression>
-            <Expression xsi:type="GroupWorkflow">
-              <Name>WheelLogging</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>WheelInput</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>LastSyncPulseTime</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>ArduinoTime</Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Timestamp" />
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>Timestamp.DateTime.TimeOfDay</Selector>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Zip" />
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>RenderFrameCount</Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:WithLatestFrom" />
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Expression>new(Item1.Item1 as Wheel, Item1.Item2 as LastSyncPulseTime, Item1.Item3 as ArduinoTime, Item1.Item4 as BonsaiTime, Item2 as RenderFrameCount)</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="rx:BehaviorSubject">
-                    <Name>WheelLog</Name>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="3" Label="Source1" />
-                  <Edge From="0" To="5" Label="Source1" />
-                  <Edge From="1" To="5" Label="Source2" />
-                  <Edge From="2" To="5" Label="Source3" />
-                  <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="4" To="5" Label="Source4" />
-                  <Edge From="5" To="7" Label="Source1" />
-                  <Edge From="6" To="7" Label="Source2" />
-                  <Edge From="7" To="8" Label="Source1" />
-                  <Edge From="8" To="9" Label="Source1" />
-                  <Edge From="9" To="10" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="GroupWorkflow">
-              <Name>PhotodiodeLogging</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>Photodiode</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>QuadState</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:CombineLatest" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>FilenamePrefix</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="StringProperty">
+                          <Value>_Photodiode</Value>
+                        </Combinator>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="scr:ExpressionTransform">
+                        <scr:Expression>it.Item1+it.Item2</scr:Expression>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Take">
+                          <rx:Count>1</rx:Count>
+                        </Combinator>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Format">
+                        <Format>{0}.csv</Format>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="PropertyMapping">
+                        <PropertyMappings>
+                          <Property Name="FileName" />
+                        </PropertyMappings>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="ExternalizedMapping">
+                        <Property Name="Overwrite" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="ExternalizedMapping">
+                        <Property Name="Suffix" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="ExternalizedMapping">
+                        <Property Name="Name" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>PDLog</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="io:CsvWriter">
+                        <io:FileName>M24019_DotMotion_SpeedTuning_Photodiode.csv</io:FileName>
+                        <io:Delimiter>,</io:Delimiter>
+                        <io:Append>false</io:Append>
+                        <io:Overwrite>false</io:Overwrite>
+                        <io:Suffix>Timestamp</io:Suffix>
+                        <io:IncludeHeader>true</io:IncludeHeader>
+                        <io:Selector />
+                      </Builder>
+                    </Expression>
+                  </Nodes>
+                  <Edges>
+                    <Edge From="0" To="2" Label="Source1" />
+                    <Edge From="1" To="2" Label="Source2" />
+                    <Edge From="2" To="3" Label="Source1" />
+                    <Edge From="3" To="4" Label="Source1" />
+                    <Edge From="4" To="5" Label="Source1" />
+                    <Edge From="5" To="6" Label="Source1" />
+                    <Edge From="6" To="11" Label="Source1" />
+                    <Edge From="7" To="11" Label="Source2" />
+                    <Edge From="8" To="11" Label="Source3" />
+                    <Edge From="9" To="10" Label="Source1" />
+                    <Edge From="10" To="11" Label="Source4" />
+                    <Edge From="12" To="14" Label="Source1" />
+                    <Edge From="13" To="14" Label="Source2" />
+                    <Edge From="14" To="15" Label="Source1" />
+                    <Edge From="15" To="16" Label="Source1" />
+                    <Edge From="16" To="17" Label="Source1" />
+                    <Edge From="17" To="18" Label="Source1" />
+                    <Edge From="18" To="23" Label="Source1" />
+                    <Edge From="19" To="23" Label="Source2" />
+                    <Edge From="20" To="23" Label="Source3" />
+                    <Edge From="21" To="22" Label="Source1" />
+                    <Edge From="22" To="23" Label="Source4" />
+                  </Edges>
+                </Workflow>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:SubscribeWhen" />
+              </Expression>
+              <Expression xsi:type="GroupWorkflow">
+                <Name>WheelLogging</Name>
+                <Workflow>
+                  <Nodes>
+                    <Expression xsi:type="SubscribeSubject">
+                      <Name>WheelInput</Name>
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
                       <Name>LastSyncPulseTime</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
                       <Name>ArduinoTime</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:Zip" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:WithLatestFrom" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>RenderFrameCount</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:WithLatestFrom" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="rx:Timestamp" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="MemberSelector">
+                    </Expression>
+                    <Expression xsi:type="MemberSelector">
                       <Selector>Timestamp.DateTime.TimeOfDay</Selector>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="rx:Zip" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="scr:ExpressionTransform">
-                      <scr:Expression>new(Item1.Item1.Item1.item1 as Photodiode,
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
+                      <Name>RenderFrameCount</Name>
+                    </Expression>
+                    <Expression xsi:type="Combinator">
+                      <Combinator xsi:type="rx:WithLatestFrom" />
+                    </Expression>
+                    <Expression xsi:type="scr:ExpressionTransform">
+                      <scr:Expression>new(Item1.Item1 as Wheel, Item1.Item2 as LastSyncPulseTime, Item1.Item3 as ArduinoTime, Item1.Item4 as BonsaiTime, Item2 as RenderFrameCount)</scr:Expression>
+                    </Expression>
+                    <Expression xsi:type="rx:BehaviorSubject">
+                      <Name>WheelLog</Name>
+                    </Expression>
+                    <Expression xsi:type="WorkflowOutput" />
+                  </Nodes>
+                  <Edges>
+                    <Edge From="0" To="3" Label="Source1" />
+                    <Edge From="0" To="5" Label="Source1" />
+                    <Edge From="1" To="5" Label="Source2" />
+                    <Edge From="2" To="5" Label="Source3" />
+                    <Edge From="3" To="4" Label="Source1" />
+                    <Edge From="4" To="5" Label="Source4" />
+                    <Edge From="5" To="7" Label="Source1" />
+                    <Edge From="6" To="7" Label="Source2" />
+                    <Edge From="7" To="8" Label="Source1" />
+                    <Edge From="8" To="9" Label="Source1" />
+                    <Edge From="9" To="10" Label="Source1" />
+                  </Edges>
+                </Workflow>
+              </Expression>
+              <Expression xsi:type="GroupWorkflow">
+                <Name>PhotodiodeLogging</Name>
+                <Workflow>
+                  <Nodes>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>Photodiode</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>QuadState</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:CombineLatest" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>LastSyncPulseTime</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>ArduinoTime</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:WithLatestFrom" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>RenderFrameCount</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:WithLatestFrom" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Timestamp" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="MemberSelector">
+                        <Selector>Timestamp.DateTime.TimeOfDay</Selector>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="scr:ExpressionTransform">
+                        <scr:Expression>new(Item1.Item1.Item1.item1 as Photodiode,
 Item1.Item1.Item1.Item2 as QuadState,
 Item1.Item1.Item2.Item1 as LastSyncPulseTime,
 Item1.Item1.Item2.Item2 as ArduinoTime,
 Item1.Item2 as RenderFrameCount,
 Item2 as BonsaiTime)</scr:Expression>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="rx:BehaviorSubject">
-                      <Name>PDLog</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="WorkflowOutput" />
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>Photodiode</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>LastSyncPulseTime</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>ArduinoTime</Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Timestamp" />
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>Timestamp.TimeOfDay.TotalMilliseconds</Selector>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="MemberSelector">
-                      <Selector>Timestamp.DateTime.TimeOfDay</Selector>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Zip" />
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>RenderFrameCount</Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:WithLatestFrom" />
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Expression>new(Item1.Item1 as PDOutput, Item1.Item2 as LastSyncPulseTime, Item1.Item3 as ArduinoTime, Item1.Item4 as BonsaiTime, Item2 as RenderFrameCount)</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="rx:BehaviorSubject">
-                    <Name>PDLog</Name>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="2" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source2" />
-                  <Edge From="2" To="6" Label="Source1" />
-                  <Edge From="3" To="5" Label="Source1" />
-                  <Edge From="4" To="5" Label="Source2" />
-                  <Edge From="5" To="6" Label="Source2" />
-                  <Edge From="6" To="8" Label="Source1" />
-                  <Edge From="6" To="9" Label="Source1" />
-                  <Edge From="7" To="8" Label="Source2" />
-                  <Edge From="8" To="11" Label="Source1" />
-                  <Edge From="9" To="10" Label="Source1" />
-                  <Edge From="10" To="11" Label="Source2" />
-                  <Edge From="11" To="12" Label="Source1" />
-                  <Edge From="12" To="13" Label="Source1" />
-                  <Edge From="13" To="14" Label="Source1" />
-                  <Edge From="15" To="18" Label="Source1" />
-                  <Edge From="15" To="21" Label="Source1" />
-                  <Edge From="16" To="21" Label="Source2" />
-                  <Edge From="17" To="21" Label="Source3" />
-                  <Edge From="18" To="19" Label="Source1" />
-                  <Edge From="19" To="20" Label="Source1" />
-                  <Edge From="20" To="21" Label="Source4" />
-                  <Edge From="21" To="23" Label="Source1" />
-                  <Edge From="22" To="23" Label="Source2" />
-                  <Edge From="23" To="24" Label="Source1" />
-                  <Edge From="24" To="25" Label="Source1" />
-                  <Edge From="25" To="26" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="GroupWorkflow">
-              <Name>TwoPLogging</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>TwoPFrameTime</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>WideFieldFrameTime</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:CombineLatest" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="rx:BehaviorSubject">
+                        <Name>PDLog</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="WorkflowOutput" />
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
+                      <Name>Photodiode</Name>
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
                       <Name>LastSyncPulseTime</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
                       <Name>ArduinoTime</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:Zip" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:WithLatestFrom" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>RenderFrameCount</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:WithLatestFrom" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="rx:Timestamp" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="MemberSelector">
-                      <Selector>Timestamp.DateTime.TimeOfDay</Selector>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                    </Expression>
+                    <Expression xsi:type="MemberSelector">
+                      <Selector>Timestamp.TimeOfDay.TotalMilliseconds</Selector>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="MemberSelector">
+                        <Selector>Timestamp.DateTime.TimeOfDay</Selector>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="rx:Zip" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="scr:ExpressionTransform">
-                      <scr:Expression>new(Item1.Item1.Item1.item1 as TwoPFrame,
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
+                      <Name>RenderFrameCount</Name>
+                    </Expression>
+                    <Expression xsi:type="Combinator">
+                      <Combinator xsi:type="rx:WithLatestFrom" />
+                    </Expression>
+                    <Expression xsi:type="scr:ExpressionTransform">
+                      <scr:Expression>new(Item1.Item1 as PDOutput, Item1.Item2 as LastSyncPulseTime, Item1.Item3 as ArduinoTime, Item1.Item4 as BonsaiTime, Item2 as RenderFrameCount)</scr:Expression>
+                    </Expression>
+                    <Expression xsi:type="rx:BehaviorSubject">
+                      <Name>PDLog</Name>
+                    </Expression>
+                    <Expression xsi:type="WorkflowOutput" />
+                  </Nodes>
+                  <Edges>
+                    <Edge From="0" To="2" Label="Source1" />
+                    <Edge From="1" To="2" Label="Source2" />
+                    <Edge From="2" To="6" Label="Source1" />
+                    <Edge From="3" To="5" Label="Source1" />
+                    <Edge From="4" To="5" Label="Source2" />
+                    <Edge From="5" To="6" Label="Source2" />
+                    <Edge From="6" To="8" Label="Source1" />
+                    <Edge From="6" To="9" Label="Source1" />
+                    <Edge From="7" To="8" Label="Source2" />
+                    <Edge From="8" To="11" Label="Source1" />
+                    <Edge From="9" To="10" Label="Source1" />
+                    <Edge From="10" To="11" Label="Source2" />
+                    <Edge From="11" To="12" Label="Source1" />
+                    <Edge From="12" To="13" Label="Source1" />
+                    <Edge From="13" To="14" Label="Source1" />
+                    <Edge From="15" To="18" Label="Source1" />
+                    <Edge From="15" To="21" Label="Source1" />
+                    <Edge From="16" To="21" Label="Source2" />
+                    <Edge From="17" To="21" Label="Source3" />
+                    <Edge From="18" To="19" Label="Source1" />
+                    <Edge From="19" To="20" Label="Source1" />
+                    <Edge From="20" To="21" Label="Source4" />
+                    <Edge From="21" To="23" Label="Source1" />
+                    <Edge From="22" To="23" Label="Source2" />
+                    <Edge From="23" To="24" Label="Source1" />
+                    <Edge From="24" To="25" Label="Source1" />
+                    <Edge From="25" To="26" Label="Source1" />
+                  </Edges>
+                </Workflow>
+              </Expression>
+              <Expression xsi:type="GroupWorkflow">
+                <Name>TwoPLogging</Name>
+                <Workflow>
+                  <Nodes>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>TwoPFrameTime</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>WideFieldFrameTime</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:CombineLatest" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>LastSyncPulseTime</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>ArduinoTime</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:WithLatestFrom" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>RenderFrameCount</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:WithLatestFrom" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Timestamp" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="MemberSelector">
+                        <Selector>Timestamp.DateTime.TimeOfDay</Selector>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="scr:ExpressionTransform">
+                        <scr:Expression>new(Item1.Item1.Item1.item1 as TwoPFrame,
 Item1.Item1.Item1.Item2 as WideFieldFrameTime,
 Item1.Item1.Item2.Item1 as LastSyncPulseTime,
 Item1.Item1.Item2.Item2 as ArduinoTime,
 Item1.Item2 as RenderFrameCount,
 Item2 as BonsaiTime)</scr:Expression>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="rx:BehaviorSubject">
-                      <Name>TwoPLog</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="WorkflowOutput" />
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>TwoPFrameTime</Name>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="rx:BehaviorSubject">
+                        <Name>TwoPLog</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="WorkflowOutput" />
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
+                      <Name>TwoPFrameTime</Name>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>LastSyncPulseTime</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>ArduinoTime</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Combinator">
+                      <Combinator xsi:type="rx:Timestamp" />
+                    </Expression>
+                    <Expression xsi:type="MemberSelector">
+                      <Selector>Timestamp.TimeOfDay.TotalMilliseconds</Selector>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="MemberSelector">
+                        <Selector>Timestamp.DateTime.TimeOfDay</Selector>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Combinator">
+                      <Combinator xsi:type="rx:Zip" />
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
+                      <Name>RenderFrameCount</Name>
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
                       <Name>LastSyncPulseTime</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
                       <Name>ArduinoTime</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Timestamp" />
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>Timestamp.TimeOfDay.TotalMilliseconds</Selector>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="MemberSelector">
-                      <Selector>Timestamp.DateTime.TimeOfDay</Selector>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Zip" />
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>RenderFrameCount</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>LastSyncPulseTime</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>ArduinoTime</Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Zip" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:CombineLatest" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:WithLatestFrom" />
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Expression>new(Item1.Item1 as TwoPFrameTime, 
+                    </Expression>
+                    <Expression xsi:type="Combinator">
+                      <Combinator xsi:type="rx:Zip" />
+                    </Expression>
+                    <Expression xsi:type="Combinator">
+                      <Combinator xsi:type="rx:CombineLatest" />
+                    </Expression>
+                    <Expression xsi:type="Combinator">
+                      <Combinator xsi:type="rx:WithLatestFrom" />
+                    </Expression>
+                    <Expression xsi:type="scr:ExpressionTransform">
+                      <scr:Expression>new(Item1.Item1 as TwoPFrameTime, 
 Item1.Item2 as BonsaiTime, 
 Item2.Item1 as RenderFrameCount, 
 Item2.Item2.Item1 as LastSyncPulseTime, 
 Item2.Item2.Item2 as ArduinoTime)</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="rx:BehaviorSubject">
-                    <Name>TwoPLog</Name>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="2" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source2" />
-                  <Edge From="2" To="6" Label="Source1" />
-                  <Edge From="3" To="5" Label="Source1" />
-                  <Edge From="4" To="5" Label="Source2" />
-                  <Edge From="5" To="6" Label="Source2" />
-                  <Edge From="6" To="8" Label="Source1" />
-                  <Edge From="6" To="9" Label="Source1" />
-                  <Edge From="7" To="8" Label="Source2" />
-                  <Edge From="8" To="11" Label="Source1" />
-                  <Edge From="9" To="10" Label="Source1" />
-                  <Edge From="10" To="11" Label="Source2" />
-                  <Edge From="11" To="12" Label="Source1" />
-                  <Edge From="12" To="13" Label="Source1" />
-                  <Edge From="13" To="14" Label="Source1" />
-                  <Edge From="15" To="18" Label="Source1" />
-                  <Edge From="15" To="21" Label="Source1" />
-                  <Edge From="16" To="21" Label="Source2" />
-                  <Edge From="17" To="21" Label="Source3" />
-                  <Edge From="18" To="19" Label="Source1" />
-                  <Edge From="19" To="20" Label="Source1" />
-                  <Edge From="20" To="21" Label="Source4" />
-                  <Edge From="21" To="27" Label="Source1" />
-                  <Edge From="22" To="26" Label="Source1" />
-                  <Edge From="23" To="25" Label="Source1" />
-                  <Edge From="24" To="25" Label="Source2" />
-                  <Edge From="25" To="26" Label="Source2" />
-                  <Edge From="26" To="27" Label="Source2" />
-                  <Edge From="27" To="28" Label="Source1" />
-                  <Edge From="28" To="29" Label="Source1" />
-                  <Edge From="29" To="30" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="GroupWorkflow">
-              <Name>QuadLogging</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>Photodiode</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>QuadState</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:CombineLatest" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>LastSyncPulseTime</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>ArduinoTime</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:Zip" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>RenderFrameCount</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:WithLatestFrom" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:Timestamp" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="MemberSelector">
-                      <Selector>Timestamp.TimeOfDay.TotalMilliseconds</Selector>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
-                      <Combinator xsi:type="rx:Zip" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="scr:ExpressionTransform">
-                      <scr:Expression>new(Item1.Item1.item1.item1 as PDoutput,
+                    </Expression>
+                    <Expression xsi:type="rx:BehaviorSubject">
+                      <Name>TwoPLog</Name>
+                    </Expression>
+                    <Expression xsi:type="WorkflowOutput" />
+                  </Nodes>
+                  <Edges>
+                    <Edge From="0" To="2" Label="Source1" />
+                    <Edge From="1" To="2" Label="Source2" />
+                    <Edge From="2" To="6" Label="Source1" />
+                    <Edge From="3" To="5" Label="Source1" />
+                    <Edge From="4" To="5" Label="Source2" />
+                    <Edge From="5" To="6" Label="Source2" />
+                    <Edge From="6" To="8" Label="Source1" />
+                    <Edge From="6" To="9" Label="Source1" />
+                    <Edge From="7" To="8" Label="Source2" />
+                    <Edge From="8" To="11" Label="Source1" />
+                    <Edge From="9" To="10" Label="Source1" />
+                    <Edge From="10" To="11" Label="Source2" />
+                    <Edge From="11" To="12" Label="Source1" />
+                    <Edge From="12" To="13" Label="Source1" />
+                    <Edge From="13" To="14" Label="Source1" />
+                    <Edge From="15" To="18" Label="Source1" />
+                    <Edge From="15" To="21" Label="Source1" />
+                    <Edge From="16" To="21" Label="Source2" />
+                    <Edge From="17" To="21" Label="Source3" />
+                    <Edge From="18" To="19" Label="Source1" />
+                    <Edge From="19" To="20" Label="Source1" />
+                    <Edge From="20" To="21" Label="Source4" />
+                    <Edge From="21" To="27" Label="Source1" />
+                    <Edge From="22" To="26" Label="Source1" />
+                    <Edge From="23" To="25" Label="Source1" />
+                    <Edge From="24" To="25" Label="Source2" />
+                    <Edge From="25" To="26" Label="Source2" />
+                    <Edge From="26" To="27" Label="Source2" />
+                    <Edge From="27" To="28" Label="Source1" />
+                    <Edge From="28" To="29" Label="Source1" />
+                    <Edge From="29" To="30" Label="Source1" />
+                  </Edges>
+                </Workflow>
+              </Expression>
+              <Expression xsi:type="GroupWorkflow">
+                <Name>QuadLogging</Name>
+                <Workflow>
+                  <Nodes>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>Photodiode</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>QuadState</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:CombineLatest" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>LastSyncPulseTime</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>ArduinoTime</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>RenderFrameCount</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:WithLatestFrom" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Timestamp" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="MemberSelector">
+                        <Selector>Timestamp.TimeOfDay.TotalMilliseconds</Selector>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="scr:ExpressionTransform">
+                        <scr:Expression>new(Item1.Item1.item1.item1 as PDoutput,
 Item1.Item1.item1.item2 as QuadState,
 Item1.Item1.item2 as LastSyncPulseTime, 
 Item1.Item1.item3 as ArduinoTime, 
 Item1.Item2 as RenderFrameCount,
 Item2 as BonsaiTime)</scr:Expression>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="rx:BehaviorSubject">
-                      <Name>PDLog</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="WorkflowOutput" />
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>QuadState</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>LastSyncPulseTime</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
-                      <Name>ArduinoTime</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="rx:BehaviorSubject">
+                        <Name>PDLog</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="WorkflowOutput" />
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>QuadState</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>LastSyncPulseTime</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>ArduinoTime</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Timestamp" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="MemberSelector">
+                        <Selector>Timestamp.TimeOfDay.TotalMilliseconds</Selector>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="MemberSelector">
+                        <Selector>Timestamp.DateTime.TimeOfDay</Selector>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:Zip" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="SubscribeSubject">
+                        <Name>RenderFrameCount</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="Combinator">
+                        <Combinator xsi:type="rx:WithLatestFrom" />
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="scr:ExpressionTransform">
+                        <scr:Expression>new(Item1.Item1 as QuadState, Item1.Item2 as LastSyncPulseTime, Item1.Item3 as ArduinoTime, Item1.Item4 as BonsaiTime, Item2 as RenderFrameCount)</scr:Expression>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="rx:BehaviorSubject">
+                        <Name>QuadLog</Name>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="WorkflowOutput" />
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
+                      <Name>PDSync</Name>
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="rx:Timestamp" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="MemberSelector">
+                    </Expression>
+                    <Expression xsi:type="MemberSelector">
                       <Selector>Timestamp.TimeOfDay.TotalMilliseconds</Selector>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="MemberSelector">
-                      <Selector>Timestamp.DateTime.TimeOfDay</Selector>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                    </Expression>
+                    <Expression xsi:type="Disable">
+                      <Builder xsi:type="MemberSelector">
+                        <Selector>Timestamp.DateTime.TimeOfDay</Selector>
+                      </Builder>
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="rx:Zip" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="SubscribeSubject">
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
                       <Name>RenderFrameCount</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="Combinator">
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
+                      <Name>LastSyncPulseTime</Name>
+                    </Expression>
+                    <Expression xsi:type="SubscribeSubject">
+                      <Name>ArduinoTime</Name>
+                    </Expression>
+                    <Expression xsi:type="Combinator">
+                      <Combinator xsi:type="rx:Zip" />
+                    </Expression>
+                    <Expression xsi:type="Combinator">
+                      <Combinator xsi:type="rx:CombineLatest" />
+                    </Expression>
+                    <Expression xsi:type="Combinator">
                       <Combinator xsi:type="rx:WithLatestFrom" />
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="scr:ExpressionTransform">
-                      <scr:Expression>new(Item1.Item1 as QuadState, Item1.Item2 as LastSyncPulseTime, Item1.Item3 as ArduinoTime, Item1.Item4 as BonsaiTime, Item2 as RenderFrameCount)</scr:Expression>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="rx:BehaviorSubject">
-                      <Name>QuadLog</Name>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="WorkflowOutput" />
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>PDSync</Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Timestamp" />
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>Timestamp.TimeOfDay.TotalMilliseconds</Selector>
-                  </Expression>
-                  <Expression xsi:type="Disable">
-                    <Builder xsi:type="MemberSelector">
-                      <Selector>Timestamp.DateTime.TimeOfDay</Selector>
-                    </Builder>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Zip" />
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>RenderFrameCount</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>LastSyncPulseTime</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>ArduinoTime</Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Zip" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:CombineLatest" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:WithLatestFrom" />
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Expression>new(Item1.Item1 as QuadState, 
+                    </Expression>
+                    <Expression xsi:type="scr:ExpressionTransform">
+                      <scr:Expression>new(Item1.Item1 as QuadState, 
 Item1.Item2 as BonsaiTime, 
 Item2.Item1 as RenderFrameCount, 
 Item2.Item2.Item1 as LastSyncPulseTime, 
 Item2.Item2.Item2 as ArduinoTime)</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="rx:BehaviorSubject">
-                    <Name>QuadLog</Name>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="2" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source2" />
-                  <Edge From="2" To="5" Label="Source1" />
-                  <Edge From="3" To="5" Label="Source2" />
-                  <Edge From="4" To="5" Label="Source3" />
-                  <Edge From="5" To="7" Label="Source1" />
-                  <Edge From="5" To="8" Label="Source1" />
-                  <Edge From="6" To="7" Label="Source2" />
-                  <Edge From="7" To="10" Label="Source1" />
-                  <Edge From="8" To="9" Label="Source1" />
-                  <Edge From="9" To="10" Label="Source2" />
-                  <Edge From="10" To="11" Label="Source1" />
-                  <Edge From="11" To="12" Label="Source1" />
-                  <Edge From="12" To="13" Label="Source1" />
-                  <Edge From="14" To="17" Label="Source1" />
-                  <Edge From="14" To="20" Label="Source1" />
-                  <Edge From="15" To="20" Label="Source2" />
-                  <Edge From="16" To="20" Label="Source3" />
-                  <Edge From="17" To="18" Label="Source1" />
-                  <Edge From="18" To="19" Label="Source1" />
-                  <Edge From="19" To="20" Label="Source4" />
-                  <Edge From="20" To="22" Label="Source1" />
-                  <Edge From="21" To="22" Label="Source2" />
-                  <Edge From="22" To="23" Label="Source1" />
-                  <Edge From="23" To="24" Label="Source1" />
-                  <Edge From="24" To="25" Label="Source1" />
-                  <Edge From="26" To="27" Label="Source1" />
-                  <Edge From="26" To="30" Label="Source1" />
-                  <Edge From="27" To="28" Label="Source1" />
-                  <Edge From="28" To="29" Label="Source1" />
-                  <Edge From="29" To="30" Label="Source2" />
-                  <Edge From="30" To="36" Label="Source1" />
-                  <Edge From="31" To="35" Label="Source1" />
-                  <Edge From="32" To="34" Label="Source1" />
-                  <Edge From="33" To="34" Label="Source2" />
-                  <Edge From="34" To="35" Label="Source2" />
-                  <Edge From="35" To="36" Label="Source2" />
-                  <Edge From="36" To="37" Label="Source1" />
-                  <Edge From="37" To="38" Label="Source1" />
-                  <Edge From="38" To="39" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-          </Nodes>
-          <Edges>
-            <Edge From="2" To="4" Label="Source1" />
-            <Edge From="3" To="4" Label="Source2" />
-            <Edge From="3" To="6" Label="Source1" />
-            <Edge From="3" To="8" Label="Source2" />
-            <Edge From="3" To="10" Label="Source1" />
-            <Edge From="5" To="6" Label="Source2" />
-            <Edge From="7" To="8" Label="Source1" />
-            <Edge From="9" To="10" Label="Source2" />
-          </Edges>
-        </Workflow>
+                    </Expression>
+                    <Expression xsi:type="rx:BehaviorSubject">
+                      <Name>QuadLog</Name>
+                    </Expression>
+                    <Expression xsi:type="WorkflowOutput" />
+                  </Nodes>
+                  <Edges>
+                    <Edge From="0" To="2" Label="Source1" />
+                    <Edge From="1" To="2" Label="Source2" />
+                    <Edge From="2" To="5" Label="Source1" />
+                    <Edge From="3" To="5" Label="Source2" />
+                    <Edge From="4" To="5" Label="Source3" />
+                    <Edge From="5" To="7" Label="Source1" />
+                    <Edge From="5" To="8" Label="Source1" />
+                    <Edge From="6" To="7" Label="Source2" />
+                    <Edge From="7" To="10" Label="Source1" />
+                    <Edge From="8" To="9" Label="Source1" />
+                    <Edge From="9" To="10" Label="Source2" />
+                    <Edge From="10" To="11" Label="Source1" />
+                    <Edge From="11" To="12" Label="Source1" />
+                    <Edge From="12" To="13" Label="Source1" />
+                    <Edge From="14" To="17" Label="Source1" />
+                    <Edge From="14" To="20" Label="Source1" />
+                    <Edge From="15" To="20" Label="Source2" />
+                    <Edge From="16" To="20" Label="Source3" />
+                    <Edge From="17" To="18" Label="Source1" />
+                    <Edge From="18" To="19" Label="Source1" />
+                    <Edge From="19" To="20" Label="Source4" />
+                    <Edge From="20" To="22" Label="Source1" />
+                    <Edge From="21" To="22" Label="Source2" />
+                    <Edge From="22" To="23" Label="Source1" />
+                    <Edge From="23" To="24" Label="Source1" />
+                    <Edge From="24" To="25" Label="Source1" />
+                    <Edge From="26" To="27" Label="Source1" />
+                    <Edge From="26" To="30" Label="Source1" />
+                    <Edge From="27" To="28" Label="Source1" />
+                    <Edge From="28" To="29" Label="Source1" />
+                    <Edge From="29" To="30" Label="Source2" />
+                    <Edge From="30" To="36" Label="Source1" />
+                    <Edge From="31" To="35" Label="Source1" />
+                    <Edge From="32" To="34" Label="Source1" />
+                    <Edge From="33" To="34" Label="Source2" />
+                    <Edge From="34" To="35" Label="Source2" />
+                    <Edge From="35" To="36" Label="Source2" />
+                    <Edge From="36" To="37" Label="Source1" />
+                    <Edge From="37" To="38" Label="Source1" />
+                    <Edge From="38" To="39" Label="Source1" />
+                  </Edges>
+                </Workflow>
+              </Expression>
+            </Nodes>
+            <Edges>
+              <Edge From="2" To="4" Label="Source1" />
+              <Edge From="3" To="4" Label="Source2" />
+              <Edge From="3" To="6" Label="Source1" />
+              <Edge From="3" To="8" Label="Source2" />
+              <Edge From="3" To="10" Label="Source1" />
+              <Edge From="5" To="6" Label="Source2" />
+              <Edge From="7" To="8" Label="Source1" />
+              <Edge From="9" To="10" Label="Source2" />
+            </Edges>
+          </Workflow>
+        </Builder>
       </Expression>
     </Nodes>
     <Edges>

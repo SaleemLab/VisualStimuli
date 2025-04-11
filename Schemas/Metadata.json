@@ -1,0 +1,20 @@
+{
+    "$id": "Metadata",
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "title": "ExperimentMetadata",
+    "description": "General experiment parameters that are non-specific for protocol and rig.",
+    "properties": {
+        "animalId": {
+            "default": "Undefined",
+            "type": "string"
+        },
+        "rootPath": {
+            "default": "C:/",
+            "type": "string"
+        },
+        "stimulusId": {
+            "default": "Undefined",
+            "type": "string"
+        }
+    }
+}
