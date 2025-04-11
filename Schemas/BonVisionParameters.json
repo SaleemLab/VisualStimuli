@@ -1,0 +1,57 @@
+{
+    "$id": "BonVisionParameters",
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "title": "BonVisionParameters",
+    "description": "General display environment parameters that are non-specific for individual trials and stimuli.",
+    "definitions": {
+        "viewWindow": {
+            "type": "object",
+            "properties": {
+                "height": {
+                    "type": "number"
+                },
+                "width": {
+                    "type": "number"
+                },
+                "rotation": {
+                    "items": {
+                        "type": "number"
+                    },
+                    "type": "array",
+                    "minItems": 3,
+                    "maxItems": 3
+                },
+                "translation": {
+                    "items": {
+                        "type": "number"
+                    },
+                    "type": "array",
+                    "minItems": 3,
+                    "maxItems": 3
+                }
+            }
+        }
+    },
+    "properties": {
+        "displayDevice": {
+            "enum": ["First", "Second", "Third"]
+        },
+        "windowState": {
+            "enum": ["Normal", "Minimized", "Maximized", "Fullscreen"]
+        },
+        "width": {
+            "type": "integer",
+            "default": 640
+        },
+        "height": {
+            "type": "integer",
+            "default": 480
+        },
+        "viewWindows": {
+            "items": {
+                "$ref": "#/definitions/viewWindow"
+            },
+            "type": "array"
+        }
+    }
+}

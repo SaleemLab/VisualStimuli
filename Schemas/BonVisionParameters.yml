@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=./BonVisionParameters.json
+displayDevice: First
+windowState: Fullscreen
+viewWindows: [
+  {height: 19.5, width: 19, rotation: [0, 0, 0], translation: [0, 0, -15]},
+  {height: 19.5, width: 19, rotation: [0, -60, 0], translation: [12, 0, -9]},
+  {height: 19.5, width: 19, rotation: [0, 60, 0], translation: [-12, 0, -9]},
+]

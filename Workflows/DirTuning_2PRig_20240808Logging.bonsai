@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.8.5"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:p1="clr-namespace:;assembly=Extensions"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns:res="clr-namespace:Bonsai.Resources;assembly=Bonsai.System"
-                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:num="clr-namespace:Bonsai.Numerics;assembly=Bonsai.Numerics"
                  xmlns:gli="clr-namespace:Bonsai.Shaders.Input;assembly=Bonsai.Shaders"
                  xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
@@ -13,17 +14,69 @@
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
-      <Expression xsi:type="ExternalizedMapping">
-        <Property Name="DisplayDevice" />
-        <Property Name="WindowState" />
-      </Expression>
       <Expression xsi:type="GroupWorkflow">
-        <Name>Set Bonvision params</Name>
+        <Name>DisplayEnvironment</Name>
         <Workflow>
           <Nodes>
             <Expression xsi:type="ExternalizedMapping">
-              <Property Name="DisplayDevice" />
-              <Property Name="WindowState" />
+              <Property Name="Path" DisplayName="BonVisionParameters" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="p1:LoadBonVisionParameters">
+                <p1:Path>C:\Users\neurogears\source\repos\SaleemLab\VisualStimuli\Schemas\BonVisionParameters.yml</p1:Path>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Take">
+                <rx:Count>1</rx:Count>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:AsyncSubject">
+              <Name>BonVisionParameters</Name>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>BonVisionParameters</Name>
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>DisplayDevice</Selector>
+            </Expression>
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="DisplayDevice" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>BonVisionParameters</Name>
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>WindowState</Selector>
+            </Expression>
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="WindowState" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>BonVisionParameters</Name>
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>Width</Selector>
+            </Expression>
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="Width" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>BonVisionParameters</Name>
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>Height</Selector>
+            </Expression>
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="Height" />
+              </PropertyMappings>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:CreateWindow">
@@ -37,7 +90,7 @@
                 <gl:Location xsi:nil="true" />
                 <gl:WindowBorder>Resizable</gl:WindowBorder>
                 <gl:WindowState>Fullscreen</gl:WindowState>
-                <gl:DisplayDevice>Second</gl:DisplayDevice>
+                <gl:DisplayDevice>First</gl:DisplayDevice>
                 <gl:TargetRenderFrequency>0</gl:TargetRenderFrequency>
                 <gl:TargetUpdateFrequency xsi:nil="true" />
                 <gl:RenderState />
@@ -85,6 +138,12 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="gl:RenderFrame" />
             </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>RenderFrame</Name>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>RenderFrame</Name>
+            </Expression>
             <Expression xsi:type="SubscribeSubject">
               <Name>FilenamePrefix</Name>
             </Expression>
@@ -99,6 +158,9 @@
               <Overwrite>false</Overwrite>
               <Suffix>Timestamp</Suffix>
               <FileName>C:\DATA\Subjects\M24046\Bonsai\20240815\M24046_E1_1_DirTuning</FileName>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>RenderFrame</Name>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:ElementIndex" />
@@ -312,17 +374,32 @@
             <Edge From="0" To="1" Label="Source1" />
             <Edge From="1" To="2" Label="Source1" />
             <Edge From="2" To="3" Label="Source1" />
-            <Edge From="3" To="4" Label="Source1" />
-            <Edge From="5" To="8" Label="Source1" />
-            <Edge From="6" To="7" Label="Source1" />
-            <Edge From="7" To="8" Label="Source2" />
+            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="6" To="16" Label="Source1" />
+            <Edge From="7" To="8" Label="Source1" />
             <Edge From="8" To="9" Label="Source1" />
-            <Edge From="8" To="12" Label="Source1" />
-            <Edge From="9" To="10" Label="Source1" />
+            <Edge From="9" To="16" Label="Source2" />
             <Edge From="10" To="11" Label="Source1" />
-            <Edge From="12" To="13" Label="Source1" />
+            <Edge From="11" To="12" Label="Source1" />
+            <Edge From="12" To="16" Label="Source3" />
             <Edge From="13" To="14" Label="Source1" />
             <Edge From="14" To="15" Label="Source1" />
+            <Edge From="15" To="16" Label="Source4" />
+            <Edge From="16" To="17" Label="Source1" />
+            <Edge From="17" To="18" Label="Source1" />
+            <Edge From="18" To="19" Label="Source1" />
+            <Edge From="20" To="21" Label="Source1" />
+            <Edge From="22" To="25" Label="Source1" />
+            <Edge From="23" To="24" Label="Source1" />
+            <Edge From="24" To="25" Label="Source2" />
+            <Edge From="26" To="27" Label="Source1" />
+            <Edge From="26" To="30" Label="Source1" />
+            <Edge From="27" To="28" Label="Source1" />
+            <Edge From="28" To="29" Label="Source1" />
+            <Edge From="30" To="31" Label="Source1" />
+            <Edge From="31" To="32" Label="Source1" />
+            <Edge From="32" To="33" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -634,7 +711,7 @@
                           <SpatialFrequency>0.031</SpatialFrequency>
                           <TemporalFrequency>3</TemporalFrequency>
                           <Phase>0</Phase>
-                          <Angle>225</Angle>
+                          <Angle>0</Angle>
                           <SquareWave>false</SquareWave>
                           <Contrast>1</Contrast>
                           <DutyCycle xsi:nil="true" />
@@ -2685,23 +2762,22 @@ Item2.Item2.Item2 as ArduinoTime)</scr:Expression>
       </Expression>
     </Nodes>
     <Edges>
-      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="1" To="2" Label="Source1" />
       <Edge From="2" To="3" Label="Source1" />
-      <Edge From="3" To="4" Label="Source1" />
-      <Edge From="5" To="6" Label="Source1" />
-      <Edge From="7" To="9" Label="Source1" />
-      <Edge From="8" To="9" Label="Source2" />
-      <Edge From="9" To="18" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="6" To="8" Label="Source1" />
+      <Edge From="7" To="8" Label="Source2" />
+      <Edge From="8" To="17" Label="Source1" />
+      <Edge From="9" To="10" Label="Source1" />
       <Edge From="10" To="11" Label="Source1" />
-      <Edge From="11" To="12" Label="Source1" />
-      <Edge From="12" To="14" Label="Source1" />
-      <Edge From="13" To="14" Label="Source2" />
-      <Edge From="14" To="18" Label="Source2" />
-      <Edge From="15" To="17" Label="Source1" />
-      <Edge From="16" To="17" Label="Source2" />
-      <Edge From="17" To="18" Label="Source3" />
-      <Edge From="18" To="19" Label="Source1" />
-      <Edge From="21" To="22" Label="Source2" />
+      <Edge From="11" To="13" Label="Source1" />
+      <Edge From="12" To="13" Label="Source2" />
+      <Edge From="13" To="17" Label="Source2" />
+      <Edge From="14" To="16" Label="Source1" />
+      <Edge From="15" To="16" Label="Source2" />
+      <Edge From="16" To="17" Label="Source3" />
+      <Edge From="17" To="18" Label="Source1" />
+      <Edge From="20" To="21" Label="Source2" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
