@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.2"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:port="clr-namespace:Bonsai.IO.Ports;assembly=Bonsai.System"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>Init_ArduinoVar</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>WheelInput</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>LeftLick</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>RightLick</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>LastSyncPulseTime</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>Photodiode</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>TwoPFrameTime</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>WideFieldFrameTime</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>ArduinoTime</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>Piezo</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>AsyncPulseTime_Piezo</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:BehaviorSubject">
+              <Name>ArduinoTime_Piezo</Name>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="6" To="7" Label="Source1" />
+            <Edge From="8" To="9" Label="Source1" />
+            <Edge From="10" To="11" Label="Source1" />
+            <Edge From="12" To="13" Label="Source1" />
+            <Edge From="14" To="15" Label="Source1" />
+            <Edge From="16" To="17" Label="Source1" />
+            <Edge From="18" To="19" Label="Source1" />
+            <Edge From="20" To="21" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="PortName" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="port:CreateSerialPort">
+          <port:Name>ArduinoSerial</port:Name>
+          <port:PortName>COM3</port:PortName>
+          <port:BaudRate>1000000</port:BaudRate>
+          <port:Encoding>utf-8</port:Encoding>
+          <port:NewLine>\r\n</port:NewLine>
+          <port:Parity>None</port:Parity>
+          <port:ParityReplace>63</port:ParityReplace>
+          <port:DataBits>8</port:DataBits>
+          <port:StopBits>One</port:StopBits>
+          <port:Handshake>None</port:Handshake>
+          <port:DiscardNull>false</port:DiscardNull>
+          <port:DtrEnable>true</port:DtrEnable>
+          <port:RtsEnable>false</port:RtsEnable>
+          <port:ReadBufferSize>4096</port:ReadBufferSize>
+          <port:WriteBufferSize>2048</port:WriteBufferSize>
+          <port:ReceivedBytesThreshold>1</port:ReceivedBytesThreshold>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="port:SerialReadLine">
+          <port:PortName>ArduinoSerial</port:PortName>
+          <port:NewLine>\n</port:NewLine>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:SampleInterval">
+          <rx:Interval>PT0.005S</rx:Interval>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Parse">
+        <Pattern>%i\t%i\t%i\t%i\t%i\t%i\t%i\t%i</Pattern>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Retry" />
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Item1</Selector>
+      </Expression>
+      <Expression xsi:type="MulticastSubject">
+        <Name>WheelInput</Name>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Item2</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:DistinctUntilChanged" />
+      </Expression>
+      <Expression xsi:type="MulticastSubject">
+        <Name>LeftLick</Name>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Item3</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:DistinctUntilChanged" />
+      </Expression>
+      <Expression xsi:type="MulticastSubject">
+        <Name>RightLick</Name>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Item4</Selector>
+      </Expression>
+      <Expression xsi:type="MulticastSubject">
+        <Name>LastSyncPulseTime</Name>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Item5</Selector>
+      </Expression>
+      <Expression xsi:type="MulticastSubject">
+        <Name>Photodiode</Name>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Item6</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:DistinctUntilChanged" />
+      </Expression>
+      <Expression xsi:type="MulticastSubject">
+        <Name>TwoPFrameTime</Name>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Item7</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:DistinctUntilChanged" />
+      </Expression>
+      <Expression xsi:type="MulticastSubject">
+        <Name>WideFieldFrameTime</Name>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Rest.Item1</Selector>
+      </Expression>
+      <Expression xsi:type="MulticastSubject">
+        <Name>ArduinoTime</Name>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>PiezoArduino</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="PortName" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="port:CreateSerialPort">
+                <port:Name>ArduinoPiezo</port:Name>
+                <port:PortName>COM5</port:PortName>
+                <port:BaudRate>1000000</port:BaudRate>
+                <port:Encoding>utf-8</port:Encoding>
+                <port:NewLine>\r\n</port:NewLine>
+                <port:Parity>None</port:Parity>
+                <port:ParityReplace>63</port:ParityReplace>
+                <port:DataBits>8</port:DataBits>
+                <port:StopBits>One</port:StopBits>
+                <port:Handshake>None</port:Handshake>
+                <port:DiscardNull>false</port:DiscardNull>
+                <port:DtrEnable>true</port:DtrEnable>
+                <port:RtsEnable>false</port:RtsEnable>
+                <port:ReadBufferSize>4096</port:ReadBufferSize>
+                <port:WriteBufferSize>2048</port:WriteBufferSize>
+                <port:ReceivedBytesThreshold>1</port:ReceivedBytesThreshold>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="port:SerialReadLine">
+                <port:PortName>ArduinoPiezo</port:PortName>
+                <port:NewLine>\n</port:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Parse">
+              <Pattern>%i\t%i\t%i</Pattern>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Retry" />
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>Item1</Selector>
+            </Expression>
+            <Expression xsi:type="MulticastSubject">
+              <Name>Piezo</Name>
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>Item2</Selector>
+            </Expression>
+            <Expression xsi:type="MulticastSubject">
+              <Name>AsyncPulseTime_Piezo</Name>
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>Item3</Selector>
+            </Expression>
+            <Expression xsi:type="MulticastSubject">
+              <Name>ArduinoTime_Piezo</Name>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+            <Edge From="3" To="4" Label="Source1" />
+            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="4" To="7" Label="Source1" />
+            <Edge From="4" To="9" Label="Source1" />
+            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="7" To="8" Label="Source1" />
+            <Edge From="9" To="10" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="6" To="9" Label="Source1" />
+      <Edge From="6" To="12" Label="Source1" />
+      <Edge From="6" To="15" Label="Source1" />
+      <Edge From="6" To="17" Label="Source1" />
+      <Edge From="6" To="19" Label="Source1" />
+      <Edge From="6" To="22" Label="Source1" />
+      <Edge From="6" To="25" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="9" To="10" Label="Source1" />
+      <Edge From="10" To="11" Label="Source1" />
+      <Edge From="12" To="13" Label="Source1" />
+      <Edge From="13" To="14" Label="Source1" />
+      <Edge From="15" To="16" Label="Source1" />
+      <Edge From="17" To="18" Label="Source1" />
+      <Edge From="19" To="20" Label="Source1" />
+      <Edge From="20" To="21" Label="Source1" />
+      <Edge From="22" To="23" Label="Source1" />
+      <Edge From="23" To="24" Label="Source1" />
+      <Edge From="25" To="26" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>
