@@ -3,3 +3,10 @@
 .bonsai/Gallery
 .bonsai/Packages
 .bonsai/Bonsai.exe*
+
+
+# Sonali Local Bonsai
+SonaliWorkflows/.bonsai/Extensions
+SonaliWorkflows/.bonsai/Gallery
+SonaliWorkflows/.bonsai/Packages
+SonaliWorkflows/.bonsai/Bonsai.exe*
