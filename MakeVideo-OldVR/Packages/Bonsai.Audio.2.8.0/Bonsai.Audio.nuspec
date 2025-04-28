@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Bonsai.Audio</id>
+    <version>2.8.0</version>
+    <title>Bonsai - Audio Library</title>
+    <authors>Bonsai Foundation</authors>
+    <licenseUrl>https://bonsai-rx.org/license</licenseUrl>
+    <projectUrl>https://bonsai-rx.org/</projectUrl>
+    <iconUrl>https://bonsai-rx.org/assets/images/bonsai.png</iconUrl>
+    <description>Bonsai Audio Library containing modules for sound capture and playback.</description>
+    <copyright>Copyright © Bonsai Foundation CIC and Contributors 2011-2023</copyright>
+    <tags>Bonsai Rx Audio</tags>
+    <repository type="git" url="https://github.com/bonsai-rx/bonsai.git" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.2">
+        <dependency id="Bonsai.System" version="2.8.0" exclude="Build,Analyzers" />
+        <dependency id="OpenCV.Net" version="3.4.2" exclude="Build,Analyzers" />
+        <dependency id="OpenTK" version="3.1.0" exclude="Build,Analyzers" />
+        <dependency id="openal.redist" version="2.0.7" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

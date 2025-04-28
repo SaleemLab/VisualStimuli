@@ -1,0 +1,946 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bonsai.Audio</name>
+    </assembly>
+    <members>
+        <member name="T:Bonsai.Audio.AudioCapture">
+            <summary>
+            Represents an operator that generates a sequence of buffered samples acquired from the
+            specified audio capture device.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioCapture.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Audio.AudioCapture"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioCapture.DeviceName">
+            <summary>
+            Gets or sets the name of the capture device from which to acquire samples.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioCapture.SampleRate">
+            <summary>
+            Gets or sets the sample rate used by the audio capture device, in Hz.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioCapture.Frequency">
+            <summary>
+            Gets or sets the sample rate used by the audio capture device, in Hz.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioCapture.FrequencySpecified">
+            <summary>
+            Gets a value indicating whether the <see cref="P:Bonsai.Audio.AudioCapture.Frequency"/> property should be serialized.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioCapture.SampleFormat">
+            <summary>
+            Gets or sets the format of capture buffer samples.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioCapture.BufferLength">
+            <summary>
+            Gets or sets the length of the capture buffer, in milliseconds.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioCapture.Generate">
+            <summary>
+            Generates an observable sequence of buffered audio samples acquired
+            from the specified audio capture device.
+            </summary>
+            <returns>
+            A sequence of <see cref="T:OpenCV.Net.Mat"/> objects representing audio capture
+            buffers of a fixed length. See <see cref="P:Bonsai.Audio.AudioCapture.BufferLength"/>.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Audio.AudioContextConfiguration">
+            <summary>
+            Represents the configuration of 
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioContextConfiguration.DeviceName">
+            <summary>
+            Gets the name of the output device used for playback.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioContextConfiguration.SampleRate">
+            <summary>
+            Gets the sample rate, in Hz, used by the output device.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioContextConfiguration.Refresh">
+            <summary>
+            Gets the refresh frequency, in Hz, used by the output device.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Audio.AudioContextConfigurationCollection">
+            <summary>
+            Represents a collection of audio context configuration settings.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioContextConfigurationCollection.GetKeyForItem(Bonsai.Audio.AudioContextConfiguration)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Audio.AudioContextManager">
+            <summary>
+            Manages the lifetime of an audio context and its associated resources.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioContextManager.AudioContext">
+            <summary>
+            Gets the audio context associated with any loaded audio resources.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioContextManager.ResourceManager">
+            <summary>
+            Gets the resource manager storing all the resources associated with this audio context.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioContextManager.Dispose">
+            <summary>
+            Releases all resources used by the <see cref="T:Bonsai.Audio.AudioContextManager"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Audio.AudioPlayback">
+            <summary>
+            Represents an operator that plays a sequence of buffered samples to the specified audio device.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioPlayback.DeviceName">
+            <summary>
+            Gets or sets the name of the audio device used for playback.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioPlayback.SourceName">
+            <summary>
+            Gets or sets the optional name of the source used to playback the audio buffers.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioPlayback.SampleRate">
+            <summary>
+            Gets or sets the sample rate, in Hz, used to playback the audio buffers.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioPlayback.Frequency">
+            <summary>
+            Gets or sets the sample rate, in Hz, used to playback the audio buffers.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioPlayback.FrequencySpecified">
+            <summary>
+            Gets a value indicating whether the <see cref="P:Bonsai.Audio.AudioPlayback.Frequency"/> property should be serialized.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioPlayback.State">
+            <summary>
+            Gets or sets a value specifying the state to which the source should be set
+            when queueing audio buffers.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioPlayback.Process(System.IObservable{OpenCV.Net.Mat})">
+            <summary>
+            Plays an observable sequence of buffered samples to the specified audio device.
+            </summary>
+            <param name="source">
+            A sequence of <see cref="T:OpenCV.Net.Mat"/> objects representing the buffered audio samples
+            to queue for playback on the specified audio device.
+            </param>
+            <returns>
+            An observable sequence that is identical to the <paramref name="source"/> sequence
+            but where there is an additional side effect of queueing the audio buffers for
+            playback on the specified audio device.
+            </returns>
+            <remarks>
+            This operator only subscribes to the <paramref name="source"/> sequence after
+            initializing the audio context on the specified audio device.
+            </remarks>
+        </member>
+        <member name="M:Bonsai.Audio.AudioPlayback.Process(System.IObservable{OpenCV.Net.Mat},System.IObservable{Bonsai.Audio.AudioSource})">
+            <summary>
+            Plays an observable sequence of buffered samples to all the specified audio sources.
+            </summary>
+            <param name="dataSource">
+            A sequence of <see cref="T:OpenCV.Net.Mat"/> objects representing the buffered audio samples
+            to queue for playback on all the active audio sources.
+            </param>
+            <param name="audioSource">
+            A sequence of <see cref="T:Bonsai.Audio.AudioSource"/> objects on which to queue the buffered
+            audio samples for playback.
+            </param>
+            <returns>
+            An observable sequence that is identical to the <paramref name="dataSource"/>
+            sequence but where there is an additional side effect of queueing the audio buffers
+            for playback on all the active audio sources.
+            </returns>
+            <remarks>
+            This operator only subscribes to the <paramref name="dataSource"/> sequence
+            after initializing the audio context on the specified audio device.
+            </remarks>
+        </member>
+        <member name="M:Bonsai.Audio.AudioPlayback.Process(System.IObservable{Bonsai.Audio.AudioSource},System.IObservable{OpenCV.Net.Mat})">
+            <summary>
+            Plays an observable sequence of buffered samples to all the specified audio sources.
+            </summary>
+            <param name="audioSource">
+            A sequence of <see cref="T:Bonsai.Audio.AudioSource"/> objects on which to queue the buffered
+            audio samples for playback.
+            </param>
+            <param name="dataSource">
+            A sequence of <see cref="T:OpenCV.Net.Mat"/> objects representing the buffered audio samples
+            to queue for playback on all the active audio sources.
+            </param>
+            <returns>
+            An observable sequence that is identical to the <paramref name="dataSource"/>
+            sequence but where there is an additional side effect of queueing the audio buffers
+            for playback on all the active audio sources.
+            </returns>
+            <remarks>
+            This operator only subscribes to the <paramref name="dataSource"/> sequence
+            after initializing the audio context on the specified audio device.
+            </remarks>
+        </member>
+        <member name="T:Bonsai.Audio.AudioReader">
+            <summary>
+            Represents an operator that generates a sequence of buffered audio samples from an
+            uncompressed RIFF/WAV file.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioReader.FileName">
+            <summary>
+            Gets or sets the name of the WAV file.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioReader.BufferLength">
+            <summary>
+            Gets or sets the length of the sample buffer, in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioReader.SampleRate">
+            <summary>
+            Gets or sets the sample rate, in Hz, used to playback the sample buffers.
+            If it is zero, samples will be played at the rate specified in the
+            RIFF/WAV file header.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioReader.Generate">
+            <summary>
+            Generates a sequence of buffered audio samples from the specified WAV file.
+            </summary>
+            <returns>
+            A sequence of <see cref="T:OpenCV.Net.Mat"/> objects representing audio sample
+            buffers of a fixed length. See <see cref="P:Bonsai.Audio.AudioReader.BufferLength"/>.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Audio.AudioReader.Generate``1(System.IObservable{``0})">
+            <summary>
+            Generates a sequence of buffered audio samples from the specified WAV file, where
+            each new buffer is emitted only when an observable sequence emits a notification.
+            </summary>
+            <typeparam name="TSource">
+            The type of the elements in the <paramref name="source"/> sequence.
+            </typeparam>
+            <param name="source">
+            The sequence containing the notifications used for emitting audio buffers.
+            </param>
+            <returns>
+            A sequence of <see cref="T:OpenCV.Net.Mat"/> objects representing audio sample
+            buffers of a fixed length. See <see cref="P:Bonsai.Audio.AudioReader.BufferLength"/>.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Audio.AudioResources">
+            <summary>
+            Represents an operator that creates a collection of buffer resources and audio sources
+            to be loaded into the resource manager.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioResources.Buffers">
+            <summary>
+            Gets the collection of buffer resources to be loaded into the resource manager.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioResources.Sources">
+            <summary>
+            Gets the collection of audio sources to be loaded into the resource manager.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioResources.GetResources">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Audio.AudioResources.Process(System.IObservable{Bonsai.Audio.AudioContextManager})">
+            <summary>
+            Creates a collection of buffer resources and audio sources to be loaded into the
+            resource manager.
+            </summary>
+            <param name="source">
+            A sequence of <see cref="T:Bonsai.Audio.AudioContextManager"/> objects containing the resource managers
+            into which the resources will be loaded.
+            </param>
+            <returns>
+            A sequence of <see cref="T:Bonsai.Resources.ResourceConfigurationCollection"/> objects which
+            can be used to load resources into the resource manager.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Audio.AudioSource">
+            <summary>
+            Represents a source of spatialized audio which can be used to define and control the
+            audio landscape surrounding the listener.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioSource.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Audio.AudioSource"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioSource.Id">
+            <summary>
+            Gets the name of the audio source. This is an OpenAL buffer reference which can be
+            used to call audio source manipulation functions.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioSource.Gain">
+            <summary>
+            Gets or sets the volume amplification applied to the audio source.
+            </summary>
+            <remarks>
+            Each division by 2 equals an attenuation of -6 dB, and each multiplication
+            by 2 an amplification by +6 dB. A value of 1.0 means the source is unchanged,
+            and zero is interpreted as zero volume.
+            </remarks>
+        </member>
+        <member name="P:Bonsai.Audio.AudioSource.Pitch">
+            <summary>
+            Gets or sets the pitch to be applied to the audio source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioSource.Relative">
+            <summary>
+            Gets or sets a value indicating whether the audio source uses coordinates
+            relative to the listener.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioSource.Looping">
+            <summary>
+            Gets or sets a value indicating whether the audio source is looping.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioSource.Direction">
+            <summary>
+            Gets or sets the direction vector of the audio source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioSource.Position">
+            <summary>
+            Gets or sets the location of the audio source in three-dimensional space.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioSource.Velocity">
+            <summary>
+            Gets or sets the velocity of the audio source in three-dimensional space.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioSource.State">
+            <summary>
+            Gets information about the current source state.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioSource.Rewind">
+            <summary>
+            Stops the source and sets its state to <see cref="F:OpenTK.Audio.OpenAL.ALSourceState.Initial"/>.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioSource.Play">
+            <summary>
+            Plays, replays, or resumes the source and sets its state to
+            <see cref="F:OpenTK.Audio.OpenAL.ALSourceState.Playing"/>. If the source is already playing,
+            the source will restart at the beginning.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioSource.Pause">
+            <summary>
+            Pauses the source and sets its state to <see cref="F:OpenTK.Audio.OpenAL.ALSourceState.Paused"/>.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioSource.Stop">
+            <summary>
+            Stops the source and sets its state to <see cref="F:OpenTK.Audio.OpenAL.ALSourceState.Stopped"/>.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioSource.Dispose">
+            <summary>
+            Releases all resources used by the <see cref="T:Bonsai.Audio.AudioSource"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Audio.AudioWriter">
+            <summary>
+            Represents an operator that writes a sequence of buffered samples into an uncompressed RIFF/WAV file.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioWriter.SampleRate">
+            <summary>
+            Gets or sets the sample rate of the input signal, in Hz.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioWriter.SamplingFrequency">
+            <summary>
+            Gets or sets the sample rate of the input signal, in Hz.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.AudioWriter.SamplingFrequencySpecified">
+            <summary>
+            Gets a value indicating whether the <see cref="P:Bonsai.Audio.AudioWriter.SamplingFrequency"/> property should be serialized.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.AudioWriter.CreateWriter(System.String,OpenCV.Net.Mat)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Audio.AudioWriter.Write(Bonsai.Audio.RiffWriter,OpenCV.Net.Mat)">
+            <summary>
+            Writes a sample buffer into the WAV file.
+            </summary>
+            <param name="writer">The <see cref="T:Bonsai.Audio.RiffWriter"/> used to write data into the WAV file.</param>
+            <param name="input">
+            A <see cref="T:OpenCV.Net.Mat"/> object containing the audio samples to write into the file.
+            </param>
+        </member>
+        <member name="T:Bonsai.Audio.Buffer">
+            <summary>
+            Represents an audio buffer which can be used to store and manipulate audio data.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.Buffer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Audio.Buffer"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.Buffer.Id">
+            <summary>
+            Gets the name of the buffer. This is an OpenAL buffer reference which can be
+            used to call audio manipulation functions.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.Buffer.Dispose">
+            <summary>
+            Releases all resources used by the <see cref="T:Bonsai.Audio.Buffer"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Audio.Configuration.BufferConfiguration">
+            <summary>
+            Provides configuration and loading functionality for audio buffer resources.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.Configuration.BufferConfiguration.CreateResource(Bonsai.Resources.ResourceManager)">
+            <summary>
+            Creates a new empty audio buffer resource, typically used for uploading dynamic data.
+            </summary>
+            <returns>
+            A new instance of the <see cref="T:Bonsai.Audio.Buffer"/> class.
+            </returns>
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Audio.Configuration.BufferConfigurationCollection">
+            <summary>
+            Represents a collection of audio buffer resources.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.Configuration.BufferConfigurationCollection.GetKeyForItem(Bonsai.Audio.Configuration.BufferConfiguration)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Audio.Configuration.SoundBuffer">
+            <summary>
+            Provides configuration and loading functionality for WAV audio buffers.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.Configuration.SoundBuffer.FileName">
+            <summary>
+            Gets or sets the name of the sound WAV file.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.Configuration.SoundBuffer.CreateResource(Bonsai.Resources.ResourceManager)">
+            <summary>
+            Creates a new buffer resource by reading and storing audio data from a WAV file.
+            </summary>
+            <returns>
+            A new instance of the <see cref="T:Bonsai.Audio.Buffer"/> class storing audio data from
+            the loaded WAV file.
+            </returns>
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Audio.Configuration.SoundBuffer.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Audio.Configuration.SourceConfiguration">
+            <summary>
+            Provides configuration and loading functionality for audio sources.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.Configuration.SourceConfiguration.BufferName">
+            <summary>
+            Gets or sets the optional name of a buffer to play when creating the source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.Configuration.SourceConfiguration.Gain">
+            <summary>
+            Gets or sets the volume amplification applied to the audio source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.Configuration.SourceConfiguration.Pitch">
+            <summary>
+            Gets or sets the pitch to be applied to the audio source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.Configuration.SourceConfiguration.Direction">
+            <summary>
+            Gets or sets the direction vector of the audio source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.Configuration.SourceConfiguration.Position">
+            <summary>
+            Gets or sets the location of the audio source in three-dimensional space.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.Configuration.SourceConfiguration.Velocity">
+            <summary>
+            Gets or sets the velocity of the audio source in three-dimensional space.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.Configuration.SourceConfiguration.Looping">
+            <summary>
+            Gets or sets a value indicating whether the audio source is looping.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.Configuration.SourceConfiguration.Relative">
+            <summary>
+            Gets or sets a value indicating whether the audio source uses coordinates
+            relative to the listener.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.Configuration.SourceConfiguration.State">
+            <summary>
+            Gets or sets a value specifying the state to which the source should be set after creation.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.Configuration.SourceConfiguration.CreateResource(Bonsai.Resources.ResourceManager)">
+            <summary>
+            Creates a new source of spatialized audio.
+            </summary>
+            <returns>
+            A new instance of the <see cref="T:Bonsai.Audio.AudioSource"/> class.
+            </returns>
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Audio.Configuration.SourceConfigurationCollection">
+            <summary>
+            Represents a collection of audio source resources.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.Configuration.SourceConfigurationCollection.GetKeyForItem(Bonsai.Audio.Configuration.SourceConfiguration)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Audio.CreateAudioContext">
+            <summary>
+            Represents an operator that creates an audio context using the specified device
+            and listener properties.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateAudioContext.DeviceName">
+            <summary>
+            Gets or sets the name of the audio device used for playback.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateAudioContext.SampleRate">
+            <summary>
+            Gets or sets the sample rate, in Hz, used by the audio device.
+            Zero represents the driver default.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateAudioContext.Refresh">
+            <summary>
+            Gets or sets the refresh frequency, in Hz, used by the audio device.
+            Zero represents the driver default.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateAudioContext.Position">
+            <summary>
+            Gets or sets the location of the listener, in the world coordinate frame.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateAudioContext.Velocity">
+            <summary>
+            Gets or sets the velocity of the listener, in the world coordinate frame.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateAudioContext.Direction">
+            <summary>
+            Gets or sets the direction vector of the listener, in the world coordinate frame.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateAudioContext.Up">
+            <summary>
+            Gets or sets the up vector of the listener, in the world coordinate frame.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateAudioContext.Gain">
+            <summary>
+            Gets or sets the amount of amplification applied to the listener.
+            Each multiplication by 2 increases gain by +6dB.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.CreateAudioContext.Generate">
+            <summary>
+            Generates an observable sequence that contains the audio context manager object.
+            </summary>
+            <returns>
+            A sequence containing a single instance of the <see cref="T:Bonsai.Audio.AudioContextManager"/>
+            class which will manage the lifetime of the audio context.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Audio.CreateSource">
+            <summary>
+            Represents an operator that creates a spatialized source on the specified audio device.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateSource.DeviceName">
+            <summary>
+            Gets or sets the name of the audio device used for playback.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateSource.BufferName">
+            <summary>
+            Gets or sets the optional name of a buffer to play when creating the source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateSource.Gain">
+            <summary>
+            Gets or sets the volume amplification applied to the audio source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateSource.Pitch">
+            <summary>
+            Gets or sets the pitch to be applied to the audio source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateSource.Direction">
+            <summary>
+            Gets or sets the direction vector of the audio source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateSource.Position">
+            <summary>
+            Gets or sets the current location of the audio source in three-dimensional space.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateSource.Velocity">
+            <summary>
+            Gets or sets the current velocity of the audio source in three-dimensional space.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateSource.Looping">
+            <summary>
+            Gets or sets a value indicating whether the audio source is looping.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateSource.Relative">
+            <summary>
+            Gets or sets a value indicating whether the audio source uses coordinates relative to the listener.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.CreateSource.State">
+            <summary>
+            Gets or sets a value specifying the state to which the source should be set after creation.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.CreateSource.Generate">
+            <summary>
+            Generates an observable sequence that contains the created audio source.
+            </summary>
+            <returns>
+            A sequence containing the created <see cref="T:Bonsai.Audio.AudioSource"/> instance.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Audio.PauseSource">
+            <summary>
+            Represents an operator that pauses the specified set of audio sources.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Audio.PlaySource">
+            <summary>
+            Represents an operator that starts playing the specified set of audio sources.
+            If a source is already playing, it will start from the beginning.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Audio.RewindSource">
+            <summary>
+            Represents an operator that rewinds the specified set of audio sources
+            back to the initial state.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Audio.RiffWriter">
+            <summary>
+            Writes audio data into a stream following the RIFF/WAV format.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.RiffWriter.#ctor(System.IO.Stream,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Audio.RiffWriter"/> class using
+            the specified stream, number of channels, sample rate and bits per sample.
+            </summary>
+            <param name="stream">The output stream.</param>
+            <param name="channels">The number of audio channels.</param>
+            <param name="samplesPerSecond">The playback sample frequency, in samples per second.</param>
+            <param name="bitsPerSample">The number of bits per audio sample.</param>
+        </member>
+        <member name="M:Bonsai.Audio.RiffWriter.Write(System.Byte[])">
+            <summary>
+            Writes an array containing raw audio data into the WAV stream.
+            </summary>
+            <param name="buffer">A <see cref="T:System.Byte"/> array containing the data to write.</param>
+        </member>
+        <member name="M:Bonsai.Audio.RiffWriter.Close">
+            <summary>
+            Closes the current <see cref="T:Bonsai.Audio.RiffWriter"/> and the underlying stream.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Audio.StopSource">
+            <summary>
+            Represents an operator that stops the specified set of audio sources.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Audio.UpdateBuffer">
+            <summary>
+            Represents an operator that updates the sample data of the specified audio buffer.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateBuffer.DeviceName">
+            <summary>
+            Gets or sets the name of the audio device used for playback.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateBuffer.BufferName">
+            <summary>
+            Gets or sets the name of the buffer to update.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateBuffer.SampleRate">
+            <summary>
+            Gets or sets the sample rate, in Hz, used to playback the buffer data.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.UpdateBuffer.Process(System.IObservable{OpenCV.Net.Mat})">
+            <summary>
+            Updates the data of the specified audio buffer using an observable sequence
+            of buffered samples.
+            </summary>
+            <param name="source">
+            A sequence of <see cref="T:OpenCV.Net.Mat"/> objects representing the samples used to fill
+            the buffer with audio data.
+            </param>
+            <returns>
+            An observable sequence that is identical to the <paramref name="source"/> sequence
+            but where there is an additional side effect of filling the buffer with audio data.
+            </returns>
+            <remarks>
+            This operator only subscribes to the <paramref name="source"/> sequence after
+            initializing the audio context on the specified audio device.
+            </remarks>
+        </member>
+        <member name="T:Bonsai.Audio.UpdateListener">
+            <summary>
+            Represents an operator that updates the properties of the audio listener.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateListener.Position">
+            <summary>
+            Gets or sets the current location of the listener, in the world coordinate frame.
+            If this property is not set, the location of the audio listener will not be updated.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateListener.Velocity">
+            <summary>
+            Gets or sets the current velocity of the listener, in the world coordinate frame.
+            If this property is not set, the velocity of the audio listener will not be updated.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateListener.Orientation">
+            <summary>
+            Gets or sets the current orientation of the listener, in the world coordinate frame.
+            If this property is not set, the orientation of the audio listener will not be updated.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateListener.Gain">
+            <summary>
+            Gets or sets the amount of amplification applied to the listener. Each multiplication by 2 increases gain by +6dB.
+            If this property is not set, the gain of the audio listener will not be updated.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.UpdateListener.Process``1(System.IObservable{``0})">
+            <summary>
+            Updates the properties of the audio listener whenever the source sequence
+            emits a notification.
+            </summary>
+            <typeparam name="TSource">
+            The type of the elements in the <paramref name="source"/> sequence.
+            </typeparam>
+            <param name="source">
+            The sequence containing the notifications used to trigger the update of
+            the audio listener.
+            </param>
+            <returns>
+            An observable sequence that is identical to the <paramref name="source"/> sequence
+            but where there is an additional side effect of updating the properties of the
+            audio listener whenever the sequence emits a notification.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Audio.UpdateSource">
+            <summary>
+            Represents an operator that updates the properties of an audio source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateSource.DeviceName">
+            <summary>
+            Gets or sets the name of the audio device used for playback.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateSource.SourceName">
+            <summary>
+            Gets or sets the name of the audio source to update.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateSource.Gain">
+            <summary>
+            Gets or sets the volume amplification applied to the audio source. If this
+            property is not set, the gain of the audio source will not be updated.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateSource.Pitch">
+            <summary>
+            Gets or sets the pitch to be applied to the audio source. If this property
+            is not set, the pitch of the audio source will not be updated.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateSource.Position">
+            <summary>
+            Gets or sets the current location of the audio source in three-dimensional space.
+            If this property is not set, the location of the audio source will not be updated.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateSource.Velocity">
+            <summary>
+            Gets or sets the current velocity of the audio source in three-dimensional space.
+            If this property is not set, the velocity of the audio source will not be updated.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateSource.Direction">
+            <summary>
+            Gets or sets the current direction vector of the audio source. If this property
+            is not set, the direction of the audio source will not be updated.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.UpdateSource.Process``1(System.IObservable{``0})">
+            <summary>
+            Updates the properties of the specified audio source whenever the source sequence
+            emits a notification.
+            </summary>
+            <typeparam name="TSource">
+            The type of the elements in the <paramref name="source"/> sequence.
+            </typeparam>
+            <param name="source">
+            The sequence containing the notifications used to trigger the update of
+            the audio source.
+            </param>
+            <returns>
+            An observable sequence that is identical to the <paramref name="source"/> sequence
+            but where there is an additional side effect of updating the properties of the
+            specified audio source whenever the sequence emits a notification.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Audio.UpdateSource.Process(System.IObservable{Bonsai.Audio.AudioSource})">
+            <summary>
+            Updates the properties of all the audio sources in an observable sequence.
+            </summary>
+            <param name="source">
+            A sequence of <see cref="T:Bonsai.Audio.AudioSource"/> objects whose properties should be updated.
+            </param>
+            <returns>
+            An observable sequence that is identical to the <paramref name="source"/> sequence
+            but where there is an additional side effect of updating the properties of each of the
+            audio sources in the sequence.
+            </returns>
+            <remarks>
+            If <see cref="P:Bonsai.Audio.UpdateSource.SourceName"/> is not null or empty, this method behaves as
+            <see cref="M:Bonsai.Audio.UpdateSource.Process``1(System.IObservable{``0})"/>.
+            </remarks>
+        </member>
+        <member name="T:Bonsai.Audio.UpdateSourceState">
+            <summary>
+            Provides an abstract base class for operators that update the state of
+            specified audio sources.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateSourceState.DeviceName">
+            <summary>
+            Gets or sets the name of the audio device used for playback.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Audio.UpdateSourceState.SourceName">
+            <summary>
+            Gets or sets the name of the audio source, or a comma-separated list
+            of names if specifying multiple sources.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Audio.UpdateSourceState.Process``1(System.IObservable{``0})">
+            <summary>
+            Updates the state of the specified audio source whenever the source sequence
+            emits a notification.
+            </summary>
+            <typeparam name="TSource">
+            The type of the elements in the <paramref name="source"/> sequence.
+            </typeparam>
+            <param name="source">
+            The sequence containing the notifications used to trigger the update of
+            the audio source.
+            </param>
+            <returns>
+            An observable sequence that is identical to the <paramref name="source"/> sequence
+            but where there is an additional side effect of updating the state of the specified
+            audio source whenever the sequence emits a notification.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Audio.UpdateSourceState.Process(System.IObservable{Bonsai.Audio.AudioSource})">
+            <summary>
+            Updates the state of all the audio sources in an observable sequence.
+            </summary>
+            <param name="source">
+            A sequence of <see cref="T:Bonsai.Audio.AudioSource"/> objects whose state should be updated.
+            </param>
+            <returns>
+            An observable sequence that is identical to the <paramref name="source"/> sequence
+            but where there is an additional side effect of updating the state of each of the
+            audio sources in the sequence.
+            </returns>
+            <remarks>
+            If <see cref="P:Bonsai.Audio.UpdateSourceState.SourceName"/> is not null or empty, this method behaves as
+            <see cref="M:Bonsai.Audio.UpdateSourceState.Process``1(System.IObservable{``0})"/>.
+            </remarks>
+        </member>
+        <member name="M:Bonsai.Audio.UpdateSourceState.Process(System.IObservable{Bonsai.Audio.AudioSource[]})">
+            <summary>
+            Updates the state of all the audio sources in an observable sequence.
+            </summary>
+            <param name="source">
+            A sequence of <see cref="T:Bonsai.Audio.AudioSource"/> arrays containing all the audio sources
+            whose state should be updated.
+            </param>
+            <returns>
+            An observable sequence that is identical to the <paramref name="source"/> sequence
+            but where there is an additional side effect of updating the state of all the
+            audio sources.
+            </returns>
+            <remarks>
+            If <see cref="P:Bonsai.Audio.UpdateSourceState.SourceName"/> is not null or empty, this method behaves as
+            <see cref="M:Bonsai.Audio.UpdateSourceState.Process``1(System.IObservable{``0})"/>.
+            </remarks>
+        </member>
+    </members>
+</doc>

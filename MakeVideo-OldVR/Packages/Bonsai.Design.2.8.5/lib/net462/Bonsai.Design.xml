@@ -1,0 +1,1351 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bonsai.Design</name>
+    </assembly>
+    <members>
+        <member name="T:Bonsai.Design.AnnotationBuilderEditor">
+            <summary>
+            Provides a user interface editor that displays a dialog box for editing
+            a workflow annotation.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.AnnotationBuilderEditor.EditComponent(System.ComponentModel.ITypeDescriptorContext,System.Object,System.IServiceProvider,System.Windows.Forms.IWin32Window)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Design.AnnotationBuilderEditorDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.AnnotationBuilderEditorDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Design.AnnotationBuilderEditorDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.AnnotationTextEditor">
+            <summary>
+            Provides a user interface editor that displays a dialog box for editing
+            the annotation text.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.AnnotationTextEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.AnnotationTextEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.BufferedVisualizer">
+            <summary>
+            Provides an abstract base class for type visualizers with an update
+            frequency potentially much higher than the screen refresh rate.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.BufferedVisualizer.TargetInterval">
+            <summary>
+            Gets or sets the target interval, in milliseconds, between visualizer updates.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.BufferedVisualizer.Visualize(System.IObservable{System.IObservable{System.Object}},System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.BufferedVisualizer.ShowBuffer(System.Collections.Generic.IList{System.Reactive.Timestamped{System.Object}})">
+            <summary>
+            Updates the type visualizer with a new buffer of timestamped values.
+            </summary>
+            <param name="values">
+            A buffer of timestamped values where each timestamp indicates the
+            time at which the value was received.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.BufferedVisualizer.Show(System.DateTime,System.Object)">
+            <summary>
+            Updates the type visualizer to display a buffered value object
+            received at the specified time.
+            </summary>
+            <param name="time">The time at which the value was received.</param>
+            <param name="value">The value to visualize.</param>
+        </member>
+        <member name="T:Bonsai.Design.CommandExecutor">
+            <summary>
+            Represents a command execution stack with support for undo and redo operations.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Design.CommandExecutor.StatusChanged">
+            <summary>
+            Occurs when the command execution stack has changed, either by executing
+            a new command, or calling undo or redo operations.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.CommandExecutor.CanUndo">
+            <summary>
+            Gets a value indicating whether there are any commands available to undo on
+            the command execution stack.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.CommandExecutor.CanRedo">
+            <summary>
+            Gets a value indicating whether there are any commands available to redo
+            on the command execution stack.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.CommandExecutor.Clear">
+            <summary>
+            Clears the entire command execution history.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.CommandExecutor.BeginCompositeCommand">
+            <summary>
+            Marks the beginning of a composite command execution.
+            </summary>
+            <remarks>
+            Every command executed until <see cref="M:Bonsai.Design.CommandExecutor.EndCompositeCommand"/> will be considered
+            part of the composite action. Calling undo or redo on a composite action will affect
+            all commands in the composite, as if they were effectively part of a single command.
+            </remarks>
+        </member>
+        <member name="M:Bonsai.Design.CommandExecutor.Execute(System.Action,System.Action)">
+            <summary>
+            Specifies a new action for immediate execution, together with the optional
+            undo action which reverses the effects of the command.
+            </summary>
+            <param name="command">The command to execute.</param>
+            <param name="undo">
+            The undo action which reverses the effects of the <paramref name="command"/>.
+            If no undo action is specified, the entire command history up to the execution
+            of this command will be cleared.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.CommandExecutor.EndCompositeCommand">
+            <summary>
+            Marks the end of a composite command execution.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.CommandExecutor.Undo">
+            <summary>
+            Undo the effects of the previously executed command.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.CommandExecutor.Undo(System.Boolean)">
+            <summary>
+            Undo the effects of the previously executed command, with
+            optional support for redo operations.
+            </summary>
+            <param name="allowRedo">
+            If this parameter is <see langword="true"/>, redo operations will be allowed
+            after undoing the previous command. Otherwise, all the forward history, including
+            the command being undone will be cleared.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.CommandExecutor.Redo">
+            <summary>
+            Redo the effects of the command which was previously undone.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.CommandExecutor.OnStatusChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:Bonsai.Design.CommandExecutor.StatusChanged"/> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="T:Bonsai.Design.ConfigurationControlBase">
+            <summary>
+            Provides an abstract base class for legacy configuration controls.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.ConfigurationControlBase.CreateConfigurationEditor(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.ConfigurationControlBase.CreateCollectionEditor(System.Type)">
+            <summary>
+            When overridden in a derived class, creates the custom collection editor
+            for the specified type.
+            </summary>
+            <param name="type">
+            The type of values stored in the configuration collection object.
+            </param>
+            <returns>
+            An instance of the <see cref="T:System.ComponentModel.Design.CollectionEditor"/> class used to edit
+            the configuration collection.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Design.ConfigurationControl">
+            <summary>
+            Provides an abstract base class for legacy configuration controls.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.ConfigurationControl.CreateCollectionEditor(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.ConfigurationControl.CreateConfigurationEditor(System.Type)">
+            <summary>
+            When overridden in a derived class, creates the custom collection editor
+            for the specified type.
+            </summary>
+            <param name="type">
+            The type of values stored in the configuration collection object.
+            </param>
+            <returns>
+            An instance of the <see cref="T:System.ComponentModel.Design.CollectionEditor"/> class used to edit
+            the configuration collection.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Design.ConfigurationDropDown">
+            <summary>
+            Provides an abstract base class for drop-down editor controls
+            listing custom configuration objects.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.ConfigurationDropDown.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.ConfigurationDropDown"/> class.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.ConfigurationDropDown.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.ConfigurationDropDown"/> class
+            using the specified service provider.
+            </summary>
+            <param name="provider">
+            A service provider object through which editing services can be obtained.
+            </param>
+        </member>
+        <member name="P:Bonsai.Design.ConfigurationDropDown.Text">
+            <inheritdoc/>
+        </member>
+        <member name="P:Bonsai.Design.ConfigurationDropDown.SelectedValue">
+            <summary>
+            Gets or sets the currently selected value in the drop-down.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Design.ConfigurationDropDown.SelectedValueChanged">
+            <summary>
+            Occurs when the selected value changes.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.ConfigurationDropDown.GetConfigurationNames">
+            <summary>
+            When overridden in a derived class, gets the collection of available configuration
+            names to list in the drop-down.
+            </summary>
+            <returns>
+            An enumerable collection of <see cref="T:System.String"/> values representing the
+            available configurations.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Design.ConfigurationDropDown.LoadConfiguration">
+            <summary>
+            When overridden in a derived class, loads the custom configuration object
+            storing the current settings for the editor control.
+            </summary>
+            <returns>
+            The restored custom configuration object.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Design.ConfigurationDropDown.SaveConfiguration(System.Object)">
+            <summary>
+            When overridden in a derived class, saves the current configuration object
+            storing the current settings configured by the editor control.
+            </summary>
+            <param name="configuration">
+            The configuration object to be stored.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.ConfigurationDropDown.CreateConfigurationEditor(System.Type)">
+            <summary>
+            When overridden in a derived class, creates the custom UI type editor
+            for the specified type.
+            </summary>
+            <param name="type">
+            The type of values representing the custom configuration objects.
+            </param>
+            <returns>
+            An instance of the <see cref="T:System.Drawing.Design.UITypeEditor"/> class used to design
+            value editors for the specified type.
+            </returns>
+        </member>
+        <member name="F:Bonsai.Design.ConfigurationDropDown.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.ConfigurationDropDown.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Design.ConfigurationDropDown.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.ControlObservable">
+            <summary>
+            Provides a set of static methods for subscribing to observable sequences using Windows Forms controls.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.ControlObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Forms.Control)">
+            <summary>
+            Wraps the source sequence in order to run its observer callbacks in the UI thread of the
+            specified control.
+            </summary>
+            <typeparam name="TSource">
+            The type of the elements in the <paramref name="source"/> sequence.
+            </typeparam>
+            <param name="source">
+            The observable sequence whose notifications will be scheduled in the UI thread of the
+            specified control.
+            </param>
+            <param name="control">
+            A <see cref="T:System.Windows.Forms.Control"/> object whose underlying handle will be used to schedule notifications.
+            </param>
+            <returns>
+            An observable sequence with the same elements as the <paramref name="source"/> sequence,
+            but where all notifications will be raised in the UI thread of the specified
+            <paramref name="control"/>.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Design.ControlScheduler">
+            <summary>
+            Represents an object that schedules units of work using the UI thread
+            of a Windows Forms control.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.ControlScheduler.#ctor(System.Windows.Forms.Control)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.ControlScheduler"/> class
+            using the specified control.
+            </summary>
+            <param name="control">
+            A <see cref="P:Bonsai.Design.ControlScheduler.Control"/> object whose underlying handle will be used to
+            schedule units of work.
+            </param>
+        </member>
+        <member name="P:Bonsai.Design.ControlScheduler.Control">
+            <summary>
+            Gets the control object used to schedule units of work.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.ControlScheduler.Now">
+            <summary>
+            Gets the current time according to the local machine's system clock.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.ControlScheduler.Schedule``1(``0,System.Func{System.Reactive.Concurrency.IScheduler,``0,System.IDisposable})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.ControlScheduler.Schedule``1(``0,System.TimeSpan,System.Func{System.Reactive.Concurrency.IScheduler,``0,System.IDisposable})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.ControlScheduler.Schedule``1(``0,System.DateTimeOffset,System.Func{System.Reactive.Concurrency.IScheduler,``0,System.IDisposable})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.DataSourceTypeEditor">
+            <summary>
+            Provides an abstract base class for property editors that require inspecting
+            the runtime notifications of an operator to provide their functionality.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.DataSourceTypeEditor.#ctor(Bonsai.Design.DataSourceTypeEditor.DataSource)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.DataSourceTypeEditor"/> class
+            using the specified data source.
+            </summary>
+            <param name="source">
+            Specifies the source of runtime notifications to the property editor.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.DataSourceTypeEditor.#ctor(Bonsai.Design.DataSourceTypeEditor.DataSource,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.DataSourceTypeEditor"/> class
+            using the specified data source and target data type.
+            </summary>
+            <param name="source">
+            Specifies the source of runtime notifications to the property editor.
+            </param>
+            <param name="targetType">
+            The type of values emitted by the data source.
+            </param>
+        </member>
+        <member name="T:Bonsai.Design.DataSourceTypeEditor.DataSource">
+            <summary>
+            Specifies the source of runtime notifications to the property editor.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Design.DataSourceTypeEditor.DataSource.Input">
+            <summary>
+            Runtime notifications will come from the first input sequence to the operator.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Design.DataSourceTypeEditor.DataSource.Output">
+            <summary>
+            Runtime notifications will come from the observable output of the operator.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.DataSourceTypeEditor.GetDataSource(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider)">
+            <summary>
+            Gets the source of runtime notifications arriving to or from the operator.
+            </summary>
+            <param name="context">
+            An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> object that can be used to obtain
+            additional context information.
+            </param>
+            <param name="provider">
+            An <see cref="T:System.IServiceProvider"/> object that this editor can use to obtain services.
+            </param>
+            <returns>
+            An <see cref="T:Bonsai.Expressions.InspectBuilder"/> object that can be used to subscribe to runtime
+            notifications arriving to or from the operator.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Design.DescriptiveCollectionEditor">
+            <summary>
+            Provides a user interface with a scaled description panel that can edit
+            most types of collections at design time.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.DescriptiveCollectionEditor.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.DescriptiveCollectionEditor"/>
+            class using the specified type.
+            </summary>
+            <param name="type">The type of the collection for this editor to edit.</param>
+        </member>
+        <member name="M:Bonsai.Design.DescriptiveCollectionEditor.CreateCollectionForm">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.DialogMashupVisualizer">
+            <summary>
+            Provides an abstract base class for type visualizers supporting visualizer mashups.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.DialogMashupVisualizer.Mashups">
+            <summary>
+            Gets the collection of visualizer mashups accepted by this type visualizer.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.DialogTypeVisualizer">
+            <summary>
+            Provides the abstract base class for type visualizers.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.DialogTypeVisualizer.Show(System.Object)">
+            <summary>
+            Updates the type visualizer to display the specified value object.
+            </summary>
+            <param name="value">The value to visualize.</param>
+        </member>
+        <member name="M:Bonsai.Design.DialogTypeVisualizer.Load(System.IServiceProvider)">
+            <summary>
+            Loads type visualizer resources using the specified service provider.
+            </summary>
+            <param name="provider">
+            A service provider object which can be used to obtain visualization,
+            runtime inspection, or other editing services.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.DialogTypeVisualizer.Unload">
+            <summary>
+            Unloads all type visualizer resources.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.DialogTypeVisualizer.Visualize(System.IObservable{System.IObservable{System.Object}},System.IServiceProvider)">
+            <summary>
+            Creates an observable sequence used to visualize all notifications emitted by
+            a workflow operator, using this type visualizer and the specified service provider.
+            </summary>
+            <param name="source">
+            An observable sequence that multicasts notifications from all the active
+            subscriptions to the workflow operator.
+            </param>
+            <param name="provider">
+            A service provider object which can be used to obtain visualization,
+            runtime inspection, or other editing services.
+            </param>
+            <returns>
+            An observable sequence where every notification updates the type visualizer
+            object in the UI thread.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Design.DialogTypeVisualizer.SequenceCompleted">
+            <summary>
+            Updates the type visualizer when one of the active subscriptions gracefully terminates.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.DynamicPropertyDescriptor">
+            <summary>
+            Provides a virtual property for a class.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.DynamicPropertyDescriptor.#ctor(System.String,System.Type,System.Func{System.Object,System.Object},System.Action{System.Object,System.Object},System.Attribute[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.DynamicPropertyDescriptor"/> class
+            using the specified name, type, and dynamic methods for getting and setting
+            property values.
+            </summary>
+            <param name="name">The name of the dynamic property.</param>
+            <param name="type">The type of the dynamic property.</param>
+            <param name="getter">A method used to get the current value of the dynamic property.</param>
+            <param name="setter">
+            A method used to set the value of the dynamic property to a different value.
+            </param>
+            <param name="attributes">
+            An optional array of <see cref="T:System.Attribute"/> objects that contains the property attributes.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.DynamicPropertyDescriptor.CanResetValue(System.Object)">
+            <summary>
+            Returns whether resetting an object changes its value. Dynamic
+            properties do not support resetting, so resetting an object
+            never changes its value.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="P:Bonsai.Design.DynamicPropertyDescriptor.ComponentType">
+            <summary>
+            Gets the type of the component this property is bound to.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.DynamicPropertyDescriptor.GetValue(System.Object)">
+            <summary>
+            Gets the current value of the property on a component.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="P:Bonsai.Design.DynamicPropertyDescriptor.IsReadOnly">
+            <summary>
+            Gets a value indicating whether this property is read-only.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.DynamicPropertyDescriptor.PropertyType">
+            <summary>
+            Gets the type of the dynamic property.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.DynamicPropertyDescriptor.ResetValue(System.Object)">
+            <summary>
+            Resets the value for this property of the component to the default value.
+            Dynamic properties do not support resetting their values.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.DynamicPropertyDescriptor.SetValue(System.Object,System.Object)">
+            <summary>
+            Sets the value of the dynamic property to a different value.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.DynamicPropertyDescriptor.ShouldSerializeValue(System.Object)">
+            <summary>
+            Determines a value indicating whether the value of this property needs
+            to be persisted. Dynamic property values are transient, so they always
+            need to be persisted.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.DynamicTypeDescriptionProvider">
+            <summary>
+            Provides dynamic supplemental metadata to a <see cref="T:System.ComponentModel.TypeDescriptor"/>.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.DynamicTypeDescriptionProvider.Properties">
+            <summary>
+            Gets the collection of dynamic custom properties to be added to the
+            <see cref="T:System.ComponentModel.TypeDescriptor"/>.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.DynamicTypeDescriptionProvider.GetTypeDescriptor(System.Type,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.DynamicTypeDescriptionProvider.GetExtendedTypeDescriptor(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.ExpressionBuilderArgumentTypeConverter">
+            <summary>
+            Provides a type converter to convert expression builder arguments
+            to and from other representations.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.ExpressionBuilderArgumentTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.ExpressionBuilderArgumentTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.ExpressionBuilderTypeConverter">
+            <summary>
+            Provides a type converter to convert expression builder objects
+            to and from other representations.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.ExpressionBuilderTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.ExpressionBuilderTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.FileNameEditor">
+            <summary>
+            Provides the abstract base class for user interface editors
+            that display a dialog box from which the user can select a file.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.FileNameEditor.CreateFileDialog">
+            <summary>
+            When overridden in a derived class, initializes the dialog
+            box from which the user can select a file.
+            </summary>
+            <returns>
+            The <see cref="T:System.Windows.Forms.FileDialog"/> object which will display the
+            dialog box from which the user can select a file.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Design.FileNameEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.FileNameEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.FolderBrowserDialog">
+            <summary>
+            Specifies a folder browser dialog box.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.FolderBrowserDialog.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.FolderBrowserDialog"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.FolderBrowserDialog.SelectedPath">
+            <summary>
+            Gets or sets the path to the selected folder.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.FolderBrowserDialog.Reset">
+            <summary>
+            Resets the properties of the folder browser dialog to their default values.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.FolderBrowserDialog.RunDialog(System.IntPtr)">
+            <summary>
+            Displays a folder browser dialog.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.FolderNameEditor">
+            <summary>
+            Provides a user interface editor that displays a browser dialog box
+            from which the user can select a folder.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.FolderNameEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.FolderNameEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.IDialogTypeVisualizerService">
+            <summary>
+            Provides an interface for a <see cref="T:Bonsai.Design.DialogTypeVisualizer"/> to add
+            controls to a type visualizer dialog.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.IDialogTypeVisualizerService.AddControl(System.Windows.Forms.Control)">
+            <summary>
+            Adds a control to the type visualizer dialog.
+            </summary>
+            <param name="control">The control to add to the type visualizer dialog.</param>
+        </member>
+        <member name="T:Bonsai.Design.ITypeVisualizerContext">
+            <summary>
+            Provides additional context information for a <see cref="T:Bonsai.Design.DialogTypeVisualizer"/>,
+            such as the workflow element and a source for subscribing to runtime notifications.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.ITypeVisualizerContext.Source">
+            <summary>
+            Gets an <see cref="T:Bonsai.Expressions.InspectBuilder"/> object which can be used to subscribe to
+            runtime notifications and obtain other information about the workflow element
+            being visualized.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.IWorkflowEditorState">
+            <summary>
+            Provides information about the state of the workflow editor.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.IWorkflowEditorState.WorkflowRunning">
+            <summary>
+            Gets a value indicating whether the workflow is running.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Design.IWorkflowEditorState.WorkflowStarted">
+            <summary>
+            Occurs when the workflow starts.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Design.IWorkflowEditorState.WorkflowStopped">
+            <summary>
+            Occurs when the workflow stops.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.MashupSource">
+            <summary>
+            Represents an association between a workflow element and a type visualizer
+            to be combined in a <see cref="T:Bonsai.Design.MashupVisualizer"/>.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MashupSource.#ctor(Bonsai.Expressions.InspectBuilder,Bonsai.Design.DialogTypeVisualizer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.MashupSource"/> class
+            using the specified source and type visualizer.
+            </summary>
+            <param name="source">The source of runtime notifications to be visualized.</param>
+            <param name="visualizer">
+            The type visualizer used to display notifications from the
+            <paramref name="source"/> in the context of the mashup combination.
+            </param>
+        </member>
+        <member name="P:Bonsai.Design.MashupSource.Source">
+            <summary>
+            Gets the source of runtime notifications to be visualized.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.MashupSource.Visualizer">
+            <summary>
+            Gets the type visualizer used to display notifications from the source
+            in the context of the mashup combination.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.MashupSource`1">
+            <summary>
+            Provides a generic type signature which can be used to declare that the
+            specified mashup visualizer type accepts mashup combinations from any
+            type visualizer object.
+            </summary>
+            <typeparam name="TMashupVisualizer">
+            The type visualizer class which can be used to combine with any
+            <see cref="T:Bonsai.Design.DialogTypeVisualizer"/> instance.
+            </typeparam>
+        </member>
+        <member name="T:Bonsai.Design.MashupSource`2">
+            <summary>
+            Represents a generic type signature which can be used to declare an association
+            between the specified mashup visualizer type and compatible type visualizer
+            objects.
+            </summary>
+            <typeparam name="TMashupVisualizer">
+            The type visualizer which will accept to be combined with <typeparamref name="TVisualizer"/>.
+            </typeparam>
+            <typeparam name="TVisualizer">
+            The type visualizer to be combined with <typeparamref name="TMashupVisualizer"/>.
+            </typeparam>
+        </member>
+        <member name="T:Bonsai.Design.MashupSourceCollection">
+            <summary>
+            Represents a collection of visualizer sources to be combined in a
+            mashup visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MashupSourceCollection.Add(Bonsai.Expressions.InspectBuilder,Bonsai.Design.DialogTypeVisualizer)">
+            <summary>
+            Adds a visualizer source to the end of the collection.
+            </summary>
+            <param name="source">The source of runtime notifications to be visualized.</param>
+            <param name="visualizer">
+            The type visualizer used to display notifications from the
+            <paramref name="source"/> in the context of the mashup combination.
+            </param>
+            <returns>
+            A <see cref="T:Bonsai.Design.MashupSource"/> representing the visualizer source
+            being added to the collection.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Design.MashupTypeVisualizer">
+            <summary>
+            Provides the abstract base class for type visualizers which are designed to be
+            combined with a <see cref="T:Bonsai.Design.DialogMashupVisualizer"/>.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MashupTypeVisualizer.Visualize(System.IObservable{System.IObservable{System.Object}},System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.MashupVisualizer">
+            <summary>
+            Provides an abstract base class for a visualizer which can be combined
+            with other visualizers.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.MashupVisualizer.MashupSources">
+            <summary>
+            Gets the collection of visualizer sources combined in the mashup visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MashupVisualizer.Load(System.IServiceProvider)">
+            <summary>
+            Loads type visualizer resources using the specified service provider.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.MashupVisualizer.Unload">
+            <summary>
+            Unloads all type visualizer resources.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MashupVisualizer.LoadMashups(System.IServiceProvider)">
+            <summary>
+            Loads type visualizer resources for all sources combined in the
+            mashup visualizer.
+            </summary>
+            <param name="provider">
+            A service provider object which can be used to obtain visualization,
+            runtime inspection, or other editing services.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.MashupVisualizer.UnloadMashups">
+            <summary>
+            Unloads resources for all sources combined in the mashup visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MashupVisualizer.GetMashupSource(System.Int32,System.Int32)">
+            <summary>
+            Finds the mashup source located at the specified coordinates.
+            </summary>
+            <param name="x">
+            The x-coordinate used to search, in absolute screen coordinates.
+            </param>
+            <param name="y">
+            The y-coordinate used to search, in absolute screen coordinates.
+            </param>
+            <returns>
+            The <see cref="T:Bonsai.Design.MashupSource"/> representing the mashup source
+            located at the specified coordinates, or <see langword="null"/>
+            if there is no source at the specified point.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Design.MemberSelectorEditor">
+            <summary>
+            Provides a user interface editor that displays a dialog for selecting
+            members of a workflow expression type.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MemberSelectorEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.MemberSelectorEditor"/> class.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MemberSelectorEditor.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.MemberSelectorEditor"/> class
+            using either a multi- or single-selection dialog.
+            </summary>
+            <param name="allowMultiSelection">
+            Indicates whether the interface allows selecting multiple members.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.MemberSelectorEditor.#ctor(System.Func{System.Linq.Expressions.Expression,System.Type},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.MemberSelectorEditor"/> class
+            using either a multi- or single-selection dialog and the specified method
+            for selecting the expression type.
+            </summary>
+            <param name="typeSelector">
+            A method for selecting the type from which to select members.
+            </param>
+            <param name="allowMultiSelection">
+            Indicates whether the interface allows selecting multiple members.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.MemberSelectorEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.MemberSelectorEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.MemberSelectorEditorDialog">
+            <summary>
+            Represents a dialog for selecting members of a workflow expression type.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MemberSelectorEditorDialog.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.MemberSelectorEditorDialog"/> class
+            using the specified type.
+            </summary>
+            <param name="type">The type from which to select an inner property.</param>
+        </member>
+        <member name="P:Bonsai.Design.MemberSelectorEditorDialog.Selector">
+            <summary>
+            Gets or sets the selected inner property of the expression type.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MemberSelectorEditorDialog.OnFormClosed(System.Windows.Forms.FormClosedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Design.MemberSelectorEditorDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MemberSelectorEditorDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Design.MemberSelectorEditorDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.MultiMemberSelectorEditor">
+            <summary>
+            Provides a user interface editor that displays a dialog for
+            selecting multiple members of a workflow expression type.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MultiMemberSelectorEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.MultiMemberSelectorEditor"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.MultiMemberSelectorEditorDialog">
+            <summary>
+            Represents a dialog for selecting multiple members of a workflow expression type.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MultiMemberSelectorEditorDialog.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.MultiMemberSelectorEditorDialog"/> class
+            using the specified type.
+            </summary>
+            <param name="type">The type from which to select inner properties.</param>
+        </member>
+        <member name="P:Bonsai.Design.MultiMemberSelectorEditorDialog.Selector">
+            <summary>
+            Gets or sets the selected inner properties of the expression type.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MultiMemberSelectorEditorDialog.ScaleControl(System.Drawing.SizeF,System.Windows.Forms.BoundsSpecified)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.MultiMemberSelectorEditorDialog.OnFormClosed(System.Windows.Forms.FormClosedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Design.MultiMemberSelectorEditorDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.MultiMemberSelectorEditorDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Design.MultiMemberSelectorEditorDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.NumericUpDownEditor">
+            <summary>
+            Provides a user interface editor that displays an up-down control for selecting
+            numeric values.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.NumericUpDownEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.NumericUpDownEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.ObjectTextVisualizer">
+            <summary>
+            Provides a type visualizer for displaying any object type as text.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.ObjectTextVisualizer.TargetInterval">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.ObjectTextVisualizer.ShowBuffer(System.Collections.Generic.IList{System.Reactive.Timestamped{System.Object}})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.ObjectTextVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.ObjectTextVisualizer.AppendDisplayText(System.Text.StringBuilder,System.Object)">
+            <summary>
+            Appends the display text for the specified object to the text buffer.
+            </summary>
+            <param name="stringBuilder">The string builder which receives the display text.</param>
+            <param name="value">The object for which to retrieve the display text.</param>
+        </member>
+        <member name="M:Bonsai.Design.ObjectTextVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.ObjectTextVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.OpenFileNameEditor">
+            <summary>
+            Provides a user interface editor that prompts the user to
+            open a file.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.OpenFileNameEditor.CreateFileDialog">
+            <summary>
+            Initializes the dialog box from which the user can select a file.
+            </summary>
+            <returns>
+            The <see cref="T:System.Windows.Forms.FileDialog"/> object which will display the
+            dialog box from which the user can select a file.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Design.ParsePatternEditor">
+            <summary>
+            Provides a drop-down user interface for selecting available format specifiers
+            which can be passed to the <see cref="M:Bonsai.ExpressionHelper.Parse(System.Linq.Expressions.Expression,System.String)"/> method.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.ParsePatternEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.ParsePatternEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.PathConvert">
+            <summary>
+            Provides static methods for converting project paths.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.PathConvert.GetProjectPath(System.String)">
+            <summary>
+            Converts an absolute path into a relative path, if the absolute path
+            is relative to the project path.
+            </summary>
+            <param name="path">The path to convert.</param>
+            <returns>
+            The project relative path, if the path is absolute but located in
+            any subdirectory of the project path.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Design.PropertyGrid">
+            <summary>
+            Provides a user interface for browsing the properties of an object.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.PropertyGrid.ScaleControl(System.Drawing.SizeF,System.Windows.Forms.BoundsSpecified)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.RichTextEditor">
+            <summary>
+            Provides a user interface editor that displays a rich text box for editing
+            the property value.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.RichTextEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.RichTextEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Design.RichTextEditorDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.RichTextEditorDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Design.RichTextEditorDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.SaveFileNameEditor">
+            <summary>
+            Provides a user interface editor that prompts the user to
+            select a location for saving a file.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.SaveFileNameEditor.CreateFileDialog">
+            <summary>
+            Initializes the dialog box from which the user can select a
+            location for saving a file.
+            </summary>
+            <returns>
+            The <see cref="T:System.Windows.Forms.FileDialog"/> object which will display the
+            dialog box from which the user can select a location for
+            saving a file.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Design.SeekBar">
+            <summary>
+            Represents a horizontal seek bar.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.SeekBar.WndProc(System.Windows.Forms.Message@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.SeekBar.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.SeekBar.OnScroll(System.Windows.Forms.ScrollEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.Slider">
+            <summary>
+            Represents a slider control used to select values from a continuous range.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Slider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.Slider"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Slider.Converter">
+            <summary>
+            Gets or sets the type converter used to convert the slider value to a text representation.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Slider.Minimum">
+            <summary>
+            Gets or sets the lower limit of values in the slider.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Slider.Maximum">
+            <summary>
+            Gets or sets the upper limit of values in the slider.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Slider.DecimalPlaces">
+            <summary>
+            Gets or sets an optional maximum number of decimal places used
+            when formatting the numeric display of the slider.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Slider.Value">
+            <summary>
+            Gets or sets a numeric value which represents the position of the slider.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Design.Slider.ValueChanged">
+            <summary>
+            Occurs when the slider value changes.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Slider.OnSizeChanged(System.EventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Design.Slider.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Slider.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Design.Slider.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.SliderEditor">
+            <summary>
+            Provides a user interface editor that displays a slider for selecting
+            numeric values between a specified range.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.SliderEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.SliderEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.TypeMappingEditor">
+            <summary>
+            Provides a user interface for selecting method overloads from a workflow operator.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.TypeMappingEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.TypeMappingEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Design.TypeMappingEditorDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.TypeMappingEditorDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Design.TypeMappingEditorDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.TypeVisualizerDialog">
+            <summary>
+            Represents a window or panel where a type visualizer can be displayed.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.TypeVisualizerDialog.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.TypeVisualizerDialog"/> class.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.TypeVisualizerDialog.AddControl(System.Windows.Forms.Control)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.TypeVisualizerDialog.OnKeyDown(System.Windows.Forms.KeyEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Design.TypeVisualizerDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.TypeVisualizerDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Design.TypeVisualizerDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.VisualizerMashup">
+            <summary>
+            Represents the association between a workflow element and a mashup type visualizer
+            which can be combined with a <see cref="T:Bonsai.Design.DialogTypeVisualizer"/>.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.VisualizerMashup.#ctor(Bonsai.Expressions.InspectBuilder,Bonsai.Design.MashupTypeVisualizer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.VisualizerMashup"/> class
+            using the specified source and mashup visualizer.
+            </summary>
+            <param name="source">The inspector wrapping the workflow element to be visualized.</param>
+            <param name="visualizer">
+            The type visualizer used to display notifications from the
+            <paramref name="source"/> in the context of the mashup combination.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.VisualizerMashup.#ctor(System.IObservable{System.IObservable{System.Object}},Bonsai.Design.MashupTypeVisualizer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.VisualizerMashup"/> class
+            using the specified source and mashup visualizer.
+            </summary>
+            <param name="source">
+            The observable sequence generating the notifications to be visualized.
+            </param>
+            <param name="visualizer">
+            The type visualizer used to display notifications from the
+            <paramref name="source"/> in the context of the mashup combination.
+            </param>
+        </member>
+        <member name="P:Bonsai.Design.VisualizerMashup.Source">
+            <summary>
+            Gets the observable sequence generating the notifications to be visualized.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.VisualizerMashup.Visualizer">
+            <summary>
+            Gets the type visualizer used to display notifications from the source
+            in the context of the mashup combination.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.VisualizerMashup`1">
+            <summary>
+            Provides a generic type signature which can be used to declare that a
+            concrete <see cref="T:Bonsai.Design.DialogMashupVisualizer"/> type accepts mashup combinations
+            from any <see cref="T:Bonsai.Design.DialogTypeVisualizer"/> class.
+            </summary>
+            <typeparam name="TMashupVisualizer">
+            The type visualizer which will accept to be combined with any
+            <see cref="T:Bonsai.Design.DialogTypeVisualizer"/> class.
+            </typeparam>
+        </member>
+        <member name="T:Bonsai.Design.VisualizerMashup`2">
+            <summary>
+            Represents a generic type signature which can be used to declare an association
+            between a concrete <see cref="T:Bonsai.Design.DialogMashupVisualizer"/> type and a specific
+            <see cref="T:Bonsai.Design.DialogTypeVisualizer"/> class.
+            </summary>
+            <typeparam name="TMashupVisualizer">
+            The type visualizer which will accept to be combined with <typeparamref name="TVisualizer"/>.
+            </typeparam>
+            <typeparam name="TVisualizer">
+            The type visualizer which can be combined with <typeparamref name="TMashupVisualizer"/>.
+            </typeparam>
+        </member>
+        <member name="T:Bonsai.Design.WorkflowComponentEditor">
+            <summary>
+            Provides the abstract base class for a custom workflow component editor.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.WorkflowComponentEditor.EditComponent(System.Object,System.IServiceProvider,System.Windows.Forms.IWin32Window)">
+            <summary>
+            Edits the component and returns a value indicating whether the component was
+            modified using the specified service provider and a parent window handle.
+            </summary>
+            <param name="component">The component to be edited.</param>
+            <param name="provider">
+            A service provider that this editor can use to obtain services.
+            </param>
+            <param name="owner">The window handle which contains any editor dialogs.</param>
+            <returns>
+            <see langword="true"/> if the component was modified; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Design.WorkflowComponentEditor.EditComponent(System.ComponentModel.ITypeDescriptorContext,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.WorkflowComponentEditor.EditComponent(System.ComponentModel.ITypeDescriptorContext,System.Object,System.IServiceProvider,System.Windows.Forms.IWin32Window)">
+            <summary>
+            Edits the component and returns a value indicating whether the component was
+            modified using the specified context and a parent window handle.
+            </summary>
+            <param name="context">
+            An optional context object that can be used to obtain further information about the edit.
+            </param>
+            <param name="component">The component to be edited.</param>
+            <param name="provider">
+            A service provider that this editor can use to obtain services.
+            </param>
+            <param name="owner">The window handle which contains any editor dialogs.</param>
+            <returns>
+            <see langword="true"/> if the component was modified; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+    </members>
+</doc>

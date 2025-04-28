@@ -1,0 +1,690 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bonsai.Arduino</name>
+    </assembly>
+    <members>
+        <member name="T:Bonsai.Arduino.AnalogInput">
+            <summary>
+            Represents an operator that generates a sequence of digitized analog readings
+            from the specified Arduino input pin.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.AnalogInput.PortName">
+            <summary>
+            Gets or sets the name of the serial port used to communicate with the Arduino.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.AnalogInput.Pin">
+            <summary>
+            Gets or sets the analog input pin number from which to take readings.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.AnalogInput.Generate">
+            <summary>
+            Generates an observable sequence of digitized analog values. 
+            </summary>
+            <returns>
+            A sequence of <see cref="T:System.Int32"/> values that report the digitized analog
+            readings from the specified Arduino analog input pin.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Arduino.AnalogInputReceivedEventArgs">
+            <summary>
+            Provides data for the <see cref="E:Bonsai.Arduino.Arduino.AnalogInputReceived"/> event.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.AnalogInputReceivedEventArgs.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Arduino.AnalogInputReceivedEventArgs"/>
+            class using the pin number and analog value received in the analog input message.
+            </summary>
+            <param name="pin">The pin number from which the analog value was sampled.</param>
+            <param name="value">The digitized analog value.</param>
+        </member>
+        <member name="P:Bonsai.Arduino.AnalogInputReceivedEventArgs.Pin">
+            <summary>
+            Gets the pin number from which the analog value was sampled.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.AnalogInputReceivedEventArgs.Value">
+            <summary>
+            Gets the digitized analog value.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Arduino.AnalogOutput">
+            <summary>
+            Represents an operator that writes the sequence of numerical values to the
+            specified Arduino output pin using PWM.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.AnalogOutput.PortName">
+            <summary>
+            Gets or sets the name of the serial port used to communicate with the Arduino.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.AnalogOutput.Pin">
+            <summary>
+            Gets or sets the digital output (PWM) pin number on which to write values.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.AnalogOutput.Process(System.IObservable{System.Int32})">
+            <summary>
+            Writes a sequence of <see cref="T:System.Int32"/> values to the specified Arduino output pin using PWM.
+            </summary>
+            <param name="source">
+            A sequence of <see cref="T:System.Int32"/> values to write into the specified Arduino output pin.
+            </param>
+            <returns>
+            A sequence of the <see cref="T:System.Int32"/> values which have been written into the Arduino
+            output pin.
+            </returns>
+            <remarks>
+            This operator only subscribes to the <paramref name="source"/> sequence after initializing
+            the connection to the Arduino and configuring the output pin mode to PWM.
+            </remarks>
+        </member>
+        <member name="T:Bonsai.Arduino.Arduino">
+            <summary>
+            Represents an Arduino board communicating with the host computer using
+            the Firmata protocol.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.Arduino.DefaultBaudRate">
+            <summary>
+            Represents the default serial baud rate used to communicate with the Arduino.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.Arduino.DefaultSamplingInterval">
+            <summary>
+            Represents the default sampling interval for analog pins.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Arduino.Arduino"/> class using the
+            specified port name.
+            </summary>
+            <param name="portName">The port to use (for example, COM1).</param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Arduino.Arduino"/> class using the
+            specified port name and baud rate.
+            </summary>
+            <param name="portName">The port to use (for example, COM1).</param>
+            <param name="baudRate">The serial baud rate.</param>
+        </member>
+        <member name="E:Bonsai.Arduino.Arduino.AnalogInputReceived">
+            <summary>
+            Occurs when the <see cref="T:Bonsai.Arduino.Arduino"/> object receives a new analog input event.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Arduino.Arduino.DigitalInputReceived">
+            <summary>
+            Occurs when the <see cref="T:Bonsai.Arduino.Arduino"/> object receives a new digital input event.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Arduino.Arduino.SysexReceived">
+            <summary>
+            Occurs when the <see cref="T:Bonsai.Arduino.Arduino"/> object receives a new MIDI SysEx message.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.Arduino.MajorVersion">
+            <summary>
+            Gets the major version of the Firmata firmware reported by the board on initialization.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.Arduino.MinorVersion">
+            <summary>
+            Gets the minor version of the Firmata firmware reported by the board on initialization.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.Arduino.IsOpen">
+            <summary>
+            Gets a value indicating the open or closed status of the <see cref="T:Bonsai.Arduino.Arduino"/> object.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.Open(System.Threading.CancellationToken)">
+            <summary>
+            Opens a new serial port connection to the Arduino board.
+            </summary>
+            <param name="cancellationToken">
+            A <see cref="T:System.Threading.CancellationToken"/> which can be used to cancel the operation.
+            </param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.ReportAnalog(System.Int32,System.Boolean)">
+            <summary>
+            Enables or disables reporting of analog pin values for
+            the specified pin number.
+            </summary>
+            <param name="pin">The number of the pin to configure.</param>
+            <param name="state">
+            <see langword="true"/> if analog reporting for the pin should be enabled;
+            <see langword="false"/> otherwise.
+            </param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.ReportDigital(System.Int32,System.Boolean)">
+            <summary>
+            Enables or disables reporting of digital pin changes for
+            the specified digital port in the Arduino.
+            </summary>
+            <param name="port">The digital port to configure.</param>
+            <param name="state">
+            <see langword="true"/> if reporting of digital pin changes on the
+            specified port should be enabled; <see langword="false"/> otherwise.
+            </param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.PinMode(System.Int32,Bonsai.Arduino.PinMode)">
+            <summary>
+            Sets the mode of an individual Arduino pin.
+            </summary>
+            <param name="pin">The number of the pin to configure.</param>
+            <param name="mode">The pin mode.</param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.DigitalRead(System.Int32)">
+            <summary>
+            Reads the current state of the specified digital input pin.
+            </summary>
+            <param name="pin">The number of the digital pin to read.</param>
+            <returns>
+            <see langword="true"/> if the pin is HIGH; <see langword="false"/> if the pin is LOW.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.DigitalWrite(System.Int32,System.Boolean)">
+            <summary>
+            Sets the state of the specified digital output pin.
+            </summary>
+            <param name="pin">The number of the digital pin to write.</param>
+            <param name="value">
+            <see langword="true"/> to set the pin HIGH; <see langword="false"/> to set the pin LOW.
+            </param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.DigitalPortRead(System.Int32)">
+            <summary>
+            Reads the current state of all the digital pins in the specified port.
+            </summary>
+            <param name="port">The number of the digital port (i.e. collection of 8 pins) to read.</param>
+            <returns>
+            A <see cref="T:System.Byte"/> value where each bit represents the state of one pin in the digital port.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.DigitalPortWrite(System.Int32,System.Byte)">
+            <summary>
+            Sets the state of all the digital output pins in the specified
+            port simultaneously.
+            </summary>
+            <param name="port">The number of the digital port (i.e. collection of 8 pins) to write.</param>
+            <param name="value">
+            A <see cref="T:System.Byte"/> value where each bit will be used to set the state of one pin in the digital port.
+            </param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.AnalogRead(System.Int32)">
+            <summary>
+            Returns the current value of the specified analog pin.
+            </summary>
+            <param name="pin">The number of the analog pin to read.</param>
+            <returns>A <see cref="T:System.Int32"/> value representing a digitized analog measurement.</returns>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.AnalogWrite(System.Int32,System.Int32)">
+            <summary>
+            Writes an analog value as a PWM wave to the specified digital output pin.
+            </summary>
+            <param name="pin">The number of the digital pin to write.</param>
+            <param name="value">A <see cref="T:System.Int32"/> value used to update the PWM signal.</param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.SamplingInterval(System.Int32)">
+            <summary>
+            Sets the sampling rate for reporting analog and I2C data in the main firmware loop.
+            </summary>
+            <param name="milliseconds">
+            The sampling interval, in milliseconds, between analog and I2C measurements.
+            </param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.SendSysex(System.Byte,System.Byte[])">
+            <summary>
+            Sends the specified MIDI SysEx command using the specified arguments.
+            </summary>
+            <param name="command">A <see cref="T:System.Byte"/> value indicating the SysEx command ID.</param>
+            <param name="args">The optional extended payload sent to configure the SysEx command.</param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.I2CConfig(System.Byte[])">
+            <summary>
+            Configures I2C settings such as delay time and power pins.
+            </summary>
+            <param name="args">
+            The I2C configuration arguments. The first two bytes are used
+            to configure the optional delay time, in microseconds, between
+            writing to the I2C register, and reading the data from the device.
+            </param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.I2CWrite(System.Int32,System.Byte[])">
+            <summary>
+            Writes a data payload to the I2C device with the specified address.
+            </summary>
+            <param name="address">The address of the slave device in the I2C bus.</param>
+            <param name="data">The data payload to write to the device.</param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.I2CRequest(System.Int32,Bonsai.Arduino.I2CRequestMode,System.Byte[])">
+            <summary>
+            Sends a request to the I2C device with the specified address.
+            </summary>
+            <param name="address">The address of the slave device in the I2C bus.</param>
+            <param name="mode">The read/write mode of the request.</param>
+            <param name="data">The data payload for the I2C request.</param>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.GetPortNumber(System.Int32)">
+            <summary>
+            Gets the digital port number for the specified pin.
+            </summary>
+            <param name="pin">The pin number for which to retrieve the digital port.</param>
+            <returns>A <see cref="T:System.Int32"/> identifier for the digital port containing the specified pin.</returns>
+        </member>
+        <member name="M:Bonsai.Arduino.Arduino.Close">
+            <summary>
+            Closes the port connection, sets the <see cref="P:Bonsai.Arduino.Arduino.IsOpen"/>
+            property to <see langword="false"/> and disposes of the
+            internal <see cref="T:System.IO.Ports.SerialPort"/> object.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Arduino.PinMode">
+            <summary>
+            Specifies the mode of an individual Arduino pin.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.PinMode.Input">
+            <summary>
+            The digital pin is configured as INPUT.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.PinMode.Output">
+            <summary>
+            The digital pin is configured as OUTPUT.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.PinMode.Analog">
+            <summary>
+            The analog pin is configured in analog input mode.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.PinMode.Pwm">
+            <summary>
+            The digital pin is configured in PWM output mode.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.PinMode.Servo">
+            <summary>
+            The digital pin is configured in Servo output mode.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.PinMode.Shift">
+            <summary>
+            The pin is configured as a data pin in shiftOut/shiftIn mode.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.PinMode.I2C">
+            <summary>
+            The pin is configured to access I2C devices.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.PinMode.OneWire">
+            <summary>
+            The pin is configured as a 1-wire bus master.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.PinMode.Stepper">
+            <summary>
+            The pin is configured for stepper motor control.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.PinMode.Encoder">
+            <summary>
+            The pin is configured for a rotary encoder.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.PinMode.Serial">
+            <summary>
+            The pin is configured for serial communication.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.PinMode.InputPullUp">
+            <summary>
+            The digital pin is configured as INPUT_PULLUP.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Arduino.I2CRequestMode">
+            <summary>
+            Specifies the read/write mode for I2C requests.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.I2CRequestMode.Write">
+            <summary>
+            A request to write data to the device.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.I2CRequestMode.ReadOnce">
+            <summary>
+            A request to read one data sample from the device.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.I2CRequestMode.ReadContinuously">
+            <summary>
+            A request to read and report data continuously from the device.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Arduino.I2CRequestMode.StopReading">
+            <summary>
+            A request to stop reading data from the device.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Arduino.ArduinoConfiguration">
+            <summary>
+            Represents configuration settings used to initialize a Firmata serial connection.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.ArduinoConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Arduino.ArduinoConfiguration"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.ArduinoConfiguration.PortName">
+            <summary>
+            Gets or sets the name of the serial port.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.ArduinoConfiguration.BaudRate">
+            <summary>
+            Gets or sets the serial baud rate.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.ArduinoConfiguration.SamplingInterval">
+            <summary>
+            Gets or sets the sampling interval, in milliseconds, between analog and I2C measurements.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Arduino.ArduinoConfigurationCollection">
+            <summary>
+            Represents a collection of Firmata configuration settings, indexed by port name.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.ArduinoConfigurationCollection.GetKeyForItem(Bonsai.Arduino.ArduinoConfiguration)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Arduino.CreateArduino">
+            <summary>
+            Represents an operator that creates a connection to an Arduino board
+            using the Firmata protocol.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.CreateArduino.Name">
+            <summary>
+            Gets or sets the optional alias for the Arduino board.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.CreateArduino.PortName">
+            <summary>
+            Gets or sets the name of the serial port used to communicate with the Arduino.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.CreateArduino.BaudRate">
+            <summary>
+            Gets or sets the serial baud rate.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.CreateArduino.SamplingInterval">
+            <summary>
+            Gets or sets the sampling interval, in milliseconds, between analog and I2C measurements.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.CreateArduino.Generate">
+            <summary>
+            Generates an observable sequence that contains the Firmata connection object.
+            </summary>
+            <returns>
+            A sequence containing a single instance of the <see cref="T:Bonsai.Arduino.Arduino"/> class
+            representing the Firmata connection.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Arduino.DigitalInput">
+            <summary>
+            Represents an operator that generates a sequence of digital state
+            transitions from the specified Arduino input pin.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.DigitalInput.PortName">
+            <summary>
+            Gets or sets the name of the serial port used to communicate with the Arduino.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.DigitalInput.Pin">
+            <summary>
+            Gets or sets the digital input pin number from which to take readings.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.DigitalInput.Generate">
+            <summary>
+            Configures the digital pin as INPUT and generates an observable
+            sequence of all its state transitions.
+            </summary>
+            <returns>
+            A sequence of <see cref="T:System.Boolean"/> values that report the binary state
+            transitions of the specified Arduino input pin: <see langword="true"/>
+            if the pin is now HIGH; <see langword="false"/> if the pin is now LOW.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Arduino.DigitalInputReceivedEventArgs">
+            <summary>
+            Provides data for the <see cref="E:Bonsai.Arduino.Arduino.DigitalInputReceived"/> event.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.DigitalInputReceivedEventArgs.#ctor(System.Int32,System.Byte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Arduino.DigitalInputReceivedEventArgs"/>
+            class using the port number and port pin state received in the digital input message.
+            </summary>
+            <param name="port">
+            The number identifying the digital port (i.e. collection of 8 pins) from which
+            the state transition event originated.
+            </param>
+            <param name="state">
+            The state of all the digital input pins in the specified port at the time the
+            transition occurred.
+            </param>
+        </member>
+        <member name="P:Bonsai.Arduino.DigitalInputReceivedEventArgs.Port">
+            <summary>
+            Gets the number identifying the digital port from which the event originated.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.DigitalInputReceivedEventArgs.State">
+            <summary>
+            Gets the state of all the digital input pins in the specified port at the time
+            the transition occurred.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Arduino.DigitalOutput">
+            <summary>
+            Represents an operator that writes the sequence of digital state transitions
+            to the specified Arduino output pin.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.DigitalOutput.PortName">
+            <summary>
+            Gets or sets the name of the serial port used to communicate with the Arduino.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.DigitalOutput.Pin">
+            <summary>
+            Gets or sets the digital output pin number on which to write the state values.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.DigitalOutput.Process(System.IObservable{System.Boolean})">
+            <summary>
+            Writes a sequence of binary states to the specified Arduino digital output pin.
+            </summary>
+            <param name="source">
+            A sequence of <see cref="T:System.Boolean"/> values used to update the state of the specified
+            Arduino output pin. If a value in the sequence is <see langword="true"/>, the pin
+            will be set to HIGH; otherwise, the pin will be set to LOW.
+            </param>
+            <returns>
+            A sequence of the <see cref="T:System.Boolean"/> values which have been written into the Arduino
+            output pin.
+            </returns>
+            <remarks>
+            This operator only subscribes to the <paramref name="source"/> sequence after
+            initializing the connection to the Arduino and configuring the digital pin mode
+            to OUTPUT.
+            </remarks>
+        </member>
+        <member name="T:Bonsai.Arduino.InputPullUp">
+            <summary>
+            Represents an operator that generates a sequence of digital state transitions
+            from the specified Arduino input pin in pull-up mode.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.InputPullUp.PortName">
+            <summary>
+            Gets or sets the name of the serial port used to communicate with the Arduino.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.InputPullUp.Pin">
+            <summary>
+            Gets or sets the digital input pin number from which to take readings.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.InputPullUp.Generate">
+            <summary>
+            Configures the digital pin as INPUT_PULLUP and generates an observable
+            sequence of all its state transitions.
+            </summary>
+            <returns>
+            A sequence of <see cref="T:System.Boolean"/> values that report the binary state
+            transitions of the specified Arduino input pin: <see langword="true"/>
+            if the pin is now HIGH; <see langword="false"/> if the pin is now LOW.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Arduino.ReceiveSysex">
+            <summary>
+            Represents an operator that generates a sequence of system exclusive messages
+            received from the specified Arduino.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.ReceiveSysex.PortName">
+            <summary>
+            Gets or sets the name of the serial port used to communicate with the Arduino.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.ReceiveSysex.Feature">
+            <summary>
+            Gets or sets the feature ID used to identify the system exclusive message payload.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.ReceiveSysex.Generate">
+            <summary>
+            Generates an observable sequence of all the system exclusive messages with the
+            specified feature ID received from the Arduino.
+            </summary>
+            <returns>
+            A sequence of <see cref="T:System.Byte"/> arrays containing the payload data which was
+            included with each system exclusive message received from the Arduino.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Arduino.SendSysex">
+            <summary>
+            Represents an operator that sends a sequence of system exclusive messages to the specified Arduino.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.SendSysex.PortName">
+            <summary>
+            Gets or sets the name of the serial port used to communicate with the Arduino.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.SendSysex.Feature">
+            <summary>
+            Gets or sets the feature ID used to identify the system exclusive message payload.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.SendSysex.Process(System.IObservable{System.Byte[]})">
+            <summary>
+            Writes a sequence of system exclusive messages to the specified Arduino.
+            </summary>
+            <param name="source">
+            A sequence of <see cref="T:System.Byte"/> arrays specifying the payload data to include in each
+            of the system exclusive messages sent to the Arduino. The specified feature ID will
+            be used to identify each message.
+            </param>
+            <returns>
+            A sequence of <see cref="T:System.Byte"/> arrays containing the payload data which was
+            included with each system exclusive message sent to the Arduino.
+            </returns>
+            <remarks>
+            This operator only subscribes to the <paramref name="source"/> sequence after
+            initializing the connection to the Arduino.
+            </remarks>
+        </member>
+        <member name="T:Bonsai.Arduino.ServoOutput">
+            <summary>
+            Represents an operator that writes a sequence of angular positions to control
+            a servomotor connected to an Arduino output pin.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.ServoOutput.PortName">
+            <summary>
+            Gets or sets the name of the serial port used to communicate with the Arduino.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.ServoOutput.Pin">
+            <summary>
+            Gets or sets the digital output pin number to which the servo is connected.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.ServoOutput.Process(System.IObservable{System.Int32})">
+            <summary>
+            Writes a sequence of angular position values to control a servomotor connected to the
+            specified Arduino output pin.
+            </summary>
+            <param name="source">
+            A sequence of <see cref="T:System.Int32"/> values specifying angular positions, in degrees from
+            0 to 180, used to control the servomotor connected to the specified Arduino output pin.
+            </param>
+            <returns>
+            A sequence of <see cref="T:System.Int32"/> values containing the angular positions which have been
+            used to control the servomotor connected to the specified Arduino output pin.
+            </returns>
+            <remarks>
+            This operator only subscribes to the <paramref name="source"/> sequence after initializing
+            the connection to the Arduino and configuring the digital pin as a Servo output.
+            </remarks>
+        </member>
+        <member name="T:Bonsai.Arduino.SysexReceivedEventArgs">
+            <summary>
+            Provides data for the <see cref="E:Bonsai.Arduino.Arduino.SysexReceived"/> event.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Arduino.SysexReceivedEventArgs.#ctor(System.Byte,System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Arduino.SysexReceivedEventArgs"/>
+            class using the specified feature ID and optional data payload.
+            </summary>
+            <param name="feature">
+            The identifier of the system exclusive (SysEx) feature received in
+            the message event.
+            </param>
+            <param name="args">
+            The data payload received together with the SysEx message.
+            </param>
+        </member>
+        <member name="P:Bonsai.Arduino.SysexReceivedEventArgs.Feature">
+            <summary>
+            Gets the identifier of the system exclusive (SysEx) feature received in
+            the message event.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Arduino.SysexReceivedEventArgs.Args">
+            <summary>
+            Gets the data payload received together with the SysEx message.
+            </summary>
+        </member>
+    </members>
+</doc>

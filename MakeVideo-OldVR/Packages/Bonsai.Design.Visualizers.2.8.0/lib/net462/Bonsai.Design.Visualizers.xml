@@ -1,0 +1,713 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bonsai.Design.Visualizers</name>
+    </assembly>
+    <members>
+        <member name="T:Bonsai.Design.Visualizers.BarGraphBuilder">
+            <summary>
+            Represents an operator that configures a visualizer to plot each element
+            of the sequence as a bar graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.BarGraphBuilder.IndexSelector">
+            <summary>
+            Gets or sets the name of the property that will be used as index for the graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.BarGraphBuilder.ValueSelector">
+            <summary>
+            Gets or sets the names of the properties that will be displayed in the graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.BarGraphBuilder.BaseAxis">
+            <summary>
+            Gets or sets a value specifying the axis on which the bars in the graph will be displayed.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.BarGraphBuilder.BarType">
+            <summary>
+            Gets or sets a value specifying how the different bars in the graph will be visually arranged.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.BarGraphBuilder.Capacity">
+            <summary>
+            Gets or sets the optional capacity used for rolling bar graphs. If no capacity is specified,
+            all data points will be displayed.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.BarGraphBuilder.Min">
+            <summary>
+            Gets or sets a value specifying a fixed lower limit for the y-axis range.
+            If no fixed range is specified, the graph limits can be edited online.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.BarGraphBuilder.Max">
+            <summary>
+            Gets or sets a value specifying a fixed upper limit for the y-axis range.
+            If no fixed range is specified, the graph limits can be edited online.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.BarGraphBuilder.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <summary>
+            Builds the expression tree for configuring and calling the
+            bar graph visualizer on the specified input argument.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Design.Visualizers.BarGraphView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.BarGraphView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.BarGraphView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.BarGraphVisualizer">
+            <summary>
+            Provides a type visualizer to display an object as a bar graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.BarGraphVisualizer.Capacity">
+            <summary>
+            Gets or sets the maximum number of data points displayed at any one moment
+            in the bar graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.BarGraphVisualizer.Min">
+            <summary>
+            Gets or sets the lower limit of the y-axis range when using a fixed scale.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.BarGraphVisualizer.Max">
+            <summary>
+            Gets or sets the upper limit of the y-axis range when using a fixed scale.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.BarGraphVisualizer.AutoScale">
+            <summary>
+            Gets or sets a value indicating whether the y-axis range should be recalculated
+            automatically as the graph updates.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.BarGraphVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.BarGraphVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.BarGraphVisualizer.SequenceCompleted">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.BarGraphVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.BooleanTimeSeriesVisualizer">
+            <summary>
+            Provides a type visualizer for boolean time series data.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.BooleanTimeSeriesVisualizer.Capacity">
+            <summary>
+            Gets or sets the maximum number of time points displayed at any one moment in the graph.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.ChartControl">
+            <summary>
+            Provides a legacy graph control type.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.GraphControl">
+            <summary>
+            Provides a dynamic graph control with a built-in color cycle palette.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.GraphControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.Visualizers.GraphControl"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.GraphControl.AutoScaleAxis">
+            <summary>
+            Gets or sets a value indicating whether to recalculate the axis range automatically
+            when redrawing the graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.GraphControl.MouseDown">
+            <summary>
+            Occurs when the mouse pointer is over the control and a mouse button is pressed.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.GraphControl.MouseUp">
+            <summary>
+            Occurs when the mouse pointer is over the control and a mouse button is released.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.GraphControl.MouseMove">
+            <summary>
+            Occurs when the mouse pointer is moved over the control.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.GraphControl.GetNextColor">
+            <summary>
+            Returns the next color in the color cycle, and increments the color index.
+            </summary>
+            <returns>
+            A <see cref="T:System.Drawing.Color"/> value representing the next color in the color cycle.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.GraphControl.GetColor(System.Int32)">
+            <summary>
+            Returns the color in the color cycle at the specified index.
+            </summary>
+            <param name="colorIndex">The index of the color to retrieve.</param>
+            <returns>
+            A <see cref="T:System.Drawing.Color"/> value representing the color at the specified
+            index of the color cycle.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.GraphControl.ResetColorCycle">
+            <summary>
+            Resets the color cycle to the first color in the palette.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.GraphControl.SetLayout(ZedGraph.PaneLayout)">
+            <summary>
+            Sets the auto layout strategy for graphs with multiple panes.
+            </summary>
+            <param name="layout">
+            Specifies the auto layout options for graphs with multiple panes.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.GraphControl.SetLayout(System.Int32,System.Int32)">
+            <summary>
+            Sets the number of rows and columns in the layout explicitly for
+            graphs with multiple panes.
+            </summary>
+            <param name="rows">The number of rows in the pane layout.</param>
+            <param name="columns">The number of columns in the pane layout.</param>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.GraphControl.GetNormalizedRectangle(System.Drawing.RectangleF,System.Drawing.Point,System.Drawing.Point)">
+            <summary>
+            Computes a rectangle defined by the specified points which is also contained inside
+            the pane boundaries.
+            </summary>
+            <param name="bounds">The bounds of the pane on which to contain the rectangle.</param>
+            <param name="p1">The first point defining the selected rectangle.</param>
+            <param name="p2">The second point defining the selected rectangle.</param>
+            <returns>
+            A <see cref="T:System.Drawing.Rectangle"/> which is contained inside the pane boundaries and is
+            defined by the specified points.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.GraphControl.UpdateRubberBand(System.Drawing.Rectangle,System.Drawing.Rectangle)">
+            <summary>
+            Updates the state of the rubber band selection overlay.
+            </summary>
+            <param name="bandRect">
+            The location and size of the rubber band selection.
+            </param>
+            <param name="invalidateRect">
+            The region of the control that should be invalidated following the rubber band
+            update operation. See the <see cref="M:System.Windows.Forms.Control.Invalidate(System.Drawing.Rectangle)"/> method.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.GraphControl.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.GraphControl.OnHandleDestroyed(System.EventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.LineGraphBuilder">
+            <summary>
+            Represents an operator that configures a visualizer to plot each element
+            of the sequence as a line graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphBuilder.ValueSelector">
+            <summary>
+            Gets or sets the names of the properties to be displayed in the graph.
+            Each selected property must have a point pair compatible type.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphBuilder.SymbolType">
+            <summary>
+            Gets or sets the optional symbol type to use for the line graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphBuilder.LineWidth">
+            <summary>
+            Gets or sets the width, in points, to be used for the line graph. Use a value of zero to hide the line.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphBuilder.Capacity">
+            <summary>
+            Gets or sets the optional capacity used for rolling line graphs. If no capacity is specified, all data points will be displayed.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphBuilder.XMin">
+            <summary>
+            Gets or sets a value specifying a fixed lower limit for the x-axis range.
+            If no fixed range is specified, the graph limits can be edited online.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphBuilder.XMax">
+            <summary>
+            Gets or sets a value specifying a fixed upper limit for the x-axis range.
+            If no fixed range is specified, the graph limits can be edited online.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphBuilder.YMin">
+            <summary>
+            Gets or sets a value specifying a fixed lower limit for the y-axis range.
+            If no fixed range is specified, the graph limits can be edited online.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphBuilder.YMax">
+            <summary>
+            Gets or sets a value specifying a fixed upper limit for the y-axis range.
+            If no fixed range is specified, the graph limits can be edited online.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.LineGraphBuilder.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <summary>
+            Builds the expression tree for configuring and calling the
+            line graph visualizer on the specified input argument.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Design.Visualizers.LineGraphView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.LineGraphView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.LineGraphView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.LineGraphVisualizer">
+            <summary>
+            Provides a type visualizer to display an object as a line graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphVisualizer.Capacity">
+            <summary>
+            Gets or sets the maximum number of points displayed at any one moment in the graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphVisualizer.XMin">
+            <summary>
+            Gets or sets the lower limit of the x-axis range when using a fixed scale.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphVisualizer.XMax">
+            <summary>
+            Gets or sets the upper limit of the x-axis range when using a fixed scale.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphVisualizer.YMin">
+            <summary>
+            Gets or sets the lower limit of the y-axis range when using a fixed scale.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphVisualizer.YMax">
+            <summary>
+            Gets or sets the upper limit of the y-axis range when using a fixed scale.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphVisualizer.AutoScaleX">
+            <summary>
+            Gets or sets a value indicating whether the x-axis range should be recalculated
+            automatically as the graph updates.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.LineGraphVisualizer.AutoScaleY">
+            <summary>
+            Gets or sets a value indicating whether the y-axis range should be recalculated
+            automatically as the graph updates.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.LineGraphVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.LineGraphVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.LineGraphVisualizer.SequenceCompleted">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.LineGraphVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.RollingGraphBuilder">
+            <summary>
+            Represents an operator that configures a visualizer to plot each element
+            of the sequence as a rolling graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.RollingGraphBuilder.IndexSelector">
+            <summary>
+            Gets or sets the name of the property that will be used as index for the graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.RollingGraphBuilder.ValueSelector">
+            <summary>
+            Gets or sets the names of the properties that will be displayed in the graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.RollingGraphBuilder.SymbolType">
+            <summary>
+            Gets or sets the optional symbol type to use for the line graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.RollingGraphBuilder.LineWidth">
+            <summary>
+            Gets or sets the width, in points, to be used for the line graph. Use a value of zero to hide the line.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.RollingGraphBuilder.Capacity">
+            <summary>
+            Gets or sets the optional capacity used for rolling line graphs. If no capacity is specified,
+            all data points will be displayed.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.RollingGraphBuilder.Min">
+            <summary>
+            Gets or sets a value specifying a fixed lower limit for the y-axis range.
+            If no fixed range is specified, the graph limits can be edited online.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.RollingGraphBuilder.Max">
+            <summary>
+            Gets or sets a value specifying a fixed upper limit for the y-axis range.
+            If no fixed range is specified, the graph limits can be edited online.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.RollingGraphBuilder.ShouldSerializeElementSelector">
+            <summary>
+            Gets a value indicating whether to serialize the element selector property.
+            </summary>
+            <returns>
+            This method always returns <see langword="false"/> as this is an obsolete property.
+            </returns>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.RollingGraphBuilder.ElementSelector">
+            <summary>
+            Gets or sets the names of the properties that will be displayed in the graph.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.RollingGraphBuilder.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <summary>
+            Builds the expression tree for configuring and calling the
+            line graph visualizer on the specified input argument.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Design.Visualizers.RollingGraphView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.RollingGraphView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.RollingGraphView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.RollingGraphVisualizer">
+            <summary>
+            Provides a type visualizer to display an object as a rolling graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.RollingGraphVisualizer.Capacity">
+            <summary>
+            Gets or sets the maximum number of time points displayed at any one moment in the graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.RollingGraphVisualizer.Min">
+            <summary>
+            Gets or sets the lower limit of the y-axis range when using a fixed scale.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.RollingGraphVisualizer.Max">
+            <summary>
+            Gets or sets the upper limit of the y-axis range when using a fixed scale.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.RollingGraphVisualizer.AutoScale">
+            <summary>
+            Gets or sets a value indicating whether the y-axis range should be recalculated
+            automatically as the graph updates.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.RollingGraphVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.RollingGraphVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.RollingGraphVisualizer.Show(System.DateTime,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.RollingGraphVisualizer.SequenceCompleted">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.RollingGraphVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.StateTimeVisualizer">
+            <summary>
+            Provides a type visualizer to display the duration of specific states
+            as a bar graph.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.StateTimeVisualizer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.Visualizers.StateTimeVisualizer"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.StateTimeVisualizer.Graph">
+            <summary>
+            Gets the underlying graph control.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.StateTimeVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.StateTimeVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.StateTimeVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.TableLayoutPanelBuilder">
+            <summary>
+            Represents an operator that specifies a mashup visualizer panel that can be used
+            to arrange other visualizers in a grid.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TableLayoutPanelBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.Visualizers.TableLayoutPanelBuilder"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TableLayoutPanelBuilder.Name">
+            <summary>
+            Gets or sets the name of the visualizer window.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TableLayoutPanelBuilder.ColumnCount">
+            <summary>
+            Gets or sets the number of columns in the visualizer grid layout.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TableLayoutPanelBuilder.RowCount">
+            <summary>
+            Gets or sets the number of rows in the visualizer grid layout.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TableLayoutPanelBuilder.ColumnStyles">
+            <summary>
+            Gets a collection of <see cref="T:System.Windows.Forms.ColumnStyle"/> objects specifying the size
+            ratio of the columns in the visualizer grid layout.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TableLayoutPanelBuilder.RowStyles">
+            <summary>
+            Gets a collection of <see cref="T:System.Windows.Forms.RowStyle"/> objects specifying the size ratio
+            of the rows in the visualizer grid layout.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TableLayoutPanelBuilder.CellSpans">
+            <summary>
+            Gets a collection of <see cref="T:Bonsai.Design.Visualizers.TableLayoutPanelCellSpan"/> objects specifying the
+            column and row span of each cell in the visualizer grid layout.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TableLayoutPanelBuilder.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <summary>
+            Builds the expression tree for configuring and calling the
+            table layout panel visualizer.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.TableLayoutPanelCellSpan">
+            <summary>
+            Represents the vertical and horizontal span of a table layout cell.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TableLayoutPanelCellSpan.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.Visualizers.TableLayoutPanelCellSpan"/> class.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TableLayoutPanelCellSpan.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.Visualizers.TableLayoutPanelCellSpan"/> class
+            using the specified column and row span.
+            </summary>
+            <param name="columnSpan">The number of columns spanned by the table layout cell.</param>
+            <param name="rowSpan">The number of rows spanned by the table layout cell.</param>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TableLayoutPanelCellSpan.ColumnSpan">
+            <summary>
+            Gets the number of columns spanned by this table layout cell.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TableLayoutPanelCellSpan.RowSpan">
+            <summary>
+            Gets the number of rows spanned by this table layout cell.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TableLayoutPanelCellSpan.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.TableLayoutPanelVisualizer">
+            <summary>
+            Provides a type visualizer that can be used to arrange other visualizers in a grid.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TableLayoutPanelVisualizer.GetMashupSource(System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TableLayoutPanelVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TableLayoutPanelVisualizer.LoadMashups(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TableLayoutPanelVisualizer.UnloadMashups">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TableLayoutPanelVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TableLayoutPanelVisualizer.Visualize(System.IObservable{System.IObservable{System.Object}},System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TableLayoutPanelVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.TimeSeriesVisualizer">
+            <summary>
+            Provides a type visualizer for multi-dimensional time series data.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TimeSeriesVisualizer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.Visualizers.TimeSeriesVisualizer"/> class.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TimeSeriesVisualizer.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Design.Visualizers.TimeSeriesVisualizer"/> class
+            using the specified number of dimensions.
+            </summary>
+            <param name="numSeries">
+            The number of dimensions in the time series graph. Each dimension will be
+            plotted on its own visual trace.
+            </param>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TimeSeriesVisualizer.Capacity">
+            <summary>
+            Gets or sets the maximum number of time points displayed at any one moment in the graph.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TimeSeriesVisualizer.Min">
+            <summary>
+            Gets or sets the lower limit of the y-axis range when using a fixed scale.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TimeSeriesVisualizer.Max">
+            <summary>
+            Gets or sets the upper limit of the y-axis range when using a fixed scale.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TimeSeriesVisualizer.AutoScale">
+            <summary>
+            Gets or sets a value indicating whether the y-axis range should be recalculated
+            automatically as the graph updates.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Design.Visualizers.TimeSeriesVisualizer.Graph">
+            <summary>
+            Gets the underlying graph control.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TimeSeriesVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.TimeSeriesVisualizerBase">
+            <summary>
+            Provides a base class for rolling graph visualizers of multi-dimensional
+            time series data.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TimeSeriesVisualizerBase.AddValue(System.DateTime,System.Object[])">
+            <summary>
+            Adds a new data point to the multi-dimensional time series.
+            </summary>
+            <param name="time">The timestamp associated with the data point.</param>
+            <param name="value">
+            An array representing all the attribute dimensions of the data point.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TimeSeriesVisualizerBase.AddValue(System.DateTime,System.Double[])">
+            <summary>
+            Adds a new data point to the multi-dimensional time series.
+            </summary>
+            <param name="time">The timestamp associated with the data point.</param>
+            <param name="value">
+            A <see cref="T:System.Double"/> array representing all the attribute dimensions
+            of the data point.
+            </param>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TimeSeriesVisualizerBase.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TimeSeriesVisualizerBase.Show(System.DateTime,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TimeSeriesVisualizerBase.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TimeSeriesVisualizerBase.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Design.Visualizers.TimestampedTimeSeriesVisualizer`1">
+            <summary>
+            Provides a type visualizer for multi-dimensional timestamped data.
+            </summary>
+            <typeparam name="T">The type of the elements to visualize.</typeparam>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TimestampedTimeSeriesVisualizer`1.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Design.Visualizers.TimestampedTimeSeriesVisualizer`1.Show(System.DateTime,System.Object)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

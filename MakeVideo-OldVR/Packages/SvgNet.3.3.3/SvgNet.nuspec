@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>SvgNet</id>
+    <version>3.3.3</version>
+    <authors>Rafael Teixeira, Mojmír Němeček, Benjamin Peterson</authors>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>svgnet.png</icon>
+    <projectUrl>https://github.com/managed-commons/SvgNet</projectUrl>
+    <description>C# framework for creating SVG images</description>
+    <releaseNotes>End of Life for net461: Bumping up to net462</releaseNotes>
+    <copyright>2003, 2010, 2015-2022 RiskCare Ltd, SvgNet and SvgGdi Bridge Project, Rafael Teixeira, Mojmír Němeček</copyright>
+    <tags>SVG</tags>
+    <repository type="git" url="https://github.com/managed-commons/SvgNet" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.2" />
+      <group targetFramework="net6.0">
+        <dependency id="System.Drawing.Common" version="6.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0-windows7.0" />
+      <group targetFramework="net7.0">
+        <dependency id="System.Drawing.Common" version="7.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net7.0-windows7.0" />
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Drawing.Common" version="6.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="System.Drawing.Common" version="6.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0" />
+      <group targetFramework="net6.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
+      </group>
+      <group targetFramework="net7.0" />
+      <group targetFramework="net7.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
+      </group>
+      <group targetFramework=".NETFramework4.6.2" />
+      <group targetFramework=".NETStandard2.0" />
+      <group targetFramework=".NETStandard2.1" />
+    </frameworkReferences>
+  </metadata>
+</package>

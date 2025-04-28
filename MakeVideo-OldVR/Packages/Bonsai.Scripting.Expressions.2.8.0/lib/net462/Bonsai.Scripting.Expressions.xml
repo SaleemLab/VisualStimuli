@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bonsai.Scripting.Expressions</name>
+    </assembly>
+    <members>
+        <member name="T:Bonsai.Scripting.Expressions.ExpressionCondition">
+            <summary>
+            Represents an operator that uses an expression script to filter the elements
+            of an observable sequence.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.Expressions.ExpressionCondition.Name">
+            <summary>
+            Gets or sets the name of the expression condition.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.Expressions.ExpressionCondition.Description">
+            <summary>
+            Gets or sets a description for the expression condition.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.Expressions.ExpressionCondition.Expression">
+            <summary>
+            Gets or sets the expression that determines which elements to filter.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.Expressions.ExpressionCondition.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Scripting.Expressions.ExpressionSink">
+            <summary>
+            Represents an operator that uses an expression script to invoke an action for
+            each element of an observable sequence.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.Expressions.ExpressionSink.Name">
+            <summary>
+            Gets or sets the name of the expression sink.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.Expressions.ExpressionSink.Description">
+            <summary>
+            Gets or sets a description for the expression sink.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.Expressions.ExpressionSink.Expression">
+            <summary>
+            Gets or sets the expression that determines the action to perform
+            on the input elements.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.Expressions.ExpressionSink.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Scripting.Expressions.ExpressionTransform">
+            <summary>
+            Represents an operator that uses an expression script to transform each
+            element of an observable sequence.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.Expressions.ExpressionTransform.Name">
+            <summary>
+            Gets or sets the name of the expression transform.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.Expressions.ExpressionTransform.Description">
+            <summary>
+            Gets or sets a description for the expression transform.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.Expressions.ExpressionTransform.Expression">
+            <summary>
+            Gets or sets the expression that determines the operation of the transform.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.Expressions.ExpressionTransform.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

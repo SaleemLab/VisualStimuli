@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Bonsai.Numerics</id>
+    <version>0.7.0</version>
+    <title>Bonsai - Numerics Library</title>
+    <authors>Gonçalo Lopes</authors>
+    <licenseUrl>https://bonsai-rx.org/license</licenseUrl>
+    <projectUrl>https://github.com/bonsai-rx/numerics</projectUrl>
+    <iconUrl>https://bonsai-rx.org/assets/images/bonsai.png</iconUrl>
+    <description>Bonsai Library providing methods and algorithms for common numerical computations.</description>
+    <copyright>Copyright © Gonçalo Lopes 2020</copyright>
+    <tags>Bonsai Rx Numerics</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.2">
+        <dependency id="Bonsai.Core" version="2.5.0" exclude="Build,Analyzers" />
+        <dependency id="MathNet.Numerics" version="4.5.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

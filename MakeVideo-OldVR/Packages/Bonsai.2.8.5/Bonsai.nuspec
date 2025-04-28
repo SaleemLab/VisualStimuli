@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Bonsai</id>
+    <version>2.8.5</version>
+    <title>Bonsai</title>
+    <authors>Bonsai Foundation</authors>
+    <licenseUrl>https://bonsai-rx.org/license</licenseUrl>
+    <projectUrl>https://bonsai-rx.org/</projectUrl>
+    <iconUrl>https://bonsai-rx.org/assets/images/bonsai.png</iconUrl>
+    <description>A visual programming language for data stream processing built on top of Rx for .NET.</description>
+    <copyright>Copyright © Bonsai Foundation CIC and Contributors 2011-2024</copyright>
+    <tags>Bonsai Rx Reactive Extensions</tags>
+    <repository type="git" url="https://github.com/bonsai-rx/bonsai" commit="9089b6e3cf3822dc61f5912f9de3b6fb86a19195" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.8">
+        <dependency id="Bonsai.Core" version="2.8.5" exclude="Build,Analyzers" />
+        <dependency id="Bonsai.Design" version="2.8.5" exclude="Build,Analyzers" />
+        <dependency id="Bonsai.Editor" version="2.8.5" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

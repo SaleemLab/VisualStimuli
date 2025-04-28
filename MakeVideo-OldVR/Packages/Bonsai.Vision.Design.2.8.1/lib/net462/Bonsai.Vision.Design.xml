@@ -1,0 +1,1223 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bonsai.Vision.Design</name>
+    </assembly>
+    <members>
+        <member name="T:Bonsai.Vision.Design.BgraScalarConverter">
+            <summary>
+            Provides a type converter to convert scalar BGRA color values
+            to and from various other representations.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.BgraScalarConverter.GetPropertiesSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.BgraScalarConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.BinaryRegionExtremesOverlay">
+            <summary>
+            Provides a type visualizer that overlays the extremities of a binary
+            connected component over an existing image visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.BinaryRegionExtremesOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.BinaryRegionExtremesOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.BinaryRegionExtremesOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.BinaryRegionExtremesVisualizer">
+            <summary>
+            Provides a type visualizer that draws a visual representation of the
+            extremities of a binary connected component.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.BinaryRegionExtremesVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.BinaryRegionExtremesVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.BinaryRegionExtremesVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.CapturePropertyCollectionConverter">
+            <summary>
+            Provides a type converter that converts collections of video capture properties
+            to and from various other representations, and allows real-time value updates.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.CapturePropertyCollectionConverter.GetPropertiesSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.CapturePropertyCollectionConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.CircleOverlay">
+            <summary>
+            Provides a type visualizer that overlays the visual representation of a
+            circle over an existing image visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.CircleOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.CircleOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.CircleOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.CircleVisualizer">
+            <summary>
+            Provides a type visualizer for circle parameters. If the input is a sequence
+            of images, the visualizer will overlay each circle on top of the original image.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.CircleVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.CircleVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.CircleVisualizer.Visualize(System.IObservable{System.IObservable{System.Object}},System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.CircleVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.CompressionParameterCollectionEditor">
+            <summary>
+            Provides a user interface editor that displays a dialog for editing a
+            collection of image compression parameters.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.CompressionParameterCollectionEditor.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.CompressionParameterCollectionEditor"/>
+            class using the specified collection type.
+            </summary>
+            <param name="type">
+            The type of the collection for this editor to edit.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.CompressionParameterCollectionEditor.CreateNewItemTypes">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ConnectedComponentCollectionOverlay">
+            <summary>
+            Provides a type visualizer that overlays the collection of connected
+            components over an existing image visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ConnectedComponentCollectionOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ConnectedComponentCollectionOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ConnectedComponentCollectionOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ConnectedComponentCollectionVisualizer">
+            <summary>
+            Provides a type visualizer that displays the properties of a collection
+            of connected components.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ConnectedComponentCollectionVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ConnectedComponentOverlay">
+            <summary>
+            Provides a type visualizer that overlays a cluster of connected pixels
+            over an existing image visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ConnectedComponentOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ConnectedComponentOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ConnectedComponentOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ConnectedComponentVisualizer">
+            <summary>
+            Provides a type visualizer that displays the properties of a cluster of
+            connected pixels.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ConnectedComponentVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ContourConvexityOverlay">
+            <summary>
+            Provides a type visualizer that overlays the results of contour convexity
+            analysis over an existing image visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ContourConvexityOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ContourConvexityOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ContourConvexityOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ContourConvexityVisualizer">
+            <summary>
+            Provides a type visualizer that displays the results of convexity analysis
+            of a polygonal contour.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ContourConvexityVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ContoursOverlay">
+            <summary>
+            Provides a type visualizer that overlays a hierarchy of polygonal contours
+            over an existing image visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ContoursOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ContoursOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ContoursOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ContoursVisualizer">
+            <summary>
+            Provides a type visualizer that displays the outline of all the polygonal
+            contours in a hierarchy.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ContoursVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ContoursVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.FileCaptureVisualizer">
+            <summary>
+            Provides a type visualizer that displays a seek bar, playback control,
+            and current index for each movie frame.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.FileCaptureVisualizer.VisualizerCanvas">
+            <summary>
+            Gets the graphics canvas used to render the final visualizer output.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.FileCaptureVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.FileCaptureVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.FileCaptureVisualizer.ShowMashup(System.Collections.Generic.IList{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.FileCaptureVisualizer.UpdateValues(System.Collections.Generic.IList{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.FileCaptureVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.HsvScalarConverter">
+            <summary>
+            Provides a type converter to convert scalar HSV color values
+            to and from various other representations.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.HsvScalarConverter.GetPropertiesSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.HsvScalarConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ImageBox">
+            <summary>
+            Represents a graphics accelerated control for displaying an image.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.ImageBox.ImageScale">
+            <summary>
+            Gets or sets the brightness scale factor applied when rendering the image.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.ImageBox.Image">
+            <summary>
+            Gets or sets the image to display.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ImageBox.SetImage(OpenCV.Net.IplImage)">
+            <summary>
+            Updates the image to display in the control.
+            </summary>
+            <param name="image">The image to display.</param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ImageBox.OnLoad(System.EventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ImageBox.OnRenderFrame(System.EventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ImageBox.OnSwapBuffers(System.EventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ImageBox.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ImageMashupVisualizer">
+            <summary>
+            Provides an abstract base class for type visualizers that overlay multiple
+            values into a single image display.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.ImageMashupVisualizer.VisualizerImage">
+            <summary>
+            Gets the image buffer used to construct the displayed visualizer background.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.ImageMashupVisualizer.VisualizerCanvas">
+            <summary>
+            When overridden in a derived class, gets the graphics canvas used to
+            render the final visualizer output.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ImageMashupVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ImageMashupVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ImageMashupVisualizer.ShowMashup(System.Collections.Generic.IList{System.Object})">
+            <summary>
+            Combines the specified collection of values into a single image mashup.
+            </summary>
+            <param name="values">
+            The collection of values to be displayed by the mashup visualizer.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ImageMashupVisualizer.UpdateValues(System.Collections.Generic.IList{System.Object})">
+            <summary>
+            Updates the type visualizer state in preparation for displaying the
+            specified collection of values.
+            </summary>
+            <param name="values">
+            The collection of values to be displayed by the mashup visualizer.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ImageMashupVisualizer.Visualize(System.IObservable{System.IObservable{System.Object}},System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ImageMashupVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageCircleEditor">
+            <summary>
+            Provides a user interface for visually editing circular regions on top of
+            the input image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageCircleEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageCircleEditor"/> class
+            using the input image data source.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageCircleEditor.#ctor(Bonsai.Design.DataSourceTypeEditor.DataSource)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageCircleEditor"/> class
+            using the specified image data source.
+            </summary>
+            <param name="source">
+            Specifies the source of image notifications to the property editor.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageCircleEditor.GetImageSource(System.IObservable{System.IObservable{System.Object}})">
+            <summary>
+            Gets the sequence of images arriving to or from the operator.
+            </summary>
+            <param name="source">
+            An observable sequence that multicasts notifications from all the active
+            subscriptions to the workflow operator.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageCircleEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageCircleEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageOutputCircleEditor">
+            <summary>
+            Provides a user interface for visually editing circular regions on top of
+            the output image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageOutputCircleEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageOutputCircleEditor"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageEllipseEditor">
+            <summary>
+            Provides a user interface for visually editing elliptical regions on top of
+            the input image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageEllipseEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageEllipseEditor"/> class
+            using the input image data source.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageEllipseEditor.#ctor(Bonsai.Design.DataSourceTypeEditor.DataSource)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageEllipseEditor"/> class
+            using the specified image data source.
+            </summary>
+            <param name="source">
+            Specifies the source of image notifications to the property editor.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageEllipseEditor.GetImageSource(System.IObservable{System.IObservable{System.Object}})">
+            <summary>
+            Gets the sequence of images arriving to or from the operator.
+            </summary>
+            <param name="source">
+            An observable sequence that multicasts notifications from all the active
+            subscriptions to the workflow operator.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageEllipseEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageEllipseEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageOutputEllipseEditor">
+            <summary>
+            Provides a user interface for visually editing elliptical regions on top of
+            the output image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageOutputEllipseEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageOutputEllipseEditor"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageEllipseRoiEditor">
+            <summary>
+            Provides an abstract base class for user interface editors that allow
+            visually editing a collection of elliptical regions on top of the active
+            image source.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageEllipseRoiEditor.#ctor(Bonsai.Design.DataSourceTypeEditor.DataSource)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageEllipseRoiEditor"/> class
+            using the specified image data source.
+            </summary>
+            <param name="source">
+            Specifies the source of image notifications to the property editor.
+            </param>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageOverlay">
+            <summary>
+            Provides a type visualizer that overlays a grayscale mask over an existing
+            image visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageQuadrangleEditor">
+            <summary>
+            Provides a user interface for visually editing a quadrangular region on top
+            of the input image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageQuadrangleEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageQuadrangleEditor"/> class.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageQuadrangleEditor.#ctor(Bonsai.Design.DataSourceTypeEditor.DataSource)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageQuadrangleEditor"/> class
+            using the specified image data source.
+            </summary>
+            <param name="source">
+            Specifies the source of image notifications to the property editor.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageQuadrangleEditor.GetImageSource(System.IObservable{System.IObservable{System.Object}})">
+            <summary>
+            Gets the sequence of images arriving to or from the operator.
+            </summary>
+            <param name="source">
+            An observable sequence that multicasts notifications from all the active
+            subscriptions to the workflow operator.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageQuadrangleEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageQuadrangleEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageOutputQuadrangleEditor">
+            <summary>
+            Provides a user interface for visually editing a quadrangular region on top
+            of the output image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageOutputQuadrangleEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageOutputQuadrangleEditor"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageInputQuadrangleEditor">
+            <summary>
+            Provides a user interface for visually editing a quadrangular region on top
+            of the input image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageInputQuadrangleEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageInputQuadrangleEditor"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageRectangleEditor">
+            <summary>
+            Provides a user interface for visually editing a rectangular region on top
+            of the input image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageRectangleEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageRectangleEditor"/> class.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageRectangleEditor.#ctor(Bonsai.Design.DataSourceTypeEditor.DataSource)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageRectangleEditor"/> class
+            using the specified image data source.
+            </summary>
+            <param name="source">
+            Specifies the source of image notifications to the property editor.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageRectangleEditor.GetImageSource(System.IObservable{System.IObservable{System.Object}})">
+            <summary>
+            Gets the sequence of images arriving to or from the operator.
+            </summary>
+            <param name="source">
+            An observable sequence that multicasts notifications from all the active
+            subscriptions to the workflow operator.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageRectangleEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageRectangleEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageOutputRectangleEditor">
+            <summary>
+            Provides a user interface for visually editing a rectangular region on top
+            of the output image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageOutputRectangleEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageOutputRectangleEditor"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageInputRectangleEditor">
+            <summary>
+            Provides a user interface for visually editing a rectangular region on top
+            of the input image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageInputRectangleEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageInputRectangleEditor"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageRoiEditor">
+            <summary>
+            Provides a user interface for visually editing polygonal regions on top of
+            the input image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageRoiEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageRoiEditor"/> class.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageRoiEditor.#ctor(Bonsai.Design.DataSourceTypeEditor.DataSource)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageRoiEditor"/> class
+            using the specified image data source.
+            </summary>
+            <param name="source">
+            Specifies the source of image notifications to the property editor.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageRoiEditor.GetImageSource(System.IObservable{System.IObservable{System.Object}})">
+            <summary>
+            Gets the sequence of images arriving to or from the operator.
+            </summary>
+            <param name="source">
+            An observable sequence that multicasts notifications from all the active
+            subscriptions to the workflow operator.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageRoiEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageRoiEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageOutputRoiEditor">
+            <summary>
+            Provides a user interface for visually editing polygonal regions on top of
+            the output image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageOutputRoiEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageOutputRoiEditor"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageLabeledRoiEditor">
+            <summary>
+            Provides a user interface for visually editing labeled polygonal regions on
+            top of the input image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageLabeledRoiEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageLabeledRoiEditor"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageInputRoiEditor">
+            <summary>
+            Provides a user interface for visually editing a collection of polygonal
+            regions on top of the input image sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageInputRoiEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageInputRoiEditor"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageInputLabeledRoiEditor">
+            <summary>
+            Provides a user interface for visually editing a collection of labeled
+            polygonal regions on top of the active image source.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageInputLabeledRoiEditor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageInputLabeledRoiEditor"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageTexture">
+            <summary>
+            Represents a texture buffer which can be updated with <see cref="T:OpenCV.Net.IplImage"/>
+            data and rendered onto the current viewport as a full-screen quad.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageTexture.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.IplImageTexture"/> class.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageTexture.Update(OpenCV.Net.IplImage)">
+            <summary>
+            Updates the texture buffer with the specified image data.
+            </summary>
+            <param name="image">
+            An <see cref="T:OpenCV.Net.IplImage"/> object containing the pixel data to copy
+            into the texture buffer.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageTexture.Draw">
+            <summary>
+            Binds and draws the texture buffer object as a full-screen quad.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageTexture.Dispose">
+            <summary>
+            Releases all resources used by the <see cref="T:Bonsai.Vision.Design.IplImageTexture"/> class.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.IplImageVisualizer">
+            <summary>
+            Provides a type visualizer that displays the images in a sequence as
+            fast as the active display is refreshed.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.IplImageVisualizer.StatusStripEnabled">
+            <summary>
+            Gets or sets a value indicating whether the status bar should be shown
+            when right-clicking the image visualizer.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.IplImageVisualizer.StatusStrip">
+            <summary>
+            Gets the status bar control used to display additional information for
+            the image visualizer.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.IplImageVisualizer.VisualizerCanvas">
+            <summary>
+            Gets the graphics canvas used to render the final visualizer output.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageVisualizer.ShowMashup(System.Collections.Generic.IList{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageVisualizer.RenderFrame">
+            <summary>
+            Renders all graphics to the visualizer canvas. Override this method
+            to overlay additional graphics elements on top of the image texture.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.IplImageVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.KeyPointCollectionOverlay">
+            <summary>
+            Provides a type visualizer that overlays a collection of key points
+            over an existing image visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.KeyPointCollectionOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.KeyPointCollectionOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.KeyPointCollectionOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.KeyPointCollectionVisualizer">
+            <summary>
+            Provides a type visualizer that displays the collection of key points,
+            or features, extracted from an image frame.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.KeyPointCollectionVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.KeyPointOpticalFlowOverlay">
+            <summary>
+            Provides a type visualizer that overlays the sparse optical flow between key points
+            over an existing image visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.KeyPointOpticalFlowOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.KeyPointOpticalFlowOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.KeyPointOpticalFlowOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.KeyPointOpticalFlowVisualizer">
+            <summary>
+            Provides a type visualizer that displays the sparse optical flow between
+            key points, or features, extracted from an image frame.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.KeyPointOpticalFlowVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.LineSegmentOverlay">
+            <summary>
+            Provides a type visualizer that overlays a collection of line segments
+            over an existing image visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.LineSegmentOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.LineSegmentOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.LineSegmentOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.LineSegmentVisualizer">
+            <summary>
+            Provides a type visualizer for a collection of line segments. If the input
+            is a sequence of images, the visualizer will overlay each line segment on top of
+            the original image.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.LineSegmentVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.LineSegmentVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.LineSegmentVisualizer.Visualize(System.IObservable{System.IObservable{System.Object}},System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.LineSegmentVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.PointOverlay">
+            <summary>
+            Provides a type visualizer that overlays a sequence of points over an
+            existing image visualizer.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.PointOverlay.Tracking">
+            <summary>
+            Gets or sets a value specifying the tracking mode used to overlay the
+            point sequence on the image visualizer.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.PointOverlay.Capacity">
+            <summary>
+            Gets or sets a value specifying how many previous points to include
+            in the point sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.PointOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.PointOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.PointOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.TrackingMode">
+            <summary>
+            Specifies the tracking mode used to overlay a point sequence over an existing
+            image visualizer.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Vision.Design.TrackingMode.None">
+            <summary>
+            Specifies that only the current point should be overlaid on the image.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Vision.Design.TrackingMode.Infinite">
+            <summary>
+            Specifies that all recorded points should be overlaid as an infinite
+            trace on the image.
+            </summary>
+        </member>
+        <member name="F:Bonsai.Vision.Design.TrackingMode.Rolling">
+            <summary>
+            Specifies that a fixed rolling number of the latest points should be
+            overlaid on the image.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.PointVisualizer">
+            <summary>
+            Provides a type visualizer for 2D points.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.PolarTransformEditor.EditComponent(System.ComponentModel.ITypeDescriptorContext,System.Object,System.IServiceProvider,System.Windows.Forms.IWin32Window)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.PolygonOverlay">
+            <summary>
+            Provides a type visualizer that overlays a collection of polygonal regions
+            over an existing image visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.PolygonOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.PolygonOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.PolygonOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.PolygonVisualizer">
+            <summary>
+            Provides a type visualizer for a collection of polygonal regions. If the input
+            is a sequence of images, the visualizer will overlay each rectangle on top of
+            the original image.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.PolygonVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.PolygonVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.PolygonVisualizer.Visualize(System.IObservable{System.IObservable{System.Object}},System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.PolygonVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.RangeScalarConverter">
+            <summary>
+            Provides a type converter to convert scalar values for a range threshold
+            to and from various other representations.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RangeScalarConverter.GetPropertiesSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RangeScalarConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.RectOverlay">
+            <summary>
+            Provides a type visualizer that overlays the visual representation of a
+            rectangle over an existing image visualizer.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RectOverlay.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RectOverlay.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RectOverlay.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.RectVisualizer">
+            <summary>
+            Provides a type visualizer for rectangle parameters. If the input is a sequence
+            of images, the visualizer will overlay each rectangle on top of the original image.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RectVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RectVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RectVisualizer.Visualize(System.IObservable{System.IObservable{System.Object}},System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RectVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.RegionActivityCollectionVisualizer">
+            <summary>
+            Provides a type visualizer that displays a collection of polygonal regions
+            of interest and their activity measurements.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RegionActivityCollectionVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RegionActivityCollectionVisualizer.RenderFrame">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RegionActivityCollectionVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.RegionActivityCollectionVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ScalarConverter">
+            <summary>
+            Provides a type converter to convert scalar values to and from various
+            other representations.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ScalarConverter.GetPropertiesSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ScalarConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ScalarHistogramVisualizer">
+            <summary>
+            Provides a type visualizer for per-channel color histograms.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ScalarHistogramVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ScalarHistogramVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ScalarHistogramVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.ScalarVisualizer">
+            <summary>
+            Provides a type visualizer that displays a sequence of <see cref="T:OpenCV.Net.Scalar"/>
+            values as a time series.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ScalarVisualizer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.ScalarVisualizer"/> class.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.ScalarVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.SeekEventArgs">
+            <summary>
+            Provides data for the <see cref="E:Bonsai.Vision.Design.VideoPlayer.Seek"/> event.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.SeekEventArgs.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.SeekEventArgs"/> class
+            using the specified frame number.
+            </summary>
+            <param name="frameNumber">
+            The zero-based index of the frame the player should move to.
+            </param>
+        </member>
+        <member name="P:Bonsai.Vision.Design.SeekEventArgs.FrameNumber">
+            <summary>
+            Gets the zero-based index of the frame the player should move to.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.TimeIntervalIplImageVisualizer">
+            <summary>
+            Provides a type visualizer that displays images in a sequence and adds
+            the interval between each image in the sequence to the status bar.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.TimeIntervalIplImageVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.TimeIntervalIplImageVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.TimeIntervalIplImageVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.TimestampedIplImageVisualizer">
+            <summary>
+            Provides a type visualizer that displays images in a sequence and adds
+            the timestamp for each image to the status bar.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.TimestampedIplImageVisualizer.Show(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.TimestampedIplImageVisualizer.Load(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.TimestampedIplImageVisualizer.Unload">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Vision.Design.VideoPlayer">
+            <summary>
+            Represents a graphics accelerated video player control.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VideoPlayer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.VideoPlayer"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.VideoPlayer.Canvas">
+            <summary>
+            Gets the graphics canvas used to render video frames.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.VideoPlayer.FrameCount">
+            <summary>
+            Gets or sets the number of frames in the video.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.VideoPlayer.PlaybackRate">
+            <summary>
+            Gets or sets the speed, in frames per second, at which to play
+            images from the video.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.VideoPlayer.Loop">
+            <summary>
+            Gets or sets a value indicating whether the video should loop
+            when the end of the file is reached.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.VideoPlayer.Playing">
+            <summary>
+            Gets or sets a value specifying whether the video is playing.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Vision.Design.VideoPlayer.Seek">
+            <summary>
+            Occurs when the user moves the video seek bar.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Vision.Design.VideoPlayer.PlaybackRateChanged">
+            <summary>
+            Occurs when the <see cref="P:Bonsai.Vision.Design.VideoPlayer.PlaybackRate"/> property value changes.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Vision.Design.VideoPlayer.PlayingChanged">
+            <summary>
+            Occurs when the <see cref="P:Bonsai.Vision.Design.VideoPlayer.Playing"/> property value changes.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Vision.Design.VideoPlayer.LoopChanged">
+            <summary>
+            Occurs when the <see cref="P:Bonsai.Vision.Design.VideoPlayer.Loop"/> property value changes.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VideoPlayer.OnLoad(System.EventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VideoPlayer.OnSeek(Bonsai.Vision.Design.SeekEventArgs)">
+            <summary>
+            Raises the <see cref="E:Bonsai.Vision.Design.VideoPlayer.Seek"/> event.
+            </summary>
+            <param name="e">
+            A <see cref="T:Bonsai.Vision.Design.SeekEventArgs"/> that contains the event data.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VideoPlayer.OnPlayingChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:Bonsai.Vision.Design.VideoPlayer.PlayingChanged"/> event.
+            </summary>
+            <param name="e">
+            A <see cref="T:System.EventArgs"/> that contains the event data.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VideoPlayer.OnPlaybackRateChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:Bonsai.Vision.Design.VideoPlayer.PlaybackRateChanged"/> event.
+            </summary>
+            <param name="e">
+            A <see cref="T:System.EventArgs"/> that contains the event data.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VideoPlayer.Update(OpenCV.Net.IplImage,System.Int32)">
+            <summary>
+            Updates the video player control with the specified frame.
+            </summary>
+            <param name="frame">
+            An <see cref="T:OpenCV.Net.IplImage"/> object containing the pixel data of the
+            current video frame.
+            </param>
+            <param name="frameNumber">
+            The zero-based index of the current video frame.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VideoPlayer.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Vision.Design.VideoPlayer.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VideoPlayer.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VideoPlayer.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bonsai.Vision.Design.VisualizerCanvas">
+            <summary>
+            Provides a control with a graphics context and a simple render
+            loop for scheduling accelerated rendering operations.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VisualizerCanvas.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Vision.Design.VisualizerCanvas"/> class.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Vision.Design.VisualizerCanvas.RenderFrame">
+            <summary>
+            Occurs when it is time to render a frame.
+            </summary>
+        </member>
+        <member name="E:Bonsai.Vision.Design.VisualizerCanvas.SwapBuffers">
+            <summary>
+            Occurs immediately after the front and back buffers are swapped,
+            and the rendered scene is presented to the screen.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Vision.Design.VisualizerCanvas.Canvas">
+            <summary>
+            Gets the control containing the graphics context on which to call
+            render operations.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VisualizerCanvas.OnRenderFrame(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:Bonsai.Vision.Design.VisualizerCanvas.RenderFrame"/> event.
+            </summary>
+            <param name="e">
+            A <see cref="T:System.EventArgs"/> that contains the event data.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VisualizerCanvas.OnSwapBuffers(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:Bonsai.Vision.Design.VisualizerCanvas.SwapBuffers"/> event.
+            </summary>
+            <param name="e">
+            A <see cref="T:System.EventArgs"/> that contains the event data.
+            </param>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VisualizerCanvas.MakeCurrent">
+            <summary>
+            Makes the canvas context current in the calling thread.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VisualizerCanvas.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Vision.Design.VisualizerCanvas.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Vision.Design.VisualizerCanvas.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

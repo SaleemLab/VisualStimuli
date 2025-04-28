@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bonsai.Windows.Input</name>
+    </assembly>
+    <members>
+        <member name="T:Bonsai.Windows.Input.KeyDown">
+            <summary>
+            Represents an operator that produces a value whenever a keyboard key is pressed.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Windows.Input.KeyDown.Filter">
+            <summary>
+            Gets or sets the target keys to be observed.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Windows.Input.KeyDown.SuppressRepetitions">
+            <summary>
+            Gets or sets a value indicating whether to ignore character repetitions
+            when a key is held down.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Windows.Input.KeyDown.Generate">
+            <summary>
+            Returns an observable sequence that produces a value whenever a keyboard
+            key is pressed.
+            </summary>
+            <returns>
+            A sequence of <see cref="T:System.Windows.Forms.Keys"/> values produced whenever a keyboard key
+            is pressed.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Windows.Input.KeyState">
+            <summary>
+            Represents an operator that determines whether a key is up or down at the time of notification.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Windows.Input.KeyState.Filter">
+            <summary>
+            Gets or sets the target key to be observed.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Windows.Input.KeyState.Process``1(System.IObservable{``0})">
+            <summary>
+            Generates a sequence of values indicating whether the target key is up or down
+            each time the <paramref name="source"/> sequence emits a notification.
+            </summary>
+            <typeparam name="TSource">
+            The type of the elements in the <paramref name="source"/> sequence.
+            </typeparam>
+            <param name="source">
+            The sequence containing the notifications indicating when to check whether the key
+            is up or down.
+            </param>
+            <returns>
+            A sequence of <see cref="T:System.Boolean"/> values indicating whether the key is up or down
+            at the time the <paramref name="source"/> sequence emits a notification.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Windows.Input.KeyUp">
+            <summary>
+            Represents an operator that produces a value whenever a keyboard key is released.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Windows.Input.KeyUp.Filter">
+            <summary>
+            Gets or sets the target keys to be observed.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Windows.Input.KeyUp.Generate">
+            <summary>
+            Returns an observable sequence that produces a value whenever a keyboard
+            key is released.
+            </summary>
+            <returns>
+            A sequence of <see cref="T:System.Windows.Forms.Keys"/> values produced whenever a keyboard key
+            is released.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Windows.Input.MouseButtonDown">
+            <summary>
+            Represents an operator that produces a value whenever a mouse button is pressed.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Windows.Input.MouseButtonDown.Filter">
+            <summary>
+            Gets or sets the target buttons to be observed.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Windows.Input.MouseButtonDown.Generate">
+            <summary>
+            Returns an observable sequence that produces a value whenever a mouse
+            button is pressed.
+            </summary>
+            <returns>
+            A sequence of <see cref="T:System.Windows.Forms.MouseButtons"/> values produced whenever a mouse
+            button is pressed.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Windows.Input.MouseButtonUp">
+            <summary>
+            Represents an operator that produces a value whenever a mouse button is released.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Windows.Input.MouseButtonUp.Filter">
+            <summary>
+            Gets or sets the target buttons to be observed.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Windows.Input.MouseButtonUp.Generate">
+            <summary>
+            Returns an observable sequence that produces a value whenever a mouse
+            button is released.
+            </summary>
+            <returns>
+            A sequence of <see cref="T:System.Windows.Forms.MouseButtons"/> values produced whenever a mouse
+            button is released.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Windows.Input.MouseMove">
+            <summary>
+            Represents an operator that generates a sequence of cursor positions whenever the mouse moves.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Windows.Input.MouseMove.Generate">
+            <summary>
+            Generates an observable sequence of cursor positions whenever the mouse moves.
+            </summary>
+            <returns>
+            A sequence of <see cref="T:System.Drawing.Point"/> values representing the current
+            cursor position whenever the mouse moves.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Windows.Input.MouseWheel">
+            <summary>
+            Represents an operator that produces a sequence of values whenever the mouse wheel moves.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Windows.Input.MouseWheel.Generate">
+            <summary>
+            Generates an observable sequence of values whenever the mouse wheel moves.
+            </summary>
+            <returns>
+            A sequence of <see cref="T:System.Int32"/> values representing the current
+            scroll position whenever the mouse wheel moves.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Windows.Input.SendKeys">
+            <summary>
+            Represents an operator that sends one or more keystrokes to the active window as
+            if typed at the keyboard.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Windows.Input.SendKeys.Keys">
+            <summary>
+            Gets or sets the string expression specifying which keystrokes to send.
+            For more details on expression format, see the remarks section of the
+            <see cref="T:System.Windows.Forms.SendKeys"/> class.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Windows.Input.SendKeys.Process``1(System.IObservable{``0})">
+            <summary>
+            Sends one or more keystrokes to the active window, as if typed at the keyboard,
+            when an observable sequence emits a notification.
+            </summary>
+            <typeparam name="TSource">
+            The type of the elements in the <paramref name="source"/> sequence.
+            </typeparam>
+            <param name="source">
+            The sequence containing the notifications indicating when to send the keystrokes to
+            the active window.
+            </param>
+            <returns>
+            An observable sequence that is identical to the <paramref name="source"/> sequence
+            but where there is an additional side effect of sending the specified keystrokes to the
+            active window whenever the sequence emits a notification.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Windows.Input.SetCursorPosition">
+            <summary>
+            Represents an operator that sets the current position of the mouse cursor.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Windows.Input.SetCursorPosition.Process(System.IObservable{System.Drawing.Point})">
+            <summary>
+            Sets the current position of the mouse cursor using an observable sequence
+            of point values.
+            </summary>
+            <param name="source">
+            A sequence of <see cref="T:System.Drawing.Point"/> values representing the position to set the cursor to.
+            </param>
+            <returns>
+            An observable sequence that is identical to the <paramref name="source"/> sequence
+            but where there is an additional side effect of updating the cursor position.
+            </returns>
+        </member>
+    </members>
+</doc>

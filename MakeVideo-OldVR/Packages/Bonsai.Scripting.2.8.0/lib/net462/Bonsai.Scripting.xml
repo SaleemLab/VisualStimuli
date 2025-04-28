@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bonsai.Scripting</name>
+    </assembly>
+    <members>
+        <member name="T:Bonsai.Scripting.ExpressionCondition">
+            <summary>
+            Represents an operator that uses an expression script to filter the elements
+            of an observable sequence.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.ExpressionCondition.Name">
+            <summary>
+            Gets or sets the name of the expression condition.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.ExpressionCondition.Description">
+            <summary>
+            Gets or sets a description for the expression condition.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.ExpressionCondition.Expression">
+            <summary>
+            Gets or sets the expression that determines which elements to filter.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.ExpressionCondition.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Scripting.ExpressionSink">
+            <summary>
+            Represents an operator that uses an expression script to invoke an action for
+            each element of an observable sequence.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.ExpressionSink.Name">
+            <summary>
+            Gets or sets the name of the expression sink.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.ExpressionSink.Description">
+            <summary>
+            Gets or sets a description for the expression sink.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.ExpressionSink.Expression">
+            <summary>
+            Gets or sets the expression that determines the action to perform
+            on the input elements.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.ExpressionSink.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Scripting.ExpressionTransform">
+            <summary>
+            Represents an operator that uses an expression script to transform each
+            element of an observable sequence.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.ExpressionTransform.Name">
+            <summary>
+            Gets or sets the name of the expression transform.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.ExpressionTransform.Description">
+            <summary>
+            Gets or sets a description for the expression transform.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.ExpressionTransform.Expression">
+            <summary>
+            Gets or sets the expression that determines the operation of the transform.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.ExpressionTransform.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Scripting.PythonCondition">
+            <summary>
+            Represents an operator that uses a Python script to filter the elements
+            of an observable sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.PythonCondition.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Scripting.PythonCondition"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonCondition.Script">
+            <summary>
+            Gets or sets the script that determines the criteria for the condition.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.PythonCondition.Process``1(System.IObservable{``0})">
+            <summary>
+            Uses a Python script to filter the elements of an observable sequence.
+            </summary>
+            <typeparam name="TSource">
+            The type of the elements in the <paramref name="source"/> sequence.
+            </typeparam>
+            <param name="source">
+            The observable sequence to filter.
+            </param>
+            <returns>
+            An observable sequence that contains the elements of the <paramref name="source"/>
+            sequence that satisfy the condition.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Scripting.PythonSelectMany">
+            <summary>
+            Represents an operator that uses a Python script to project each element of an
+            observable sequence into multiple elements.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.PythonSelectMany.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Scripting.PythonSelectMany"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonSelectMany.Name">
+            <summary>
+            Gets or sets the name of the python operator.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonSelectMany.Description">
+            <summary>
+            Gets or sets a description for the python operator.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonSelectMany.Script">
+            <summary>
+            Gets or sets the script that determines how each element is projected into a sequence of elements.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.PythonSelectMany.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Scripting.PythonSink">
+            <summary>
+            Represents an operator that uses a Python script to invoke an action for
+            each element of an observable sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.PythonSink.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Scripting.PythonSink"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonSink.Script">
+            <summary>
+            Gets or sets the script that determines the operation of the sink.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.PythonSink.CreateEngine">
+            <summary>
+            Creates an engine for interpreting the Python script.
+            </summary>
+            <returns>
+            An instance of the <see cref="T:Microsoft.Scripting.Hosting.ScriptEngine"/> class used to interpret
+            the script.
+            </returns>
+        </member>
+        <member name="M:Bonsai.Scripting.PythonSink.Process``1(System.IObservable{``0})">
+            <summary>
+            Uses a Python script to invoke an action for each element of an observable sequence.
+            </summary>
+            <typeparam name="TSource">
+            The type of the elements in the <paramref name="source"/> sequence.
+            </typeparam>
+            <param name="source">An observable sequence.</param>
+            <returns>
+            An observable sequence that contains the same elements of the
+            <paramref name="source"/> sequence, with the additional side-effect of
+            invoking the Python script on each element of the original sequence.
+            </returns>
+        </member>
+        <member name="T:Bonsai.Scripting.PythonSource">
+            <summary>
+            Represents an operator that uses a Python script to generate an observable
+            sequence of values.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.PythonSource.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Scripting.PythonSource"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonSource.Name">
+            <summary>
+            Gets or sets the name of the python source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonSource.Description">
+            <summary>
+            Gets or sets a description for the python source.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonSource.Script">
+            <summary>
+            Gets or sets the script that determines the operation of the source.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.PythonSource.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Scripting.PythonTextWriter">
+            <summary>
+            Represents an operator that uses a Python script to write each element
+            of the sequence to a text file.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonTextWriter.FileName">
+            <summary>
+            Gets or sets the name of the output file.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonTextWriter.Append">
+            <summary>
+            Gets or sets a value indicating whether to append or overwrite the
+            specified file.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonTextWriter.Suffix">
+            <summary>
+            Gets or sets a value specifying the optional suffix used to generate
+            file names.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.PythonTextWriter.CreateEngine">
+            <inheritdoc/>
+        </member>
+        <member name="T:Bonsai.Scripting.PythonTransform">
+            <summary>
+            Represents an operator that uses a Python script to transform each
+            element of an observable sequence.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.PythonTransform.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bonsai.Scripting.PythonTransform"/> class.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonTransform.Name">
+            <summary>
+            Gets or sets the name of the python transform.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonTransform.Description">
+            <summary>
+            Gets or sets a description for the python transform.
+            </summary>
+        </member>
+        <member name="P:Bonsai.Scripting.PythonTransform.Script">
+            <summary>
+            Gets or sets the script that determines the operation of the transform.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.PythonTransform.Build(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Bonsai.Scripting.Python</id>
+    <version>0.2.1</version>
+    <title>Bonsai - Python Scripting Library</title>
+    <authors>Bonsai</authors>
+    <licenseUrl>https://github.com/bonsai-rx/python-scripting/blob/main/LICENSE</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://bonsai-rx.org/python-scripting</projectUrl>
+    <iconUrl>https://bonsai-rx.org/assets/images/bonsai.png</iconUrl>
+    <description>Bonsai Scripting Library for interfacing with the Python runtime.</description>
+    <copyright>Copyright © Bonsai Foundation CIC and Contributors 2023</copyright>
+    <tags>Bonsai Rx Scripting Python Python.NET</tags>
+    <repository type="git" url="https://github.com/bonsai-rx/python-scripting.git" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="Bonsai.Core" version="2.7.0" exclude="Build,Analyzers" />
+        <dependency id="pythonnet" version="3.0.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Bonsai.Core" version="2.7.0" exclude="Build,Analyzers" />
+        <dependency id="pythonnet" version="3.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

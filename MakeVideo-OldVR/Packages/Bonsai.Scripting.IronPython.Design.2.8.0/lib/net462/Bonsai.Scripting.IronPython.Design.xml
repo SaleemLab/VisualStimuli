@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bonsai.Scripting.IronPython.Design</name>
+    </assembly>
+    <members>
+        <member name="T:Bonsai.Scripting.IronPython.Design.PythonScriptEditor">
+            <summary>
+            Provides a user interface editor that displays a dialog box for editing
+            the Python script.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.IronPython.Design.PythonScriptEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Bonsai.Scripting.IronPython.Design.PythonScriptEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Bonsai.Scripting.IronPython.Design.PythonScriptEditorDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bonsai.Scripting.IronPython.Design.PythonScriptEditorDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bonsai.Scripting.IronPython.Design.PythonScriptEditorDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

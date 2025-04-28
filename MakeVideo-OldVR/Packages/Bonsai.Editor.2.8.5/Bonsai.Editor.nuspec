@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Bonsai.Editor</id>
+    <version>2.8.5</version>
+    <title>Bonsai - Editor</title>
+    <authors>Bonsai Foundation</authors>
+    <licenseUrl>https://bonsai-rx.org/license</licenseUrl>
+    <projectUrl>https://bonsai-rx.org/</projectUrl>
+    <iconUrl>https://bonsai-rx.org/assets/images/bonsai.png</iconUrl>
+    <description>An integrated development environment for the Bonsai visual programming language.</description>
+    <copyright>Copyright © Bonsai Foundation CIC and Contributors 2011-2024</copyright>
+    <tags>Bonsai Editor Rx Reactive Extensions</tags>
+    <repository type="git" url="https://github.com/bonsai-rx/bonsai" commit="9089b6e3cf3822dc61f5912f9de3b6fb86a19195" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="Bonsai.Design" version="2.8.5" exclude="Build,Analyzers" />
+        <dependency id="Markdig" version="0.18.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Web.WebView2" version="1.0.1823.32" exclude="Build,Analyzers" />
+        <dependency id="SvgNet" version="3.3.3" exclude="Build,Analyzers" />
+        <dependency id="YamlDotNet" version="13.1.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework=".NETFramework4.7.2" />
+    </frameworkAssemblies>
+  </metadata>
+</package>
