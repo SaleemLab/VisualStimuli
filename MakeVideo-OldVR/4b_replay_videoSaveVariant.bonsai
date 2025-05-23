@@ -321,7 +321,7 @@
               </PropertyMappings>
             </Expression>
             <Expression xsi:type="io:CsvReader">
-              <io:FileName>Replay\Corridor&amp;SpherePosition_2020-09-24T16_31_24.csv</io:FileName>
+              <io:FileName>Replay\Corridor&amp;SpherePosition_2020-09-24T16_31_18.csv</io:FileName>
               <io:SkipRows>0</io:SkipRows>
             </Expression>
             <Expression xsi:type="Parse">
@@ -357,7 +357,7 @@
                   </Expression>
                   <Expression xsi:type="LessThan">
                     <Operand xsi:type="DoubleProperty">
-                      <Value>209</Value>
+                      <Value>229</Value>
                     </Operand>
                   </Expression>
                   <Expression xsi:type="WorkflowOutput" />
@@ -647,7 +647,7 @@
                   <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawTexturedModel.bonsai">
                     <TranslationX>0</TranslationX>
                     <TranslationY>-1.99</TranslationY>
-                    <TranslationZ>60</TranslationZ>
+                    <TranslationZ>16.04</TranslationZ>
                     <RotationZ>0</RotationZ>
                     <RotationY>90</RotationY>
                     <RotationX>-90</RotationX>
@@ -974,7 +974,7 @@
             <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawModel.bonsai">
               <TranslationX>0</TranslationX>
               <TranslationY>2</TranslationY>
-              <TranslationZ>12</TranslationZ>
+              <TranslationZ>-32.6</TranslationZ>
               <RotationZ>0</RotationZ>
               <RotationY>0</RotationY>
               <RotationX>0</RotationX>
@@ -1074,23 +1074,12 @@ ViewMatrix.Row3.Yzw as Light)</scr:Expression>
         <FileName>MeshMapping\MeshMapping_Neo_Feb19.csv</FileName>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="gl:RetrieveImage">
-          <gl:Depth>U8</gl:Depth>
-          <gl:Channels>3</gl:Channels>
-          <gl:FlipMode xsi:nil="true" />
-        </Combinator>
+        <Combinator xsi:type="gl:UpdateFrame" />
       </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="gl:ReadPixels">
-            <gl:RegionOfInterest>
-              <gl:X>0</gl:X>
-              <gl:Y>0</gl:Y>
-              <gl:Width>640</gl:Width>
-              <gl:Height>480</gl:Height>
-            </gl:RegionOfInterest>
-          </Combinator>
-        </Builder>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="gl:ReadPixels">
+          <gl:RegionOfInterest xsi:nil="true" />
+        </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:VideoWriter">
@@ -1106,30 +1095,6 @@ ViewMatrix.Row3.Yzw as Light)</scr:Expression>
           </cv:FrameSize>
           <cv:ResizeInterpolation>NearestNeighbor</cv:ResizeInterpolation>
         </Combinator>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="gl:ReadPixels">
-            <gl:RegionOfInterest xsi:nil="true" />
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:VideoWriter">
-            <cv:FileName>ReplayTest.avi</cv:FileName>
-            <cv:Suffix>FileCount</cv:Suffix>
-            <cv:Buffered>true</cv:Buffered>
-            <cv:Overwrite>true</cv:Overwrite>
-            <cv:FourCC>FMP4</cv:FourCC>
-            <cv:FrameRate>30</cv:FrameRate>
-            <cv:FrameSize>
-              <cv:Width>800</cv:Width>
-              <cv:Height>600</cv:Height>
-            </cv:FrameSize>
-            <cv:ResizeInterpolation>NearestNeighbor</cv:ResizeInterpolation>
-          </Combinator>
-        </Builder>
       </Expression>
     </Nodes>
     <Edges>
@@ -1160,12 +1125,9 @@ ViewMatrix.Row3.Yzw as Light)</scr:Expression>
       <Edge From="30" To="32" Label="Source1" />
       <Edge From="31" To="32" Label="Source2" />
       <Edge From="32" To="33" Label="Source1" />
-      <Edge From="32" To="38" Label="Source1" />
       <Edge From="33" To="34" Label="Source1" />
-      <Edge From="34" To="35" Label="Source1" />
       <Edge From="35" To="36" Label="Source1" />
       <Edge From="36" To="37" Label="Source1" />
-      <Edge From="38" To="39" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
