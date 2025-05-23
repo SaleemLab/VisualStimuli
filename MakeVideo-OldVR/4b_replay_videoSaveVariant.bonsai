@@ -194,7 +194,7 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="gl:LoadResources" />
+        <Combinator xsi:type="res:LoadResources" />
       </Expression>
       <Expression xsi:type="WorkflowOutput" />
       <Expression xsi:type="IncludeWorkflow" Path="Extensions\MouseScroll.bonsai">
@@ -647,7 +647,7 @@
                   <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawTexturedModel.bonsai">
                     <TranslationX>0</TranslationX>
                     <TranslationY>-1.99</TranslationY>
-                    <TranslationZ>16.04</TranslationZ>
+                    <TranslationZ>60</TranslationZ>
                     <RotationZ>0</RotationZ>
                     <RotationY>90</RotationY>
                     <RotationX>-90</RotationX>
@@ -974,7 +974,7 @@
             <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawModel.bonsai">
               <TranslationX>0</TranslationX>
               <TranslationY>2</TranslationY>
-              <TranslationZ>-32.6</TranslationZ>
+              <TranslationZ>12</TranslationZ>
               <RotationZ>0</RotationZ>
               <RotationY>0</RotationY>
               <RotationX>0</RotationX>
