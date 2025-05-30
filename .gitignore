@@ -3,3 +3,9 @@
 .bonsai/Gallery
 .bonsai/Packages
 .bonsai/Bonsai.exe*
+
+VisStimMachine/.bonsai/Packages/
+VisStimMachine/.bonsai/Extensions
+VisStimMachine/.bonsai/Gallery
+VisStimMachine/.bonsai/Bonsai.exe*
+Workflows/obj/

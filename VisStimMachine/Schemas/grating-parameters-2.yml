@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=./GratingParameters.json
+gratingDefinition:
+  spatialFrequency: 20
+  temporalFrequency: 5
+  angle: 45
