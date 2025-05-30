@@ -1,0 +1,41 @@
+{
+    "$id": "h...",
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "definitions": {
+        "dualState": {
+            "properties": {
+                "visualStateName": {
+                    "type": "string"
+                },
+                "logicStateName": {
+                    "type": "string"
+                }
+            }
+        },
+        "stateDefinition": {
+            "properties": {
+                "state": {
+                    "$ref": "#/definitions/dualState"
+                },
+                "transitionsTo": {
+                    "$ref": "#/definitions/dualState"
+                }
+            }
+        }
+    },
+    "properties": {
+        "ruleAlias": {
+            "description": "The name or alias of this rule",
+            "default": "undefined",
+            "type": "string"
+        },
+        "stateDefinitions": {
+            "items": {
+                "$ref": "#/definitions/stateDefinition"
+            },
+            "type": "array"
+        }
+    },
+    "title": "StateMachine",
+    "type": "object"
+}
