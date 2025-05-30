@@ -12,12 +12,90 @@ namespace StateMachineDefinition
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
     [Bonsai.CombinatorAttribute()]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    public partial class DualState
+    {
+    
+        private string _visualStateName;
+    
+        private string _logicStateName;
+    
+        public DualState()
+        {
+        }
+    
+        protected DualState(DualState other)
+        {
+            _visualStateName = other._visualStateName;
+            _logicStateName = other._logicStateName;
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="visualStateName")]
+        public string VisualStateName
+        {
+            get
+            {
+                return _visualStateName;
+            }
+            set
+            {
+                _visualStateName = value;
+            }
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="logicStateName")]
+        public string LogicStateName
+        {
+            get
+            {
+                return _logicStateName;
+            }
+            set
+            {
+                _logicStateName = value;
+            }
+        }
+    
+        public System.IObservable<DualState> Process()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new DualState(this)));
+        }
+    
+        public System.IObservable<DualState> Process<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new DualState(this));
+        }
+    
+        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            stringBuilder.Append("visualStateName = " + _visualStateName + ", ");
+            stringBuilder.Append("logicStateName = " + _logicStateName);
+            return true;
+        }
+    
+        public override string ToString()
+        {
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(GetType().Name);
+            stringBuilder.Append(" { ");
+            if (PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(" ");
+            }
+            stringBuilder.Append("}");
+            return stringBuilder.ToString();
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    [Bonsai.CombinatorAttribute()]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     public partial class StateDefinition
     {
     
-        private string _name;
+        private DualState _state;
     
-        private string _transitionsTo;
+        private DualState _transitionsTo;
     
         public StateDefinition()
         {
@@ -25,25 +103,27 @@ namespace StateMachineDefinition
     
         protected StateDefinition(StateDefinition other)
         {
-            _name = other._name;
+            _state = other._state;
             _transitionsTo = other._transitionsTo;
         }
     
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="name")]
-        public string Name
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="state")]
+        public DualState State
         {
             get
             {
-                return _name;
+                return _state;
             }
             set
             {
-                _name = value;
+                _state = value;
             }
         }
     
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [YamlDotNet.Serialization.YamlMemberAttribute(Alias="transitionsTo")]
-        public string TransitionsTo
+        public DualState TransitionsTo
         {
             get
             {
@@ -67,7 +147,7 @@ namespace StateMachineDefinition
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("name = " + _name + ", ");
+            stringBuilder.Append("state = " + _state + ", ");
             stringBuilder.Append("transitionsTo = " + _transitionsTo);
             return true;
         }
@@ -190,6 +270,11 @@ namespace StateMachineDefinition
             });
         }
 
+        public System.IObservable<string> Process(System.IObservable<DualState> source)
+        {
+            return Process<DualState>(source);
+        }
+
         public System.IObservable<string> Process(System.IObservable<StateDefinition> source)
         {
             return Process<StateDefinition>(source);
@@ -209,6 +294,7 @@ namespace StateMachineDefinition
     [System.ComponentModel.DescriptionAttribute("Deserializes a sequence of YAML strings into data model objects.")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Transform)]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<DualState>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<StateDefinition>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<StateMachine>))]
     public partial class DeserializeFromYaml : Bonsai.Expressions.SingleArgumentExpressionBuilder

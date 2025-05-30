@@ -1,5 +1,7 @@
 # yaml-language-server: $schema=./StateMachineDefinition.json
+ruleAlias: undefined
 stateDefinitions: [
+  {state: {visualStateName: Blank, logicStateName: WaitSeconds}, transitionsTo: {visualStateName: Grating, logicStateName: WaitSeconds}},
   {state: {visualStateName: Grating, logicStateName: WaitSeconds}, transitionsTo: {visualStateName: Checkerboard, logicStateName: WaitSeconds}},
   {state: {visualStateName: Checkerboard, logicStateName: WaitSeconds}, transitionsTo: {visualStateName: Grating, logicStateName: WaitSeconds}}, 
 ]
