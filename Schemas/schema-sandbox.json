@@ -1,0 +1,65 @@
+{
+    "$id": "SchemaSandbox",
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "title": "SchemaSandbox",
+    "definitions": {
+        "presentationDefinition": {
+            "properties": {
+                "alias": {
+                    "type": "string"
+                },
+                "texture": {
+                    "type": "string"
+                },
+                "duration": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Duration of this presentation in seconds."
+                },
+                "shouldRotate": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "sessionDefinition": {
+            "properties": {
+                "initiationSequence": {
+                    "$ref": "#/definitions/presentationDefinition"
+                },
+                "loopSequence": {
+                    "items": {
+                        "$ref": "#/definitions/presentationDefinition"
+                    },
+                    "type": "array"
+                },
+                "endSequence": {
+                    "$ref": "#/definitions/presentationDefinition"
+                },
+                "repeats": {
+                    "type": "integer",
+                    "description": "How many times to run the sequence in loopSequence."
+                },
+                "initialRotation": {
+                    "type": "number"
+                },
+                "rotationSteps": {
+                    "items": {
+                        "type": "number"
+                    },
+                    "type": "array"
+                }
+            }
+        }
+    },
+    "properties": {
+        "animalID": {
+            "type": "string"
+        },
+        "loggingPath": {
+            "type": "string"
+        },
+        "sessionDefinition": {
+            "$ref": "#/definitions/sessionDefinition"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=schema-sandbox.json
+animalID: plimbo
+loggingPath: D:/Data/
+
+sessionDefinition:
+  initialRotation: 0
+  rotationSteps: [30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360]
+  initiationSequence: {alias: baseline, texture: blank, duration: 4, shouldRotate: false}
+  loopSequence: [
+    {alias: blank, texture: blank, duration: 1, shouldRotate: false},
+    {alias: shift, texture: txtr1, duration: 1,  shouldRotate: false},
+    {alias: baseline, texture: txtr2, duration: 5, shouldRotate: false}
+  ]
+  endSequence: {alias: baseline, texture: blank,  shouldRotate: false}
+  repeats: 5
