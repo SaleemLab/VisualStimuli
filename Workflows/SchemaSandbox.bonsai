@@ -8,6 +8,7 @@
                  xmlns:p1="clr-namespace:SchemaSandbox;assembly=Extensions"
                  xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
                  xmlns:p2="clr-namespace:;assembly=Extensions"
+                 xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
@@ -197,10 +198,8 @@
             <Expression xsi:type="MemberSelector">
               <Selector>SessionDefinition.RotationSteps</Selector>
             </Expression>
-            <Expression xsi:type="Disable">
-              <Builder xsi:type="Combinator">
-                <Combinator xsi:type="p2:ShuffleArray" />
-              </Builder>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="p2:ShuffleArray" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Merge" />
@@ -266,7 +265,7 @@
                         </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="gl:Timer">
-                            <gl:DueTime>PT5S</gl:DueTime>
+                            <gl:DueTime>PT1S</gl:DueTime>
                           </Combinator>
                         </Expression>
                         <Expression xsi:type="Combinator">
@@ -292,8 +291,63 @@
                         <Expression xsi:type="SubscribeSubject">
                           <Name>PresentationDefinition</Name>
                         </Expression>
+                        <Expression xsi:type="rx:Condition">
+                          <Name>ShouldRotate</Name>
+                          <Workflow>
+                            <Nodes>
+                              <Expression xsi:type="WorkflowInput">
+                                <Name>Source1</Name>
+                              </Expression>
+                              <Expression xsi:type="MemberSelector">
+                                <Selector>Item1.ShouldRotate</Selector>
+                              </Expression>
+                              <Expression xsi:type="WorkflowOutput" />
+                            </Nodes>
+                            <Edges>
+                              <Edge From="0" To="1" Label="Source1" />
+                              <Edge From="1" To="2" Label="Source1" />
+                            </Edges>
+                          </Workflow>
+                        </Expression>
                         <Expression xsi:type="MemberSelector">
                           <Selector>Item2</Selector>
+                        </Expression>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="dsp:Rescale">
+                            <dsp:Min>0</dsp:Min>
+                            <dsp:Max>360</dsp:Max>
+                            <dsp:RangeMin>0</dsp:RangeMin>
+                            <dsp:RangeMax>1</dsp:RangeMax>
+                            <dsp:RescaleType>Linear</dsp:RescaleType>
+                          </Combinator>
+                        </Expression>
+                        <Expression xsi:type="rx:Condition">
+                          <Name>ShouldNotRotate</Name>
+                          <Workflow>
+                            <Nodes>
+                              <Expression xsi:type="WorkflowInput">
+                                <Name>Source1</Name>
+                              </Expression>
+                              <Expression xsi:type="MemberSelector">
+                                <Selector>Item1.ShouldRotate</Selector>
+                              </Expression>
+                              <Expression xsi:type="BitwiseNot" />
+                              <Expression xsi:type="WorkflowOutput" />
+                            </Nodes>
+                            <Edges>
+                              <Edge From="0" To="1" Label="Source1" />
+                              <Edge From="1" To="2" Label="Source1" />
+                              <Edge From="2" To="3" Label="Source1" />
+                            </Edges>
+                          </Workflow>
+                        </Expression>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="DoubleProperty">
+                            <Value>0</Value>
+                          </Combinator>
+                        </Expression>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="rx:Merge" />
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
                           <PropertyMappings>
@@ -301,7 +355,7 @@
                           </PropertyMappings>
                         </Expression>
                         <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawImage.bonsai">
-                          <TextureName>txtr2</TextureName>
+                          <TextureName>blank</TextureName>
                           <ExtentX>2</ExtentX>
                           <ExtentY>2</ExtentY>
                           <LocationX>0</LocationX>
@@ -310,7 +364,7 @@
                           <Angle>0</Angle>
                           <ScaleX>1</ScaleX>
                           <ScaleY>1</ScaleY>
-                          <ShiftX>120</ShiftX>
+                          <ShiftX>0.9166667</ShiftX>
                           <ShiftY>0</ShiftY>
                         </Expression>
                       </Nodes>
@@ -323,13 +377,19 @@
                         <Edge From="6" To="7" Label="Source1" />
                         <Edge From="7" To="8" Label="Source1" />
                         <Edge From="8" To="9" Label="Source1" />
-                        <Edge From="10" To="17" Label="Source1" />
+                        <Edge From="10" To="22" Label="Source1" />
                         <Edge From="11" To="12" Label="Source1" />
                         <Edge From="12" To="13" Label="Source1" />
-                        <Edge From="13" To="17" Label="Source2" />
+                        <Edge From="13" To="22" Label="Source2" />
                         <Edge From="14" To="15" Label="Source1" />
+                        <Edge From="14" To="18" Label="Source1" />
                         <Edge From="15" To="16" Label="Source1" />
-                        <Edge From="16" To="17" Label="Source3" />
+                        <Edge From="16" To="17" Label="Source1" />
+                        <Edge From="17" To="20" Label="Source1" />
+                        <Edge From="18" To="19" Label="Source1" />
+                        <Edge From="19" To="20" Label="Source2" />
+                        <Edge From="20" To="21" Label="Source1" />
+                        <Edge From="21" To="22" Label="Source3" />
                       </Edges>
                     </Workflow>
                   </Expression>
