@@ -9,6 +9,7 @@
                  xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
                  xmlns:p2="clr-namespace:;assembly=Extensions"
                  xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
@@ -620,6 +621,9 @@
                   <Expression xsi:type="WorkflowInput">
                     <Name>Source1</Name>
                   </Expression>
+                  <Expression xsi:type="MulticastSubject">
+                    <Name>CurrentPresentation</Name>
+                  </Expression>
                   <Expression xsi:type="rx:CreateObservable">
                     <Name>DrawPresentation</Name>
                     <Workflow>
@@ -741,7 +745,7 @@
                           </PropertyMappings>
                         </Expression>
                         <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawImage.bonsai">
-                          <TextureName>blank</TextureName>
+                          <TextureName>txtr2</TextureName>
                           <ExtentX>2</ExtentX>
                           <ExtentY>2</ExtentY>
                           <LocationX>0</LocationX>
@@ -750,8 +754,28 @@
                           <Angle>0</Angle>
                           <ScaleX>1</ScaleX>
                           <ScaleY>1</ScaleY>
-                          <ShiftX>1</ShiftX>
+                          <ShiftX>0.75</ShiftX>
                           <ShiftY>0</ShiftY>
+                        </Expression>
+                        <Expression xsi:type="SubscribeSubject">
+                          <Name>DrawCall</Name>
+                        </Expression>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="rx:Take">
+                            <rx:Count>3</rx:Count>
+                          </Combinator>
+                        </Expression>
+                        <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawQuad.bonsai">
+                          <ExtentX>0.1</ExtentX>
+                          <ExtentY>0.1</ExtentY>
+                          <LocationX>1</LocationX>
+                          <LocationY>-1</LocationY>
+                          <Layer>0</Layer>
+                          <Angle>0</Angle>
+                          <ColorR>1</ColorR>
+                          <ColorG>1</ColorG>
+                          <ColorB>1</ColorB>
+                          <ColorA>1</ColorA>
                         </Expression>
                       </Nodes>
                       <Edges>
@@ -776,6 +800,8 @@
                         <Edge From="19" To="20" Label="Source2" />
                         <Edge From="20" To="21" Label="Source1" />
                         <Edge From="21" To="22" Label="Source3" />
+                        <Edge From="23" To="24" Label="Source1" />
+                        <Edge From="24" To="25" Label="Source1" />
                       </Edges>
                     </Workflow>
                   </Expression>
@@ -788,6 +814,7 @@
                   <Edge From="0" To="1" Label="Source1" />
                   <Edge From="1" To="2" Label="Source1" />
                   <Edge From="2" To="3" Label="Source1" />
+                  <Edge From="3" To="4" Label="Source1" />
                 </Edges>
               </Workflow>
             </Expression>
@@ -825,6 +852,19 @@
           </Edges>
         </Workflow>
       </Expression>
+      <Expression xsi:type="rx:BehaviorSubject" TypeArguments="sys:Tuple(sys:Double,p1:PresentationDefinition)">
+        <rx:Name>CurrentPresentation</rx:Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Timestamp" />
+      </Expression>
+      <Expression xsi:type="io:CsvWriter">
+        <io:FileName>cuurent_presentation.csv</io:FileName>
+        <io:Append>false</io:Append>
+        <io:Overwrite>true</io:Overwrite>
+        <io:Suffix>None</io:Suffix>
+        <io:IncludeHeader>false</io:IncludeHeader>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
@@ -853,6 +893,8 @@
       <Edge From="27" To="28" Label="Source1" />
       <Edge From="29" To="30" Label="Source1" />
       <Edge From="30" To="31" Label="Source1" />
+      <Edge From="32" To="33" Label="Source1" />
+      <Edge From="33" To="34" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
