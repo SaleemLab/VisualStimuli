@@ -8,8 +8,8 @@ sessionDefinition:
   initiationSequence: {alias: baseline, texture: blank, duration: 4, shouldRotate: false}
   loopSequence: [
     {alias: blank, texture: blank, duration: 1, shouldRotate: true},
-    {alias: shift, texture: txtr1, duration: 1,  shouldRotate: false},
-    {alias: baseline, texture: txtr2, duration: 5, shouldRotate: false}
+    {alias: shift, texture: txtr1, duration: 1,  shouldRotate: true},
+    {alias: baseline, texture: txtr2, duration: 1, shouldRotate: true}
   ]
   endSequence: {alias: baseline, texture: blank,  shouldRotate: false}
   repeats: 5

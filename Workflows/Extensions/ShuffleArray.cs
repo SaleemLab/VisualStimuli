@@ -12,7 +12,7 @@ public class ShuffleArray
 {
     Random rnd = new Random();
 
-    public IObservable<List<double>> Process(IObservable<List<double>> source)
+    public IObservable<IList<TSource>> Process<TSource>(IObservable<IList<TSource>> source)
     {
         return source.Select(value =>
         {
