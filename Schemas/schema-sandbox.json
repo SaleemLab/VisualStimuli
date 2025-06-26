@@ -60,6 +60,15 @@
         },
         "sessionDefinition": {
             "$ref": "#/definitions/sessionDefinition"
+        },
+        "initiationTime": {
+            "type": "number"
+        },
+        "blankTime": {
+            "type": "number"
+        },
+        "baselineTime": {
+            "type": "number"
         }
     }
 }
