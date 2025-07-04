@@ -10,14 +10,12 @@ namespace StateMachineDefinition
     #pragma warning disable // Disable all warnings
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
-    [Bonsai.CombinatorAttribute()]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class VisualBaseDefinition
+    public abstract partial class VisualBaseDefinition
     {
     
         private string _op;
     
-        public VisualBaseDefinition()
+        protected VisualBaseDefinition()
         {
         }
     
@@ -39,16 +37,6 @@ namespace StateMachineDefinition
             }
         }
     
-        public System.IObservable<VisualBaseDefinition> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new VisualBaseDefinition(this)));
-        }
-    
-        public System.IObservable<VisualBaseDefinition> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new VisualBaseDefinition(this));
-        }
-    
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("op = " + _op);
@@ -66,6 +54,112 @@ namespace StateMachineDefinition
             }
             stringBuilder.Append("}");
             return stringBuilder.ToString();
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    [Bonsai.CombinatorAttribute()]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    public partial class GratingsDefinition : VisualBaseDefinition
+    {
+    
+        private double _temporalFrequency;
+    
+        public GratingsDefinition()
+        {
+        }
+    
+        protected GratingsDefinition(GratingsDefinition other) : 
+                base(other)
+        {
+            _temporalFrequency = other._temporalFrequency;
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="temporalFrequency")]
+        public double TemporalFrequency
+        {
+            get
+            {
+                return _temporalFrequency;
+            }
+            set
+            {
+                _temporalFrequency = value;
+            }
+        }
+    
+        public System.IObservable<GratingsDefinition> Process()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new GratingsDefinition(this)));
+        }
+    
+        public System.IObservable<GratingsDefinition> Process<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new GratingsDefinition(this));
+        }
+    
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
+            stringBuilder.Append("temporalFrequency = " + _temporalFrequency);
+            return true;
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    [Bonsai.CombinatorAttribute()]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    public partial class CheckerboardDefinition : VisualBaseDefinition
+    {
+    
+        private double _spatialFrequency;
+    
+        public CheckerboardDefinition()
+        {
+        }
+    
+        protected CheckerboardDefinition(CheckerboardDefinition other) : 
+                base(other)
+        {
+            _spatialFrequency = other._spatialFrequency;
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="spatialFrequency")]
+        public double SpatialFrequency
+        {
+            get
+            {
+                return _spatialFrequency;
+            }
+            set
+            {
+                _spatialFrequency = value;
+            }
+        }
+    
+        public System.IObservable<CheckerboardDefinition> Process()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new CheckerboardDefinition(this)));
+        }
+    
+        public System.IObservable<CheckerboardDefinition> Process<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new CheckerboardDefinition(this));
+        }
+    
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
+            stringBuilder.Append("spatialFrequency = " + _spatialFrequency);
+            return true;
         }
     }
 
@@ -468,6 +562,16 @@ namespace StateMachineDefinition
             return Process<VisualBaseDefinition>(source);
         }
 
+        public System.IObservable<string> Process(System.IObservable<GratingsDefinition> source)
+        {
+            return Process<GratingsDefinition>(source);
+        }
+
+        public System.IObservable<string> Process(System.IObservable<CheckerboardDefinition> source)
+        {
+            return Process<CheckerboardDefinition>(source);
+        }
+
         public System.IObservable<string> Process(System.IObservable<TimerDefinition> source)
         {
             return Process<TimerDefinition>(source);
@@ -498,6 +602,8 @@ namespace StateMachineDefinition
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Transform)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<VisualBaseDefinition>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<GratingsDefinition>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<CheckerboardDefinition>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<TimerDefinition>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<WaitKeyDefinition>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<StateDefinition>))]

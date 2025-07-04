@@ -3,33 +3,46 @@
     "$schema": "https://json-schema.org/draft-07/schema",
     "definitions": {
         "visualBaseDefinition": {
+            "type": "object",
+            "discriminator": {
+                "propertyName": "discriminator",
+                "mapping": {
+                    "GratingsDefinitionType": "#/definitions/gratingsDefinition"
+                }
+            },
+            "x-abstract": true,
+            "additionalProperties": false,
+            "required": ["discriminator"],
             "properties": {
                 "op": {
+                    "type": "string"
+                },
+                "discriminator": {
                     "type": "string"
                 }
             }
         },
         "gratingsDefinition": {
-            "$ref": "#/definitions/visualBaseDefinition",
+            "type": "object",
             "properties": {
-                "op": {
-                    "const": "grating"
-                },
                 "temporalFrequency": {
                     "type": "number"
                 }
-            }
+            },
+            "allOf": [
+                {"$ref": "#/definitions/visualBaseDefinition"}
+            ]
         },
         "checkerboardDefinition": {
-            "$ref": "#/definitions/visualBaseDefinition",
+            "type": "object",
             "properties": {
-                "op": {
-                    "const": "checkerboard"
-                },
                 "spatialFrequency": {
                     "type": "number"
                 }
-            }
+            },
+            "allOf": [
+                {"$ref": "#/definitions/visualBaseDefinition"}
+            ]
         },
         "timerDefinition": {
             "properties": {
@@ -59,12 +72,9 @@
                     "type": "string"
                 },
                 "visualStimulus": {
-                    "discriminator": {
-
-                    },
                     "oneOf": [
-                        {"$ref": "#/definitions/gratingsDefinition"},
-                        {"$ref": "#/definitions/checkerboardDefinition"}
+                        {"$ref": "#/definitions/visualBaseDefinition"},
+                        {"type": "null"}
                     ]
                 },
                 "transitionsOn": {
