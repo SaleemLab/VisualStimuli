@@ -12,318 +12,46 @@ namespace StateMachineDefinition
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
     [Bonsai.CombinatorAttribute()]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class GratingsDefinition
+    public partial class VisualBaseDefinition
     {
     
-        private GratingsDefinitionName _name;
+        private string _op;
     
-        private double _temporalFrequency;
-    
-        public GratingsDefinition()
+        public VisualBaseDefinition()
         {
         }
     
-        protected GratingsDefinition(GratingsDefinition other)
+        protected VisualBaseDefinition(VisualBaseDefinition other)
         {
-            _name = other._name;
-            _temporalFrequency = other._temporalFrequency;
+            _op = other._op;
         }
     
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="name")]
-        public GratingsDefinitionName Name
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="op")]
+        public string Op
         {
             get
             {
-                return _name;
+                return _op;
             }
             set
             {
-                _name = value;
+                _op = value;
             }
         }
     
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="temporalFrequency")]
-        public double TemporalFrequency
+        public System.IObservable<VisualBaseDefinition> Process()
         {
-            get
-            {
-                return _temporalFrequency;
-            }
-            set
-            {
-                _temporalFrequency = value;
-            }
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new VisualBaseDefinition(this)));
         }
     
-        public System.IObservable<GratingsDefinition> Process()
+        public System.IObservable<VisualBaseDefinition> Process<TSource>(System.IObservable<TSource> source)
         {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new GratingsDefinition(this)));
-        }
-    
-        public System.IObservable<GratingsDefinition> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new GratingsDefinition(this));
+            return System.Reactive.Linq.Observable.Select(source, _ => new VisualBaseDefinition(this));
         }
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("name = " + _name + ", ");
-            stringBuilder.Append("temporalFrequency = " + _temporalFrequency);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
-    [Bonsai.CombinatorAttribute()]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class CheckerboardDefinition
-    {
-    
-        private CheckerboardDefinitionName _name;
-    
-        private double _spatialFrequency;
-    
-        public CheckerboardDefinition()
-        {
-        }
-    
-        protected CheckerboardDefinition(CheckerboardDefinition other)
-        {
-            _name = other._name;
-            _spatialFrequency = other._spatialFrequency;
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="name")]
-        public CheckerboardDefinitionName Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = value;
-            }
-        }
-    
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="spatialFrequency")]
-        public double SpatialFrequency
-        {
-            get
-            {
-                return _spatialFrequency;
-            }
-            set
-            {
-                _spatialFrequency = value;
-            }
-        }
-    
-        public System.IObservable<CheckerboardDefinition> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new CheckerboardDefinition(this)));
-        }
-    
-        public System.IObservable<CheckerboardDefinition> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new CheckerboardDefinition(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("name = " + _name + ", ");
-            stringBuilder.Append("spatialFrequency = " + _spatialFrequency);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
-    [Bonsai.CombinatorAttribute()]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class ColorDefinition
-    {
-    
-        private ColorDefinitionName _name;
-    
-        private Color _color;
-    
-        public ColorDefinition()
-        {
-        }
-    
-        protected ColorDefinition(ColorDefinition other)
-        {
-            _name = other._name;
-            _color = other._color;
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="name")]
-        public ColorDefinitionName Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = value;
-            }
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="color")]
-        public Color Color
-        {
-            get
-            {
-                return _color;
-            }
-            set
-            {
-                _color = value;
-            }
-        }
-    
-        public System.IObservable<ColorDefinition> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new ColorDefinition(this)));
-        }
-    
-        public System.IObservable<ColorDefinition> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new ColorDefinition(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("name = " + _name + ", ");
-            stringBuilder.Append("color = " + _color);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
-    [Bonsai.CombinatorAttribute()]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class Color
-    {
-    
-        private double _r;
-    
-        private double _g;
-    
-        private double _b;
-    
-        public Color()
-        {
-        }
-    
-        protected Color(Color other)
-        {
-            _r = other._r;
-            _g = other._g;
-            _b = other._b;
-        }
-    
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="R")]
-        public double R
-        {
-            get
-            {
-                return _r;
-            }
-            set
-            {
-                _r = value;
-            }
-        }
-    
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="G")]
-        public double G
-        {
-            get
-            {
-                return _g;
-            }
-            set
-            {
-                _g = value;
-            }
-        }
-    
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="B")]
-        public double B
-        {
-            get
-            {
-                return _b;
-            }
-            set
-            {
-                _b = value;
-            }
-        }
-    
-        public System.IObservable<Color> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new Color(this)));
-        }
-    
-        public System.IObservable<Color> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new Color(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("R = " + _r + ", ");
-            stringBuilder.Append("G = " + _g + ", ");
-            stringBuilder.Append("B = " + _b);
+            stringBuilder.Append("op = " + _op);
             return true;
         }
     
@@ -508,7 +236,7 @@ namespace StateMachineDefinition
     
         private string _alias;
     
-        private ColorDefinition _visualStimulus;
+        private VisualBaseDefinition _visualStimulus;
     
         private TimerDefinition _transitionsOn;
     
@@ -541,7 +269,7 @@ namespace StateMachineDefinition
     
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [YamlDotNet.Serialization.YamlMemberAttribute(Alias="visualStimulus")]
-        public ColorDefinition VisualStimulus
+        public VisualBaseDefinition VisualStimulus
         {
             get
             {
@@ -698,33 +426,6 @@ namespace StateMachineDefinition
 
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
-    public enum GratingsDefinitionName
-    {
-    
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="Grating")]
-        Grating = 0,
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
-    public enum CheckerboardDefinitionName
-    {
-    
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="Checkerboard")]
-        Checkerboard = 0,
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
-    public enum ColorDefinitionName
-    {
-    
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="Color")]
-        Color = 0,
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
     public enum TimerDefinitionName
     {
     
@@ -762,24 +463,9 @@ namespace StateMachineDefinition
             });
         }
 
-        public System.IObservable<string> Process(System.IObservable<GratingsDefinition> source)
+        public System.IObservable<string> Process(System.IObservable<VisualBaseDefinition> source)
         {
-            return Process<GratingsDefinition>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<CheckerboardDefinition> source)
-        {
-            return Process<CheckerboardDefinition>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<ColorDefinition> source)
-        {
-            return Process<ColorDefinition>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<Color> source)
-        {
-            return Process<Color>(source);
+            return Process<VisualBaseDefinition>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<TimerDefinition> source)
@@ -811,10 +497,7 @@ namespace StateMachineDefinition
     [System.ComponentModel.DescriptionAttribute("Deserializes a sequence of YAML strings into data model objects.")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Transform)]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<GratingsDefinition>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<CheckerboardDefinition>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ColorDefinition>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Color>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<VisualBaseDefinition>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<TimerDefinition>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<WaitKeyDefinition>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<StateDefinition>))]

@@ -2,11 +2,18 @@
     "$id": "h...",
     "$schema": "https://json-schema.org/draft-07/schema",
     "definitions": {
-        "gratingsDefinition": {
+        "visualBaseDefinition": {
             "properties": {
-                "name": {
-                    "type": "string",
-                    "enum": ["Grating"]
+                "op": {
+                    "type": "string"
+                }
+            }
+        },
+        "gratingsDefinition": {
+            "$ref": "#/definitions/visualBaseDefinition",
+            "properties": {
+                "op": {
+                    "const": "grating"
                 },
                 "temporalFrequency": {
                     "type": "number"
@@ -14,36 +21,12 @@
             }
         },
         "checkerboardDefinition": {
+            "$ref": "#/definitions/visualBaseDefinition",
             "properties": {
-                "name": {
-                    "type": "string",
-                    "enum": ["Checkerboard"]
+                "op": {
+                    "const": "checkerboard"
                 },
                 "spatialFrequency": {
-                    "type": "number"
-                }
-            }
-        },
-        "colorDefinition": {
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "enum": ["Color"]
-                },
-                "color": {
-                    "$ref": "#/definitions/color"
-                }
-            }
-        },
-        "color": {
-            "properties": {
-                "R": {
-                    "type": "number"
-                },
-                "G": {
-                    "type": "number"
-                },
-                "B": {
                     "type": "number"
                 }
             }
@@ -76,8 +59,10 @@
                     "type": "string"
                 },
                 "visualStimulus": {
+                    "discriminator": {
+
+                    },
                     "oneOf": [
-                        {"$ref": "#/definitions/colorDefinition"},
                         {"$ref": "#/definitions/gratingsDefinition"},
                         {"$ref": "#/definitions/checkerboardDefinition"}
                     ]

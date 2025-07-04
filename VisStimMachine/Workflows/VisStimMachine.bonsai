@@ -166,9 +166,6 @@
           <Value>Gratings</Value>
         </Operand>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="p1:StateDefinition" />
-      </Expression>
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
