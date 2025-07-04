@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:gl="clr-namespace:Bonsai.Shaders;assembly=Bonsai.Shaders"
                  xmlns:res="clr-namespace:Bonsai.Resources;assembly=Bonsai.System"
@@ -7,9 +7,6 @@
                  xmlns:wie="clr-namespace:Bonsai.Windows.Input;assembly=Bonsai.Windows.Input"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
                  xmlns:p1="clr-namespace:StateMachineDefinition;assembly=Extensions"
-                 xmlns:p2="clr-namespace:GratingParameters;assembly=Extensions"
-                 xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
-                 xmlns:p3="clr-namespace:;assembly=Extensions"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
@@ -81,7 +78,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="io:ReadAllText">
-          <io:Path>C:\Users\neurogears\source\repos\SaleemLab\VisualStimuli\VisStimMachine\Schemas\state-machine.yml</io:Path>
+          <io:Path>..\Schemas\state-machine.yml</io:Path>
         </Combinator>
       </Expression>
       <Expression xsi:type="p1:DeserializeFromYaml">
@@ -124,12 +121,12 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Take">
-                <rx:Count>3</rx:Count>
+                <rx:Count>1</rx:Count>
               </Combinator>
             </Expression>
             <Expression xsi:type="rx:ToDictionary">
-              <rx:KeySelector>State.VisualStateName,State.LogicStateName</rx:KeySelector>
-              <rx:ElementSelector>TransitionsTo.VisualStateName,TransitionsTo.LogicStateName</rx:ElementSelector>
+              <rx:KeySelector>Alias</rx:KeySelector>
+              <rx:ElementSelector>it</rx:ElementSelector>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
@@ -149,618 +146,28 @@
       <Expression xsi:type="rx:BehaviorSubject">
         <Name>TransitionDictionary</Name>
       </Expression>
-      <Expression xsi:type="Index">
-        <Operand xsi:type="IntProperty">
-          <Value>0</Value>
-        </Operand>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="wie:KeyDown">
+          <wie:Filter>A</wie:Filter>
+          <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
+        </Combinator>
       </Expression>
-      <Expression xsi:type="MemberSelector">
-        <Selector>State</Selector>
-      </Expression>
-      <Expression xsi:type="MemberSelector">
-        <Selector>VisualStateName</Selector>
-      </Expression>
-      <Expression xsi:type="MemberSelector">
-        <Selector>LogicStateName</Selector>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>TransitionDictionary</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:Zip" />
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:Zip" />
+        <Combinator xsi:type="rx:WithLatestFrom" />
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>Item2</Selector>
       </Expression>
-      <Expression xsi:type="rx:BehaviorSubject">
-        <Name>StartState</Name>
-      </Expression>
-      <Expression xsi:type="GroupWorkflow">
-        <Name>Grating</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Path" DisplayName="ParameterFile" />
-            </Expression>
-            <Expression xsi:type="rx:CreateObservable">
-              <Name>DrawGratings</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Path" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="io:ReadAllText">
-                      <io:Path>C:\Users\neurogears\source\repos\SaleemLab\VisualStimuli\VisStimMachine\Schemas\grating-parameters-1.yml</io:Path>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="p2:DeserializeFromYaml">
-                    <p2:Type xsi:type="TypeMapping" TypeArguments="p2:GratingParameters" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Take">
-                      <rx:Count>1</rx:Count>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>GratingDefinition</Selector>
-                  </Expression>
-                  <Expression xsi:type="rx:AsyncSubject">
-                    <Name>Parameters</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>DrawCall</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>Parameters</Name>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>Angle</Selector>
-                  </Expression>
-                  <Expression xsi:type="PropertyMapping">
-                    <PropertyMappings>
-                      <Property Name="Angle" />
-                    </PropertyMappings>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>Parameters</Name>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>SpatialFrequency</Selector>
-                  </Expression>
-                  <Expression xsi:type="PropertyMapping">
-                    <PropertyMappings>
-                      <Property Name="SpatialFrequency" />
-                    </PropertyMappings>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>Parameters</Name>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>TemporalFrequency</Selector>
-                  </Expression>
-                  <Expression xsi:type="PropertyMapping">
-                    <PropertyMappings>
-                      <Property Name="TemporalFrequency" />
-                    </PropertyMappings>
-                  </Expression>
-                  <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawGratings.bonsai">
-                    <LocationX>0</LocationX>
-                    <LocationY>0</LocationY>
-                    <Layer>0</Layer>
-                    <ExtentX>2</ExtentX>
-                    <ExtentY>2</ExtentY>
-                    <SpatialFrequency>10</SpatialFrequency>
-                    <TemporalFrequency>10</TemporalFrequency>
-                    <Phase>0</Phase>
-                    <Angle>0</Angle>
-                    <SquareWave>false</SquareWave>
-                    <Contrast>0.5</Contrast>
-                    <DutyCycle xsi:nil="true" />
-                    <Radius>1</Radius>
-                    <Aperture>0.5</Aperture>
-                    <Opacity>1</Opacity>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="1" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source1" />
-                  <Edge From="2" To="3" Label="Source1" />
-                  <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="4" To="5" Label="Source1" />
-                  <Edge From="6" To="16" Label="Source1" />
-                  <Edge From="7" To="8" Label="Source1" />
-                  <Edge From="8" To="9" Label="Source1" />
-                  <Edge From="9" To="16" Label="Source2" />
-                  <Edge From="10" To="11" Label="Source1" />
-                  <Edge From="11" To="12" Label="Source1" />
-                  <Edge From="12" To="16" Label="Source3" />
-                  <Edge From="13" To="14" Label="Source1" />
-                  <Edge From="14" To="15" Label="Source1" />
-                  <Edge From="15" To="16" Label="Source4" />
-                  <Edge From="16" To="17" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="StateName" />
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="StringProperty">
-                <Value>Grating</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Zip" />
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-          </Nodes>
-          <Edges>
-            <Edge From="0" To="1" Label="Source1" />
-            <Edge From="1" To="4" Label="Source1" />
-            <Edge From="2" To="3" Label="Source1" />
-            <Edge From="3" To="4" Label="Source2" />
-            <Edge From="4" To="5" Label="Source1" />
-          </Edges>
-        </Workflow>
+      <Expression xsi:type="Index">
+        <Operand xsi:type="StringProperty">
+          <Value>Gratings</Value>
+        </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:Take">
-          <rx:Count>1</rx:Count>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="GroupWorkflow">
-        <Name>Checkerboard</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Path" DisplayName="ParameterFile" />
-            </Expression>
-            <Expression xsi:type="rx:CreateObservable">
-              <Name>DrawCheckerboard</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Path" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="io:ReadAllText">
-                      <io:Path>C:\Users\neurogears\source\repos\SaleemLab\VisualStimuli\VisStimMachine\Schemas\grating-parameters-1.yml</io:Path>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="p2:DeserializeFromYaml">
-                    <p2:Type xsi:type="TypeMapping" TypeArguments="p2:GratingParameters" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Take">
-                      <rx:Count>1</rx:Count>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="rx:AsyncSubject">
-                    <Name>Parameters</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>DrawCall</Name>
-                  </Expression>
-                  <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawCheckerboard.bonsai">
-                    <ExtentX>2</ExtentX>
-                    <ExtentY>2</ExtentY>
-                    <LocationX>0</LocationX>
-                    <LocationY>0</LocationY>
-                    <Layer>0</Layer>
-                    <Angle>0</Angle>
-                    <NumberColumns>3</NumberColumns>
-                    <NumberRows>3</NumberRows>
-                    <Phase>0</Phase>
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Expression>Convert.ToSingle(it)</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="1" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source1" />
-                  <Edge From="2" To="3" Label="Source1" />
-                  <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="5" To="6" Label="Source1" />
-                  <Edge From="6" To="7" Label="Source1" />
-                  <Edge From="7" To="8" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="StateName" />
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="StringProperty">
-                <Value>Checkerboard</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Zip" />
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-          </Nodes>
-          <Edges>
-            <Edge From="0" To="1" Label="Source1" />
-            <Edge From="1" To="4" Label="Source1" />
-            <Edge From="2" To="3" Label="Source1" />
-            <Edge From="3" To="4" Label="Source2" />
-            <Edge From="4" To="5" Label="Source1" />
-          </Edges>
-        </Workflow>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:Take">
-          <rx:Count>1</rx:Count>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="GroupWorkflow">
-        <Name>Blank</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Path" DisplayName="ParameterFile" />
-            </Expression>
-            <Expression xsi:type="rx:CreateObservable">
-              <Name>DrawBlank</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="ExternalizedMapping">
-                    <Property Name="Path" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="io:ReadAllText">
-                      <io:Path>C:\Users\neurogears\source\repos\SaleemLab\VisualStimuli\VisStimMachine\Schemas\grating-parameters-1.yml</io:Path>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="p2:DeserializeFromYaml">
-                    <p2:Type xsi:type="TypeMapping" TypeArguments="p2:GratingParameters" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Take">
-                      <rx:Count>1</rx:Count>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="rx:AsyncSubject">
-                    <Name>Parameters</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>DrawCall</Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="FloatProperty">
-                      <Value>0</Value>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="1" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source1" />
-                  <Edge From="2" To="3" Label="Source1" />
-                  <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="5" To="6" Label="Source1" />
-                  <Edge From="6" To="7" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="StateName" />
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="StringProperty">
-                <Value>Blank</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Zip" />
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-          </Nodes>
-          <Edges>
-            <Edge From="0" To="1" Label="Source1" />
-            <Edge From="1" To="4" Label="Source1" />
-            <Edge From="2" To="3" Label="Source1" />
-            <Edge From="3" To="4" Label="Source2" />
-            <Edge From="4" To="5" Label="Source1" />
-          </Edges>
-        </Workflow>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:Take">
-          <rx:Count>1</rx:Count>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:Merge" />
-      </Expression>
-      <Expression xsi:type="rx:ToDictionary">
-        <rx:KeySelector>Item2</rx:KeySelector>
-        <rx:ElementSelector>Item1</rx:ElementSelector>
-      </Expression>
-      <Expression xsi:type="rx:AsyncSubject">
-        <Name>VisualStimDictionary</Name>
-      </Expression>
-      <Expression xsi:type="GroupWorkflow">
-        <Name>WaitSeconds</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="rx:CreateObservable">
-              <Name>WaitSeconds</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Timer">
-                      <rx:DueTime>PT5S</rx:DueTime>
-                      <rx:Period>PT0S</rx:Period>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Take">
-                      <rx:Count>1</rx:Count>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="BooleanProperty">
-                      <Value>true</Value>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="1" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source1" />
-                  <Edge From="2" To="3" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="StateName" />
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="StringProperty">
-                <Value>WaitSeconds</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Zip" />
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-          </Nodes>
-          <Edges>
-            <Edge From="0" To="3" Label="Source1" />
-            <Edge From="1" To="2" Label="Source1" />
-            <Edge From="2" To="3" Label="Source2" />
-            <Edge From="3" To="4" Label="Source1" />
-          </Edges>
-        </Workflow>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:Take">
-          <rx:Count>1</rx:Count>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="GroupWorkflow">
-        <Name>WaitKey</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="rx:CreateObservable">
-              <Name>WaitKey</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>WaitKey</Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Take">
-                      <rx:Count>1</rx:Count>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="BooleanProperty">
-                      <Value>true</Value>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="1" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source1" />
-                  <Edge From="2" To="3" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="StateName" />
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="StringProperty">
-                <Value>WaitKey</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Zip" />
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-          </Nodes>
-          <Edges>
-            <Edge From="0" To="3" Label="Source1" />
-            <Edge From="1" To="2" Label="Source1" />
-            <Edge From="2" To="3" Label="Source2" />
-            <Edge From="3" To="4" Label="Source1" />
-          </Edges>
-        </Workflow>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:Take">
-          <rx:Count>1</rx:Count>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:Merge" />
-      </Expression>
-      <Expression xsi:type="rx:ToDictionary">
-        <rx:KeySelector>Item2</rx:KeySelector>
-        <rx:ElementSelector>Item1</rx:ElementSelector>
-      </Expression>
-      <Expression xsi:type="rx:AsyncSubject">
-        <Name>TrialLogicDictionary</Name>
-      </Expression>
-      <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p1:DualState">
-        <rx:Name>BeginState</rx:Name>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="p1:DualState">
-          <p1:VisualStateName>Blank</p1:VisualStateName>
-          <p1:LogicStateName>WaitSeconds</p1:LogicStateName>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:Merge" />
-      </Expression>
-      <Expression xsi:type="rx:SelectMany">
-        <Name>SelectState</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="WorkflowInput">
-              <Name>Source1</Name>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Take">
-                <rx:Count>1</rx:Count>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="rx:AsyncSubject">
-              <Name>StateName</Name>
-            </Expression>
-            <Expression xsi:type="SubscribeSubject">
-              <Name>VisualStimDictionary</Name>
-            </Expression>
-            <Expression xsi:type="SubscribeSubject">
-              <Name>StateName</Name>
-            </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>VisualStateName</Selector>
-            </Expression>
-            <Expression xsi:type="PropertyMapping">
-              <PropertyMappings>
-                <Property Name="Value" />
-              </PropertyMappings>
-            </Expression>
-            <Expression xsi:type="Index">
-              <Operand xsi:type="StringProperty">
-                <Value>Grating</Value>
-              </Operand>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Merge" />
-            </Expression>
-            <Expression xsi:type="SubscribeSubject">
-              <Name>TrialLogicDictionary</Name>
-            </Expression>
-            <Expression xsi:type="SubscribeSubject">
-              <Name>StateName</Name>
-            </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>LogicStateName</Selector>
-            </Expression>
-            <Expression xsi:type="PropertyMapping">
-              <PropertyMappings>
-                <Property Name="Value" />
-              </PropertyMappings>
-            </Expression>
-            <Expression xsi:type="Index">
-              <Operand xsi:type="StringProperty">
-                <Value>WaitSeconds</Value>
-              </Operand>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Merge" />
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Take">
-                <rx:Count>1</rx:Count>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="rx:AsyncSubject">
-              <Name>StateComplete</Name>
-            </Expression>
-            <Expression xsi:type="SubscribeSubject">
-              <Name>TransitionDictionary</Name>
-            </Expression>
-            <Expression xsi:type="SubscribeSubject">
-              <Name>StateComplete</Name>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:SubscribeWhen" />
-            </Expression>
-            <Expression xsi:type="SubscribeSubject">
-              <Name>StateName</Name>
-            </Expression>
-            <Expression xsi:type="InputMapping">
-              <PropertyMappings>
-                <Property Name="VisualStateName" Selector="VisualStateName" />
-                <Property Name="LogicStateName" Selector="LogicStateName" />
-              </PropertyMappings>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="p1:DualState">
-                <p1:VisualStateName>Grating</p1:VisualStateName>
-                <p1:LogicStateName>WaitSeconds</p1:LogicStateName>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="PropertyMapping">
-              <PropertyMappings>
-                <Property Name="Key" />
-              </PropertyMappings>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="p3:TransitionLookup">
-                <p3:Key>
-                  <p1:VisualStateName>Grating</p1:VisualStateName>
-                  <p1:LogicStateName>WaitSeconds</p1:LogicStateName>
-                </p3:Key>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Take">
-                <rx:Count>1</rx:Count>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-          </Nodes>
-          <Edges>
-            <Edge From="0" To="1" Label="Source1" />
-            <Edge From="1" To="2" Label="Source1" />
-            <Edge From="3" To="7" Label="Source1" />
-            <Edge From="4" To="5" Label="Source1" />
-            <Edge From="5" To="6" Label="Source1" />
-            <Edge From="6" To="7" Label="Source2" />
-            <Edge From="7" To="8" Label="Source1" />
-            <Edge From="9" To="13" Label="Source1" />
-            <Edge From="10" To="11" Label="Source1" />
-            <Edge From="11" To="12" Label="Source1" />
-            <Edge From="12" To="13" Label="Source2" />
-            <Edge From="13" To="14" Label="Source1" />
-            <Edge From="14" To="15" Label="Source1" />
-            <Edge From="15" To="16" Label="Source1" />
-            <Edge From="17" To="19" Label="Source1" />
-            <Edge From="18" To="19" Label="Source2" />
-            <Edge From="19" To="24" Label="Source1" />
-            <Edge From="20" To="21" Label="Source1" />
-            <Edge From="21" To="22" Label="Source1" />
-            <Edge From="22" To="23" Label="Source1" />
-            <Edge From="23" To="24" Label="Source2" />
-            <Edge From="24" To="25" Label="Source1" />
-            <Edge From="25" To="26" Label="Source1" />
-          </Edges>
-        </Workflow>
-      </Expression>
-      <Expression xsi:type="MulticastSubject">
-        <Name>BeginState</Name>
+        <Combinator xsi:type="p1:StateDefinition" />
       </Expression>
     </Nodes>
     <Edges>
@@ -774,35 +181,11 @@
       <Edge From="10" To="11" Label="Source1" />
       <Edge From="11" To="12" Label="Source1" />
       <Edge From="12" To="13" Label="Source1" />
-      <Edge From="12" To="15" Label="Source1" />
       <Edge From="13" To="14" Label="Source1" />
-      <Edge From="14" To="20" Label="Source1" />
-      <Edge From="15" To="16" Label="Source1" />
-      <Edge From="16" To="17" Label="Source1" />
-      <Edge From="16" To="18" Label="Source1" />
-      <Edge From="17" To="19" Label="Source1" />
-      <Edge From="18" To="19" Label="Source2" />
-      <Edge From="19" To="20" Label="Source2" />
-      <Edge From="20" To="21" Label="Source1" />
-      <Edge From="21" To="22" Label="Source1" />
-      <Edge From="23" To="24" Label="Source1" />
-      <Edge From="24" To="29" Label="Source1" />
-      <Edge From="25" To="26" Label="Source1" />
-      <Edge From="26" To="29" Label="Source2" />
-      <Edge From="27" To="28" Label="Source1" />
-      <Edge From="28" To="29" Label="Source3" />
-      <Edge From="29" To="30" Label="Source1" />
-      <Edge From="30" To="31" Label="Source1" />
-      <Edge From="32" To="33" Label="Source1" />
-      <Edge From="33" To="36" Label="Source1" />
-      <Edge From="34" To="35" Label="Source1" />
-      <Edge From="35" To="36" Label="Source2" />
-      <Edge From="36" To="37" Label="Source1" />
-      <Edge From="37" To="38" Label="Source1" />
-      <Edge From="39" To="41" Label="Source1" />
-      <Edge From="40" To="41" Label="Source2" />
-      <Edge From="41" To="42" Label="Source1" />
-      <Edge From="42" To="43" Label="Source1" />
+      <Edge From="15" To="17" Label="Source1" />
+      <Edge From="16" To="17" Label="Source2" />
+      <Edge From="17" To="18" Label="Source1" />
+      <Edge From="18" To="19" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

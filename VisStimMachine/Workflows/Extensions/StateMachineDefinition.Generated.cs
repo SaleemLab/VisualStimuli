@@ -12,63 +12,476 @@ namespace StateMachineDefinition
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
     [Bonsai.CombinatorAttribute()]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class DualState
+    public partial class GratingsDefinition
     {
     
-        private string _visualStateName;
+        private GratingsDefinitionName _name;
     
-        private string _logicStateName;
+        private double _temporalFrequency;
     
-        public DualState()
+        public GratingsDefinition()
         {
         }
     
-        protected DualState(DualState other)
+        protected GratingsDefinition(GratingsDefinition other)
         {
-            _visualStateName = other._visualStateName;
-            _logicStateName = other._logicStateName;
+            _name = other._name;
+            _temporalFrequency = other._temporalFrequency;
         }
     
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="visualStateName")]
-        public string VisualStateName
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="name")]
+        public GratingsDefinitionName Name
         {
             get
             {
-                return _visualStateName;
+                return _name;
             }
             set
             {
-                _visualStateName = value;
+                _name = value;
             }
         }
     
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="logicStateName")]
-        public string LogicStateName
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="temporalFrequency")]
+        public double TemporalFrequency
         {
             get
             {
-                return _logicStateName;
+                return _temporalFrequency;
             }
             set
             {
-                _logicStateName = value;
+                _temporalFrequency = value;
             }
         }
     
-        public System.IObservable<DualState> Process()
+        public System.IObservable<GratingsDefinition> Process()
         {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new DualState(this)));
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new GratingsDefinition(this)));
         }
     
-        public System.IObservable<DualState> Process<TSource>(System.IObservable<TSource> source)
+        public System.IObservable<GratingsDefinition> Process<TSource>(System.IObservable<TSource> source)
         {
-            return System.Reactive.Linq.Observable.Select(source, _ => new DualState(this));
+            return System.Reactive.Linq.Observable.Select(source, _ => new GratingsDefinition(this));
         }
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("visualStateName = " + _visualStateName + ", ");
-            stringBuilder.Append("logicStateName = " + _logicStateName);
+            stringBuilder.Append("name = " + _name + ", ");
+            stringBuilder.Append("temporalFrequency = " + _temporalFrequency);
+            return true;
+        }
+    
+        public override string ToString()
+        {
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(GetType().Name);
+            stringBuilder.Append(" { ");
+            if (PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(" ");
+            }
+            stringBuilder.Append("}");
+            return stringBuilder.ToString();
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    [Bonsai.CombinatorAttribute()]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    public partial class CheckerboardDefinition
+    {
+    
+        private CheckerboardDefinitionName _name;
+    
+        private double _spatialFrequency;
+    
+        public CheckerboardDefinition()
+        {
+        }
+    
+        protected CheckerboardDefinition(CheckerboardDefinition other)
+        {
+            _name = other._name;
+            _spatialFrequency = other._spatialFrequency;
+        }
+    
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="name")]
+        public CheckerboardDefinitionName Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="spatialFrequency")]
+        public double SpatialFrequency
+        {
+            get
+            {
+                return _spatialFrequency;
+            }
+            set
+            {
+                _spatialFrequency = value;
+            }
+        }
+    
+        public System.IObservable<CheckerboardDefinition> Process()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new CheckerboardDefinition(this)));
+        }
+    
+        public System.IObservable<CheckerboardDefinition> Process<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new CheckerboardDefinition(this));
+        }
+    
+        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            stringBuilder.Append("name = " + _name + ", ");
+            stringBuilder.Append("spatialFrequency = " + _spatialFrequency);
+            return true;
+        }
+    
+        public override string ToString()
+        {
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(GetType().Name);
+            stringBuilder.Append(" { ");
+            if (PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(" ");
+            }
+            stringBuilder.Append("}");
+            return stringBuilder.ToString();
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    [Bonsai.CombinatorAttribute()]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    public partial class ColorDefinition
+    {
+    
+        private ColorDefinitionName _name;
+    
+        private Color _color;
+    
+        public ColorDefinition()
+        {
+        }
+    
+        protected ColorDefinition(ColorDefinition other)
+        {
+            _name = other._name;
+            _color = other._color;
+        }
+    
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="name")]
+        public ColorDefinitionName Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+    
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="color")]
+        public Color Color
+        {
+            get
+            {
+                return _color;
+            }
+            set
+            {
+                _color = value;
+            }
+        }
+    
+        public System.IObservable<ColorDefinition> Process()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new ColorDefinition(this)));
+        }
+    
+        public System.IObservable<ColorDefinition> Process<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new ColorDefinition(this));
+        }
+    
+        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            stringBuilder.Append("name = " + _name + ", ");
+            stringBuilder.Append("color = " + _color);
+            return true;
+        }
+    
+        public override string ToString()
+        {
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(GetType().Name);
+            stringBuilder.Append(" { ");
+            if (PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(" ");
+            }
+            stringBuilder.Append("}");
+            return stringBuilder.ToString();
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    [Bonsai.CombinatorAttribute()]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    public partial class Color
+    {
+    
+        private double _r;
+    
+        private double _g;
+    
+        private double _b;
+    
+        public Color()
+        {
+        }
+    
+        protected Color(Color other)
+        {
+            _r = other._r;
+            _g = other._g;
+            _b = other._b;
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="R")]
+        public double R
+        {
+            get
+            {
+                return _r;
+            }
+            set
+            {
+                _r = value;
+            }
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="G")]
+        public double G
+        {
+            get
+            {
+                return _g;
+            }
+            set
+            {
+                _g = value;
+            }
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="B")]
+        public double B
+        {
+            get
+            {
+                return _b;
+            }
+            set
+            {
+                _b = value;
+            }
+        }
+    
+        public System.IObservable<Color> Process()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new Color(this)));
+        }
+    
+        public System.IObservable<Color> Process<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new Color(this));
+        }
+    
+        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            stringBuilder.Append("R = " + _r + ", ");
+            stringBuilder.Append("G = " + _g + ", ");
+            stringBuilder.Append("B = " + _b);
+            return true;
+        }
+    
+        public override string ToString()
+        {
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(GetType().Name);
+            stringBuilder.Append(" { ");
+            if (PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(" ");
+            }
+            stringBuilder.Append("}");
+            return stringBuilder.ToString();
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    [Bonsai.CombinatorAttribute()]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    public partial class TimerDefinition
+    {
+    
+        private TimerDefinitionName _name;
+    
+        private double _dueTime;
+    
+        public TimerDefinition()
+        {
+        }
+    
+        protected TimerDefinition(TimerDefinition other)
+        {
+            _name = other._name;
+            _dueTime = other._dueTime;
+        }
+    
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="name")]
+        public TimerDefinitionName Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="dueTime")]
+        public double DueTime
+        {
+            get
+            {
+                return _dueTime;
+            }
+            set
+            {
+                _dueTime = value;
+            }
+        }
+    
+        public System.IObservable<TimerDefinition> Process()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new TimerDefinition(this)));
+        }
+    
+        public System.IObservable<TimerDefinition> Process<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new TimerDefinition(this));
+        }
+    
+        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            stringBuilder.Append("name = " + _name + ", ");
+            stringBuilder.Append("dueTime = " + _dueTime);
+            return true;
+        }
+    
+        public override string ToString()
+        {
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(GetType().Name);
+            stringBuilder.Append(" { ");
+            if (PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(" ");
+            }
+            stringBuilder.Append("}");
+            return stringBuilder.ToString();
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    [Bonsai.CombinatorAttribute()]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    public partial class WaitKeyDefinition
+    {
+    
+        private WaitKeyDefinitionName _name;
+    
+        private string _keyCode;
+    
+        public WaitKeyDefinition()
+        {
+        }
+    
+        protected WaitKeyDefinition(WaitKeyDefinition other)
+        {
+            _name = other._name;
+            _keyCode = other._keyCode;
+        }
+    
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="name")]
+        public WaitKeyDefinitionName Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="keyCode")]
+        public string KeyCode
+        {
+            get
+            {
+                return _keyCode;
+            }
+            set
+            {
+                _keyCode = value;
+            }
+        }
+    
+        public System.IObservable<WaitKeyDefinition> Process()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new WaitKeyDefinition(this)));
+        }
+    
+        public System.IObservable<WaitKeyDefinition> Process<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new WaitKeyDefinition(this));
+        }
+    
+        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            stringBuilder.Append("name = " + _name + ", ");
+            stringBuilder.Append("keyCode = " + _keyCode);
             return true;
         }
     
@@ -93,9 +506,13 @@ namespace StateMachineDefinition
     public partial class StateDefinition
     {
     
-        private DualState _state;
+        private string _alias;
     
-        private DualState _transitionsTo;
+        private ColorDefinition _visualStimulus;
+    
+        private TimerDefinition _transitionsOn;
+    
+        private string _transitionsTo;
     
         public StateDefinition()
         {
@@ -103,27 +520,55 @@ namespace StateMachineDefinition
     
         protected StateDefinition(StateDefinition other)
         {
-            _state = other._state;
+            _alias = other._alias;
+            _visualStimulus = other._visualStimulus;
+            _transitionsOn = other._transitionsOn;
             _transitionsTo = other._transitionsTo;
         }
     
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="state")]
-        public DualState State
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="alias")]
+        public string Alias
         {
             get
             {
-                return _state;
+                return _alias;
             }
             set
             {
-                _state = value;
+                _alias = value;
             }
         }
     
         [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="visualStimulus")]
+        public ColorDefinition VisualStimulus
+        {
+            get
+            {
+                return _visualStimulus;
+            }
+            set
+            {
+                _visualStimulus = value;
+            }
+        }
+    
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="transitionsOn")]
+        public TimerDefinition TransitionsOn
+        {
+            get
+            {
+                return _transitionsOn;
+            }
+            set
+            {
+                _transitionsOn = value;
+            }
+        }
+    
         [YamlDotNet.Serialization.YamlMemberAttribute(Alias="transitionsTo")]
-        public DualState TransitionsTo
+        public string TransitionsTo
         {
             get
             {
@@ -147,7 +592,9 @@ namespace StateMachineDefinition
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("state = " + _state + ", ");
+            stringBuilder.Append("alias = " + _alias + ", ");
+            stringBuilder.Append("visualStimulus = " + _visualStimulus + ", ");
+            stringBuilder.Append("transitionsOn = " + _transitionsOn + ", ");
             stringBuilder.Append("transitionsTo = " + _transitionsTo);
             return true;
         }
@@ -250,6 +697,51 @@ namespace StateMachineDefinition
     }
 
 
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    public enum GratingsDefinitionName
+    {
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="Grating")]
+        Grating = 0,
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    public enum CheckerboardDefinitionName
+    {
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="Checkerboard")]
+        Checkerboard = 0,
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    public enum ColorDefinitionName
+    {
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="Color")]
+        Color = 0,
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    public enum TimerDefinitionName
+    {
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="Timer")]
+        Timer = 0,
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    public enum WaitKeyDefinitionName
+    {
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="WaitKey")]
+        WaitKey = 0,
+    }
+
+
     /// <summary>
     /// Serializes a sequence of data model objects into YAML strings.
     /// </summary>
@@ -270,9 +762,34 @@ namespace StateMachineDefinition
             });
         }
 
-        public System.IObservable<string> Process(System.IObservable<DualState> source)
+        public System.IObservable<string> Process(System.IObservable<GratingsDefinition> source)
         {
-            return Process<DualState>(source);
+            return Process<GratingsDefinition>(source);
+        }
+
+        public System.IObservable<string> Process(System.IObservable<CheckerboardDefinition> source)
+        {
+            return Process<CheckerboardDefinition>(source);
+        }
+
+        public System.IObservable<string> Process(System.IObservable<ColorDefinition> source)
+        {
+            return Process<ColorDefinition>(source);
+        }
+
+        public System.IObservable<string> Process(System.IObservable<Color> source)
+        {
+            return Process<Color>(source);
+        }
+
+        public System.IObservable<string> Process(System.IObservable<TimerDefinition> source)
+        {
+            return Process<TimerDefinition>(source);
+        }
+
+        public System.IObservable<string> Process(System.IObservable<WaitKeyDefinition> source)
+        {
+            return Process<WaitKeyDefinition>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<StateDefinition> source)
@@ -294,7 +811,12 @@ namespace StateMachineDefinition
     [System.ComponentModel.DescriptionAttribute("Deserializes a sequence of YAML strings into data model objects.")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Transform)]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<DualState>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<GratingsDefinition>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<CheckerboardDefinition>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ColorDefinition>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Color>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<TimerDefinition>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<WaitKeyDefinition>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<StateDefinition>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<StateMachine>))]
     public partial class DeserializeFromYaml : Bonsai.Expressions.SingleArgumentExpressionBuilder

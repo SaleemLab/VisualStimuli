@@ -24,6 +24,30 @@
                 }
             }
         },
+        "colorDefinition": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "enum": ["Color"]
+                },
+                "color": {
+                    "$ref": "#/definitions/color"
+                }
+            }
+        },
+        "color": {
+            "properties": {
+                "R": {
+                    "type": "number"
+                },
+                "G": {
+                    "type": "number"
+                },
+                "B": {
+                    "type": "number"
+                }
+            }
+        },
         "timerDefinition": {
             "properties": {
                 "name": {
@@ -35,6 +59,17 @@
                 }
             }
         },
+        "waitKeyDefinition": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "enum": ["WaitKey"]
+                },
+                "keyCode": {
+                    "type": "string"
+                }
+            }
+        },
         "stateDefinition": {
             "properties": {
                 "alias": {
@@ -42,14 +77,19 @@
                 },
                 "visualStimulus": {
                     "oneOf": [
+                        {"$ref": "#/definitions/colorDefinition"},
                         {"$ref": "#/definitions/gratingsDefinition"},
                         {"$ref": "#/definitions/checkerboardDefinition"}
                     ]
                 },
                 "transitionsOn": {
                     "oneOf": [
-                        {"$ref": "#/definitions/timerDefinition"}
+                        {"$ref": "#/definitions/timerDefinition"},
+                        {"$ref": "#/definitions/waitKeyDefinition"}
                     ]
+                },
+                "transitionsTo": {
+                    "type": "string"
                 }
             }
         }
