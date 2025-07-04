@@ -2,23 +2,54 @@
     "$id": "h...",
     "$schema": "https://json-schema.org/draft-07/schema",
     "definitions": {
-        "dualState": {
+        "gratingsDefinition": {
             "properties": {
-                "visualStateName": {
-                    "type": "string"
+                "name": {
+                    "type": "string",
+                    "enum": ["Grating"]
                 },
-                "logicStateName": {
-                    "type": "string"
+                "temporalFrequency": {
+                    "type": "number"
+                }
+            }
+        },
+        "checkerboardDefinition": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "enum": ["Checkerboard"]
+                },
+                "spatialFrequency": {
+                    "type": "number"
+                }
+            }
+        },
+        "timerDefinition": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "enum": ["Timer"]
+                },
+                "dueTime": {
+                    "type": "number"
                 }
             }
         },
         "stateDefinition": {
             "properties": {
-                "state": {
-                    "$ref": "#/definitions/dualState"
+                "alias": {
+                    "type": "string"
                 },
-                "transitionsTo": {
-                    "$ref": "#/definitions/dualState"
+                "visualStimulus": {
+                    "oneOf": [
+                        {"$ref": "#/definitions/gratingsDefinition"},
+                        {"$ref": "#/definitions/checkerboardDefinition"}
+                    ]
+                },
+                "transitionsOn": {
+                    "oneOf": [
+                        {"$ref": "#/definitions/timerDefinition"}
+                    ]
                 }
             }
         }

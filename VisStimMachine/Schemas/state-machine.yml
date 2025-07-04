@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=./StateMachineDefinition.json
 ruleAlias: undefined
+
 stateDefinitions: [
-  {state: {visualStateName: Blank, logicStateName: WaitSeconds}, transitionsTo: {visualStateName: Grating, logicStateName: WaitSeconds}},
-  {state: {visualStateName: Grating, logicStateName: WaitSeconds}, transitionsTo: {visualStateName: Checkerboard, logicStateName: WaitSeconds}},
-  {state: {visualStateName: Checkerboard, logicStateName: WaitSeconds}, transitionsTo: {visualStateName: Grating, logicStateName: WaitSeconds}}, 
+  {alias: Gratings, visualStimulus: {name: Grating, temporalFrequency: 2}, transitionsOn: {name: Timer, dueTime: 1}, transitionsTo: Checkerboard},
+  {alias: Checkerboard, visualStimulus: {name: Checkerboard, spatialFrequency: 2}, transitionsOn: {name: Timer, dueTime: 2}, transitionsTo: Gratings},
 ]
