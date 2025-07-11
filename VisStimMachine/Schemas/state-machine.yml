@@ -2,6 +2,6 @@
 ruleAlias: undefined
 
 stateDefinitions: [
-  {alias: Gratings, visualStimulus: {op: grating, temporalFrequency: 2}, transitionsOn: {name: Timer, dueTime: 1}, transitionsTo: Checkerboard},
-  {alias: Checkerboard, visualStimulus: {op: checkerboard, spatialFrequency: 2}, transitionsOn: {name: Timer, dueTime: 2}, transitionsTo: Gratings}
+  {alias: Gratings, visualStimulus: {discriminator: GratingsDefinitionType, op: grating}, transitionsOn: {name: Timer, dueTime: 1}, transitionsTo: Checkerboard},
+  # {alias: Checkerboard, visualStimulus: {op: checkerboard, spatialFrequency: 2}, transitionsOn: {name: Timer, dueTime: 2}, transitionsTo: Gratings}
 ]

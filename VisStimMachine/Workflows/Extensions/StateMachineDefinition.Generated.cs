@@ -10,6 +10,9 @@ namespace StateMachineDefinition
     #pragma warning disable // Disable all warnings
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    [YamlDiscriminator("discriminator")]
+    [JsonInheritanceAttribute("GratingsDefinitionType", typeof(GratingsDefinition))]
+    [JsonInheritanceAttribute("checkerboardDefinition", typeof(CheckerboardDefinition))]
     public abstract partial class VisualBaseDefinition
     {
     
@@ -537,6 +540,142 @@ namespace StateMachineDefinition
     }
 
 
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    [System.ComponentModel.DefaultPropertyAttribute("Type")]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<GratingsDefinition>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<CheckerboardDefinition>))]
+    public partial class MatchVisualBaseDefinition : Bonsai.Expressions.SingleArgumentExpressionBuilder
+    {
+    
+        public Bonsai.Expressions.TypeMapping Type { get; set; }
+
+        public override System.Linq.Expressions.Expression Build(System.Collections.Generic.IEnumerable<System.Linq.Expressions.Expression> arguments)
+        {
+            var typeMapping = Type;
+            var returnType = typeMapping != null ? typeMapping.GetType().GetGenericArguments()[0] : typeof(VisualBaseDefinition);
+            return System.Linq.Expressions.Expression.Call(
+                typeof(MatchVisualBaseDefinition),
+                "Process",
+                new System.Type[] { returnType },
+                System.Linq.Enumerable.Single(arguments));
+        }
+
+    
+        private static System.IObservable<TResult> Process<TResult>(System.IObservable<VisualBaseDefinition> source)
+            where TResult : VisualBaseDefinition
+        {
+            return System.Reactive.Linq.Observable.Create<TResult>(observer =>
+            {
+                var sourceObserver = System.Reactive.Observer.Create<VisualBaseDefinition>(
+                    value =>
+                    {
+                        var match = value as TResult;
+                        if (match != null) observer.OnNext(match);
+                    },
+                    observer.OnError,
+                    observer.OnCompleted);
+                return System.ObservableExtensions.SubscribeSafe(source, sourceObserver);
+            });
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    [System.AttributeUsageAttribute((System.AttributeTargets.Class | System.AttributeTargets.Interface))]
+    public class YamlDiscriminatorAttribute : System.Attribute
+    {
+    
+        public YamlDiscriminatorAttribute(string discriminator)
+        {
+            Discriminator = discriminator;
+        }
+
+        public string Discriminator { get; private set; }
+
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.2.0.0 (YamlDotNet v13.0.0.0)")]
+    public class YamlDiscriminatorTypeInspector : YamlDotNet.Serialization.TypeInspectors.TypeInspectorSkeleton
+    {
+    
+        readonly YamlDotNet.Serialization.ITypeInspector innerTypeDescriptor;
+
+        public YamlDiscriminatorTypeInspector(YamlDotNet.Serialization.ITypeInspector innerTypeDescriptor)
+        {
+            if (innerTypeDescriptor == null)
+            {
+                throw new System.ArgumentNullException("innerTypeDescriptor");
+            }
+
+            this.innerTypeDescriptor = innerTypeDescriptor;
+        }
+
+        public override System.Collections.Generic.IEnumerable<YamlDotNet.Serialization.IPropertyDescriptor> GetProperties(System.Type type, object container)
+        {
+            var innerProperties = innerTypeDescriptor.GetProperties(type, container);
+
+            var discriminatorAttribute = (YamlDiscriminatorAttribute)System.Attribute.GetCustomAttribute(type, typeof(YamlDiscriminatorAttribute));
+            var inheritanceAttributes = (JsonInheritanceAttribute[])System.Attribute.GetCustomAttributes(type, typeof(JsonInheritanceAttribute));
+            var typeMatch = System.Array.Find(inheritanceAttributes, attribute => attribute.Type == type);
+            if (discriminatorAttribute != null && typeMatch != null)
+            {
+                return System.Linq.Enumerable.Concat(new[]
+                {
+                    new DiscriminatorPropertyDescriptor(discriminatorAttribute.Discriminator, typeMatch.Key)
+                }, innerProperties);
+            }
+
+            return innerProperties;
+        }
+
+        class DiscriminatorPropertyDescriptor : YamlDotNet.Serialization.IPropertyDescriptor
+        {
+            readonly string key;
+
+            public DiscriminatorPropertyDescriptor(string discriminator, string value)
+            {
+                ScalarStyle = YamlDotNet.Core.ScalarStyle.Plain;
+                Name = discriminator;
+                key = value;
+            }
+
+            public string Name { get; private set; }
+
+            public bool CanWrite
+            {
+                get { return true; }
+            }
+
+            public System.Type Type
+            {
+                get { return typeof(string); }
+            }
+
+            public System.Type TypeOverride { get; set; }
+
+            public int Order { get; set; }
+
+            public YamlDotNet.Core.ScalarStyle ScalarStyle { get; set; }
+
+            public T GetCustomAttribute<T>() where T : System.Attribute
+            {
+                return null;
+            }
+
+            public YamlDotNet.Serialization.IObjectDescriptor Read(object target)
+            {
+                return new YamlDotNet.Serialization.ObjectDescriptor(key, Type, Type, ScalarStyle);
+            }
+
+            public void Write(object target, object value)
+            {
+            }
+        }
+    }
+
+
     /// <summary>
     /// Serializes a sequence of data model objects into YAML strings.
     /// </summary>
@@ -552,6 +691,7 @@ namespace StateMachineDefinition
             return System.Reactive.Linq.Observable.Defer(() =>
             {
                 var serializer = new YamlDotNet.Serialization.SerializerBuilder()
+                    .WithTypeInspector(inspector => new YamlDiscriminatorTypeInspector(inspector))
                     .Build();
                 return System.Reactive.Linq.Observable.Select(source, value => serializer.Serialize(value)); 
             });
@@ -629,11 +769,27 @@ namespace StateMachineDefinition
                 System.Linq.Enumerable.Single(arguments));
         }
 
+        private static void AddTypeDiscriminator<T>(YamlDotNet.Serialization.BufferedDeserialization.ITypeDiscriminatingNodeDeserializerOptions o)
+        {
+            var baseType = typeof(T);
+            var discriminator = System.Reflection.CustomAttributeExtensions.GetCustomAttribute<YamlDiscriminatorAttribute>(baseType).Discriminator;
+            var typeMapping = System.Linq.Enumerable.ToDictionary(
+                System.Reflection.CustomAttributeExtensions.GetCustomAttributes<JsonInheritanceAttribute>(baseType),
+                attr => attr.Key,
+                attr => attr.Type);
+            o.AddKeyValueTypeDiscriminator<T>(discriminator, typeMapping);
+        }
+
         private static System.IObservable<T> Process<T>(System.IObservable<string> source)
         {
             return System.Reactive.Linq.Observable.Defer(() =>
             {
                 var serializer = new YamlDotNet.Serialization.DeserializerBuilder()
+                    .WithTypeInspector(inspector => new YamlDiscriminatorTypeInspector(inspector))
+                    .WithTypeDiscriminatingNodeDeserializer(o =>
+                    {
+                        AddTypeDiscriminator<VisualBaseDefinition>(o);
+                    })
                     .Build();
                 return System.Reactive.Linq.Observable.Select(source, value =>
                 {
