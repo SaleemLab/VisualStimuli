@@ -5,11 +5,12 @@ loggingPath: D:/Data/
 sessionDefinition:
   initialRotation: 0
   rotationSteps: [30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360]
-  initiationSequence: {alias: baseline, texture: blank, duration: 4, shouldRotate: false}
+  baselineStartSequence: {alias: baseline, texture: blank, duration: 15, shouldRotate: true}
+  initiationSequence: {alias: blank-start, texture: blank, duration: 1, shouldRotate: true}
   loopSequence: [
     {alias: blank, texture: blank, duration: 1, shouldRotate: true},
-    {alias: shift, texture: txtr1, duration: 1,  shouldRotate: true},
-    {alias: baseline, texture: txtr2, duration: 1, shouldRotate: true}
+    {alias: tx1, texture: txtr1, duration: 1,  shouldRotate: true},
+    {alias: tx2, texture: txtr2, duration: 1, shouldRotate: true}
   ]
-  endSequence: {alias: baseline, texture: blank,  shouldRotate: false}
+  baselineEndSequence: {alias: baseline, texture: blank, duration: 5, shouldRotate: false}
   repeats: 5

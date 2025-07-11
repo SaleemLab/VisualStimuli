@@ -131,11 +131,13 @@ namespace DataSchema
     public partial class SessionDefinition
     {
     
+        private PresentationDefinition _baselineStartSequence;
+    
+        private PresentationDefinition _baselineEndSequence;
+    
         private PresentationDefinition _initiationSequence;
     
         private System.Collections.Generic.List<PresentationDefinition> _loopSequence = new System.Collections.Generic.List<PresentationDefinition>();
-    
-        private PresentationDefinition _endSequence;
     
         private int _repeats;
     
@@ -149,12 +151,41 @@ namespace DataSchema
     
         protected SessionDefinition(SessionDefinition other)
         {
+            _baselineStartSequence = other._baselineStartSequence;
+            _baselineEndSequence = other._baselineEndSequence;
             _initiationSequence = other._initiationSequence;
             _loopSequence = other._loopSequence;
-            _endSequence = other._endSequence;
             _repeats = other._repeats;
             _initialRotation = other._initialRotation;
             _rotationSteps = other._rotationSteps;
+        }
+    
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="baselineStartSequence")]
+        public PresentationDefinition BaselineStartSequence
+        {
+            get
+            {
+                return _baselineStartSequence;
+            }
+            set
+            {
+                _baselineStartSequence = value;
+            }
+        }
+    
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="baselineEndSequence")]
+        public PresentationDefinition BaselineEndSequence
+        {
+            get
+            {
+                return _baselineEndSequence;
+            }
+            set
+            {
+                _baselineEndSequence = value;
+            }
         }
     
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -182,20 +213,6 @@ namespace DataSchema
             set
             {
                 _loopSequence = value;
-            }
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="endSequence")]
-        public PresentationDefinition EndSequence
-        {
-            get
-            {
-                return _endSequence;
-            }
-            set
-            {
-                _endSequence = value;
             }
         }
     
@@ -255,9 +272,10 @@ namespace DataSchema
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
+            stringBuilder.Append("baselineStartSequence = " + _baselineStartSequence + ", ");
+            stringBuilder.Append("baselineEndSequence = " + _baselineEndSequence + ", ");
             stringBuilder.Append("initiationSequence = " + _initiationSequence + ", ");
             stringBuilder.Append("loopSequence = " + _loopSequence + ", ");
-            stringBuilder.Append("endSequence = " + _endSequence + ", ");
             stringBuilder.Append("repeats = " + _repeats + ", ");
             stringBuilder.Append("initialRotation = " + _initialRotation + ", ");
             stringBuilder.Append("rotationSteps = " + _rotationSteps);
@@ -291,12 +309,6 @@ namespace DataSchema
     
         private SessionDefinition _sessionDefinition;
     
-        private double _initiationTime;
-    
-        private double _blankTime;
-    
-        private double _baselineTime;
-    
         public SchemaSandbox()
         {
         }
@@ -306,9 +318,6 @@ namespace DataSchema
             _animalID = other._animalID;
             _loggingPath = other._loggingPath;
             _sessionDefinition = other._sessionDefinition;
-            _initiationTime = other._initiationTime;
-            _blankTime = other._blankTime;
-            _baselineTime = other._baselineTime;
         }
     
         [YamlDotNet.Serialization.YamlMemberAttribute(Alias="animalID")]
@@ -351,45 +360,6 @@ namespace DataSchema
             }
         }
     
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="initiationTime")]
-        public double InitiationTime
-        {
-            get
-            {
-                return _initiationTime;
-            }
-            set
-            {
-                _initiationTime = value;
-            }
-        }
-    
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="blankTime")]
-        public double BlankTime
-        {
-            get
-            {
-                return _blankTime;
-            }
-            set
-            {
-                _blankTime = value;
-            }
-        }
-    
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="baselineTime")]
-        public double BaselineTime
-        {
-            get
-            {
-                return _baselineTime;
-            }
-            set
-            {
-                _baselineTime = value;
-            }
-        }
-    
         public System.IObservable<SchemaSandbox> Process()
         {
             return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new SchemaSandbox(this)));
@@ -404,10 +374,7 @@ namespace DataSchema
         {
             stringBuilder.Append("animalID = " + _animalID + ", ");
             stringBuilder.Append("loggingPath = " + _loggingPath + ", ");
-            stringBuilder.Append("sessionDefinition = " + _sessionDefinition + ", ");
-            stringBuilder.Append("initiationTime = " + _initiationTime + ", ");
-            stringBuilder.Append("blankTime = " + _blankTime + ", ");
-            stringBuilder.Append("baselineTime = " + _baselineTime);
+            stringBuilder.Append("sessionDefinition = " + _sessionDefinition);
             return true;
         }
     

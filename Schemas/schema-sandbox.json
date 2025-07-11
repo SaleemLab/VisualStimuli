@@ -23,6 +23,12 @@
         },
         "sessionDefinition": {
             "properties": {
+                "baselineStartSequence": {
+                    "$ref": "#/definitions/presentationDefinition"
+                },
+                "baselineEndSequence": {
+                    "$ref": "#/definitions/presentationDefinition"
+                },
                 "initiationSequence": {
                     "$ref": "#/definitions/presentationDefinition"
                 },
@@ -31,9 +37,6 @@
                         "$ref": "#/definitions/presentationDefinition"
                     },
                     "type": "array"
-                },
-                "endSequence": {
-                    "$ref": "#/definitions/presentationDefinition"
                 },
                 "repeats": {
                     "type": "integer",
@@ -60,15 +63,6 @@
         },
         "sessionDefinition": {
             "$ref": "#/definitions/sessionDefinition"
-        },
-        "initiationTime": {
-            "type": "number"
-        },
-        "blankTime": {
-            "type": "number"
-        },
-        "baselineTime": {
-            "type": "number"
         }
     }
 }
