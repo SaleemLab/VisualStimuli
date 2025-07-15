@@ -9,8 +9,8 @@ sessionDefinition:
   initiationSequence: {alias: blank-start, texture: blank, duration: 1, shouldRotate: true}
   loopSequence: [
     {alias: blank, texture: blank, duration: 1, shouldRotate: true},
-    {alias: tx1, texture: txtr1, duration: 1,  shouldRotate: true},
-    {alias: tx2, texture: txtr2, duration: 1, shouldRotate: true}
+    {alias: HD_disp_1, texture: HD_disp_1, duration: 1,  shouldRotate: true},
+    {alias: HD_disp_12, texture: HD_disp_12, duration: 1, shouldRotate: true}
   ]
   baselineEndSequence: {alias: baseline, texture: blank, duration: 5, shouldRotate: false}
   repeats: 5
