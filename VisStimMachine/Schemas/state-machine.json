@@ -1,0 +1,91 @@
+{
+  "$defs": {
+    "CheckerBoard": {
+      "properties": {
+        "visual_type": {
+          "const": "checkerboard",
+          "title": "Visual Type",
+          "type": "string"
+        },
+        "spatial_frequency": {
+          "default": 1.0,
+          "title": "Spatial Frequency",
+          "type": "number"
+        }
+      },
+      "required": [
+        "visual_type"
+      ],
+      "title": "CheckerBoard",
+      "type": "object"
+    },
+    "Gratings": {
+      "properties": {
+        "visual_type": {
+          "const": "gratings",
+          "title": "Visual Type",
+          "type": "string"
+        },
+        "temporal_frequency": {
+          "default": 1.0,
+          "title": "Temporal Frequency",
+          "type": "number"
+        }
+      },
+      "required": [
+        "visual_type"
+      ],
+      "title": "Gratings",
+      "type": "object"
+    },
+    "State": {
+      "properties": {
+        "alias": {
+          "title": "Alias",
+          "type": "string"
+        },
+        "visual": {
+          "$ref": "#/$defs/VisualStimulus"
+        }
+      },
+      "required": [
+        "alias",
+        "visual"
+      ],
+      "title": "State",
+      "type": "object"
+    },
+    "VisualStimulus": {
+      "discriminator": {
+        "mapping": {
+          "checkerboard": "#/$defs/CheckerBoard",
+          "gratings": "#/$defs/Gratings"
+        },
+        "propertyName": "visual_type"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Gratings"
+        },
+        {
+          "$ref": "#/$defs/CheckerBoard"
+        }
+      ],
+      "title": "VisualStimulus"
+    }
+  },
+  "properties": {
+    "state_definitions": {
+      "items": {
+        "$ref": "#/$defs/State"
+      },
+      "title": "State Definitions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "state_definitions"
+  ],
+  "title": "StateMachine",
+  "type": "object"
+}
