@@ -39,4 +39,4 @@ class StateMachine(BaseModel):
 if __name__ == "__main__":
     schema = StateMachine.model_json_schema()
     Path("Schemas\state-machine.json").write_text(json.dumps(schema, indent=2))
-    os.system("dotnet bonsai.sgen ""Schemas\state-machine.json"" -o Workflows\Extensions --serializer json")
+    os.system("dotnet bonsai.sgen ""Schemas\state-machine.json"" -o Workflows\Extensions --serializer yaml")
