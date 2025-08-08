@@ -2,6 +2,5 @@
 
 state_definitions: [
   {alias: gratings, visual: {visual_type: gratings, temporal_frequency: 2}, logic: {logic_type: timer, due_time: 1}, transitions_to: checkerboard},
-  {alias: checkerboard, visual: {visual_type: checkerboard, spatial_frequency: 2}, logic: {logic_type: timer, due_time: 1}, transitions_to: gratings}
+  {alias: checkerboard, visual: {visual_type: checkerboard, spatial_frequency: 2}, logic: {logic_type: keypress, key_code: 13}, transitions_to: gratings}
 ]
-      

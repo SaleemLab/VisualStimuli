@@ -123,29 +123,29 @@ namespace StateMachine
     public partial class KeyPress : LogicTransition
     {
     
-        private string _keyDown;
+        private int _keyCode;
     
         public KeyPress()
         {
-            _keyDown = "A";
+            _keyCode = 13;
         }
     
         protected KeyPress(KeyPress other) : 
                 base(other)
         {
-            _keyDown = other._keyDown;
+            _keyCode = other._keyCode;
         }
     
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="key_down")]
-        public string KeyDown
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="key_code")]
+        public int KeyCode
         {
             get
             {
-                return _keyDown;
+                return _keyCode;
             }
             set
             {
-                _keyDown = value;
+                _keyCode = value;
             }
         }
     
@@ -165,7 +165,7 @@ namespace StateMachine
             {
                 stringBuilder.Append(", ");
             }
-            stringBuilder.Append("KeyDown = " + _keyDown);
+            stringBuilder.Append("KeyCode = " + _keyCode);
             return true;
         }
     }

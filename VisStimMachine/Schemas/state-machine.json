@@ -45,10 +45,10 @@
           "title": "Logic Type",
           "type": "string"
         },
-        "key_down": {
-          "default": "A",
-          "title": "Key Down",
-          "type": "string"
+        "key_code": {
+          "default": 13,
+          "title": "Key Code",
+          "type": "integer"
         }
       },
       "required": [

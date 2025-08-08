@@ -27,7 +27,7 @@ class Timer(LogicBase):
 
 class KeyPress(LogicBase):
     logic_type: Literal["keypress"]
-    key_down: str = Field(default="A")
+    key_code: int = Field(default=13)
 
 class LogicTransition(RootModel):
     root: Annotated[Union[Timer, KeyPress], Field(discriminator="logic_type")]
