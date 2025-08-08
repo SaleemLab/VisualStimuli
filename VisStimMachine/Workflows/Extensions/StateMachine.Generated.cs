@@ -120,12 +120,117 @@ namespace StateMachine
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (YamlDotNet v16.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
+    public partial class KeyPress : LogicTransition
+    {
+    
+        private string _keyDown;
+    
+        public KeyPress()
+        {
+            _keyDown = "A";
+        }
+    
+        protected KeyPress(KeyPress other) : 
+                base(other)
+        {
+            _keyDown = other._keyDown;
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="key_down")]
+        public string KeyDown
+        {
+            get
+            {
+                return _keyDown;
+            }
+            set
+            {
+                _keyDown = value;
+            }
+        }
+    
+        public System.IObservable<KeyPress> Generate()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new KeyPress(this)));
+        }
+    
+        public System.IObservable<KeyPress> Generate<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new KeyPress(this));
+        }
+    
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
+            stringBuilder.Append("KeyDown = " + _keyDown);
+            return true;
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (YamlDotNet v16.0.0.0)")]
+    [YamlDiscriminator("logic_type")]
+    [JsonInheritanceAttribute("timer", typeof(Timer))]
+    [JsonInheritanceAttribute("keypress", typeof(KeyPress))]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    [Bonsai.CombinatorAttribute(MethodName="Generate")]
+    public partial class LogicTransition
+    {
+    
+        public LogicTransition()
+        {
+        }
+    
+        protected LogicTransition(LogicTransition other)
+        {
+        }
+    
+        public System.IObservable<LogicTransition> Generate()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new LogicTransition(this)));
+        }
+    
+        public System.IObservable<LogicTransition> Generate<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new LogicTransition(this));
+        }
+    
+        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            return false;
+        }
+    
+        public override string ToString()
+        {
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(GetType().Name);
+            stringBuilder.Append(" { ");
+            if (PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(" ");
+            }
+            stringBuilder.Append("}");
+            return stringBuilder.ToString();
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (YamlDotNet v16.0.0.0)")]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class State
     {
     
         private string _alias;
     
         private VisualStimulus _visual;
+    
+        private LogicTransition _logic;
+    
+        private string _transitionsTo;
     
         public State()
         {
@@ -135,6 +240,8 @@ namespace StateMachine
         {
             _alias = other._alias;
             _visual = other._visual;
+            _logic = other._logic;
+            _transitionsTo = other._transitionsTo;
         }
     
         [YamlDotNet.Serialization.YamlMemberAttribute(Alias="alias")]
@@ -164,6 +271,33 @@ namespace StateMachine
             }
         }
     
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="logic")]
+        public LogicTransition Logic
+        {
+            get
+            {
+                return _logic;
+            }
+            set
+            {
+                _logic = value;
+            }
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="transitions_to")]
+        public string TransitionsTo
+        {
+            get
+            {
+                return _transitionsTo;
+            }
+            set
+            {
+                _transitionsTo = value;
+            }
+        }
+    
         public System.IObservable<State> Generate()
         {
             return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new State(this)));
@@ -177,7 +311,9 @@ namespace StateMachine
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("Alias = " + _alias + ", ");
-            stringBuilder.Append("Visual = " + _visual);
+            stringBuilder.Append("Visual = " + _visual + ", ");
+            stringBuilder.Append("Logic = " + _logic + ", ");
+            stringBuilder.Append("TransitionsTo = " + _transitionsTo);
             return true;
         }
     
@@ -192,6 +328,60 @@ namespace StateMachine
             }
             stringBuilder.Append("}");
             return stringBuilder.ToString();
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (YamlDotNet v16.0.0.0)")]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    [Bonsai.CombinatorAttribute(MethodName="Generate")]
+    public partial class Timer : LogicTransition
+    {
+    
+        private double _dueTime;
+    
+        public Timer()
+        {
+            _dueTime = 1D;
+        }
+    
+        protected Timer(Timer other) : 
+                base(other)
+        {
+            _dueTime = other._dueTime;
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="due_time")]
+        public double DueTime
+        {
+            get
+            {
+                return _dueTime;
+            }
+            set
+            {
+                _dueTime = value;
+            }
+        }
+    
+        public System.IObservable<Timer> Generate()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new Timer(this)));
+        }
+    
+        public System.IObservable<Timer> Generate<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new Timer(this));
+        }
+    
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
+            stringBuilder.Append("DueTime = " + _dueTime);
+            return true;
         }
     }
 
@@ -320,6 +510,47 @@ namespace StateMachine
 
         public System.Type Type { get; private set; }
     }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (YamlDotNet v16.0.0.0)")]
+    [System.ComponentModel.DefaultPropertyAttribute("Type")]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Timer>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<KeyPress>))]
+    public partial class MatchLogicTransition : Bonsai.Expressions.SingleArgumentExpressionBuilder
+    {
+    
+        public Bonsai.Expressions.TypeMapping Type { get; set; }
+
+        public override System.Linq.Expressions.Expression Build(System.Collections.Generic.IEnumerable<System.Linq.Expressions.Expression> arguments)
+        {
+            var typeMapping = Type;
+            var returnType = typeMapping != null ? typeMapping.GetType().GetGenericArguments()[0] : typeof(LogicTransition);
+            return System.Linq.Expressions.Expression.Call(
+                typeof(MatchLogicTransition),
+                "Process",
+                new System.Type[] { returnType },
+                System.Linq.Enumerable.Single(arguments));
+        }
+
+    
+        private static System.IObservable<TResult> Process<TResult>(System.IObservable<LogicTransition> source)
+            where TResult : LogicTransition
+        {
+            return System.Reactive.Linq.Observable.Create<TResult>(observer =>
+            {
+                var sourceObserver = System.Reactive.Observer.Create<LogicTransition>(
+                    value =>
+                    {
+                        var match = value as TResult;
+                        if (match != null) observer.OnNext(match);
+                    },
+                    observer.OnError,
+                    observer.OnCompleted);
+                return System.ObservableExtensions.SubscribeSafe(source, sourceObserver);
+            });
+        }
+    }
+
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (YamlDotNet v16.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
@@ -503,9 +734,24 @@ namespace StateMachine
             return Process<Gratings>(source);
         }
 
+        public System.IObservable<string> Process(System.IObservable<KeyPress> source)
+        {
+            return Process<KeyPress>(source);
+        }
+
+        public System.IObservable<string> Process(System.IObservable<LogicTransition> source)
+        {
+            return Process<LogicTransition>(source);
+        }
+
         public System.IObservable<string> Process(System.IObservable<State> source)
         {
             return Process<State>(source);
+        }
+
+        public System.IObservable<string> Process(System.IObservable<Timer> source)
+        {
+            return Process<Timer>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<VisualStimulus> source)
@@ -529,7 +775,10 @@ namespace StateMachine
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Transform)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<CheckerBoard>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Gratings>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<KeyPress>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LogicTransition>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<State>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Timer>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<VisualStimulus>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<StateMachine>))]
     public partial class DeserializeFromYaml : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -572,6 +821,7 @@ namespace StateMachine
                     .WithTypeInspector(inspector => new YamlDiscriminatorTypeInspector(inspector))
                     .WithTypeDiscriminatingNodeDeserializer(o =>
                     {
+                        AddTypeDiscriminator<LogicTransition>(o);
                         AddTypeDiscriminator<VisualStimulus>(o);
                     })
                     .Build();

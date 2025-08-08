@@ -121,7 +121,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Take">
-                <rx:Count>1</rx:Count>
+                <rx:Count>2</rx:Count>
               </Combinator>
             </Expression>
             <Expression xsi:type="rx:ToDictionary">
@@ -163,7 +163,7 @@
       </Expression>
       <Expression xsi:type="Index">
         <Operand xsi:type="StringProperty">
-          <Value>Gratings</Value>
+          <Value>gratings</Value>
         </Operand>
       </Expression>
     </Nodes>

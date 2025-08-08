@@ -25,13 +25,18 @@ class Timer(LogicBase):
     logic_type: Literal["timer"]
     due_time: float = Field(default=1.0)
 
-class KeyDown(LogicBase):
-    logic_type: Literal["keydown"]
+class KeyPress(LogicBase):
+    logic_type: Literal["keypress"]
     key_down: str = Field(default="A")
+
+class LogicTransition(RootModel):
+    root: Annotated[Union[Timer, KeyPress], Field(discriminator="logic_type")]
 
 class State(BaseModel):
     alias: str
     visual: VisualStimulus
+    logic: LogicTransition
+    transitions_to: str
 
 class StateMachine(BaseModel):
     state_definitions: List[State]

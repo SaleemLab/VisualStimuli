@@ -38,6 +38,43 @@
       "title": "Gratings",
       "type": "object"
     },
+    "KeyPress": {
+      "properties": {
+        "logic_type": {
+          "const": "keypress",
+          "title": "Logic Type",
+          "type": "string"
+        },
+        "key_down": {
+          "default": "A",
+          "title": "Key Down",
+          "type": "string"
+        }
+      },
+      "required": [
+        "logic_type"
+      ],
+      "title": "KeyPress",
+      "type": "object"
+    },
+    "LogicTransition": {
+      "discriminator": {
+        "mapping": {
+          "keypress": "#/$defs/KeyPress",
+          "timer": "#/$defs/Timer"
+        },
+        "propertyName": "logic_type"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Timer"
+        },
+        {
+          "$ref": "#/$defs/KeyPress"
+        }
+      ],
+      "title": "LogicTransition"
+    },
     "State": {
       "properties": {
         "alias": {
@@ -46,13 +83,41 @@
         },
         "visual": {
           "$ref": "#/$defs/VisualStimulus"
+        },
+        "logic": {
+          "$ref": "#/$defs/LogicTransition"
+        },
+        "transitions_to": {
+          "title": "Transitions To",
+          "type": "string"
         }
       },
       "required": [
         "alias",
-        "visual"
+        "visual",
+        "logic",
+        "transitions_to"
       ],
       "title": "State",
+      "type": "object"
+    },
+    "Timer": {
+      "properties": {
+        "logic_type": {
+          "const": "timer",
+          "title": "Logic Type",
+          "type": "string"
+        },
+        "due_time": {
+          "default": 1.0,
+          "title": "Due Time",
+          "type": "number"
+        }
+      },
+      "required": [
+        "logic_type"
+      ],
+      "title": "Timer",
       "type": "object"
     },
     "VisualStimulus": {
