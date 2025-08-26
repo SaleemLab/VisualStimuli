@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.9.0"
+<WorkflowBuilder Version="2.8.1"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
@@ -66,7 +66,7 @@
               <Combinator xsi:type="dsp:Rescale">
                 <dsp:Min>0</dsp:Min>
                 <dsp:Max>360</dsp:Max>
-                <dsp:RangeMin>0</dsp:RangeMin>
+                <dsp:RangeMin>-1</dsp:RangeMin>
                 <dsp:RangeMax>1</dsp:RangeMax>
                 <dsp:RescaleType>Linear</dsp:RescaleType>
               </Combinator>
