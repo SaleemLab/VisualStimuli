@@ -1,6 +1,5 @@
 Value.Item1,Value.Item2,Value.Item2,Value.Item2.Duration,Value.Item2.ShouldRotate,Timestamp
-120,blank,blank,1,True,2025-08-26T11:35:11.3523712+01:00
-210,HD_disp_12,HD_disp_12,1,True,2025-08-26T11:35:18.3553792+01:00
-300,HD_disp_12,HD_disp_12,1,True,2025-08-26T11:35:25.3550336+01:00
-120,HD_disp_12,HD_disp_12,1,True,2025-08-26T11:35:32.3878656+01:00
-30,blank,blank,1,True,2025-08-26T11:35:39.4197376+01:00
+90,blue,blue,1,True,2025-08-27T17:05:44.9658624+01:00
+180,blue,blue,1,True,2025-08-27T17:05:51.9703040+01:00
+150,blue,blue,1,True,2025-08-27T17:05:58.9677440+01:00
+330,red,red,1,True,2025-08-27T17:06:05.9847936+01:00

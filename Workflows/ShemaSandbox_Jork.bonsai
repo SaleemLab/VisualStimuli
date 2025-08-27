@@ -7,8 +7,6 @@
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
                  xmlns:p1="clr-namespace:DataSchema;assembly=Extensions"
                  xmlns:p2="clr-namespace:;assembly=Extensions"
-                 xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
-                 xmlns:wie="clr-namespace:Bonsai.Windows.Input;assembly=Bonsai.Windows.Input"
                  xmlns:port="clr-namespace:Bonsai.IO.Ports;assembly=Bonsai.System"
                  xmlns:sys="clr-namespace:System;assembly=mscorlib"
                  xmlns="https://bonsai-rx.org/2018/workflow">
@@ -25,8 +23,8 @@
           <gl:CursorVisible>true</gl:CursorVisible>
           <gl:Location xsi:nil="true" />
           <gl:WindowBorder>Resizable</gl:WindowBorder>
-          <gl:WindowState>Normal</gl:WindowState>
-          <gl:DisplayDevice>Primary</gl:DisplayDevice>
+          <gl:WindowState>Fullscreen</gl:WindowState>
+          <gl:DisplayDevice>Second</gl:DisplayDevice>
           <gl:TargetRenderFrequency>60</gl:TargetRenderFrequency>
           <gl:TargetUpdateFrequency xsi:nil="true" />
           <gl:RenderState />
@@ -405,7 +403,7 @@
       </Expression>
       <Expression xsi:type="IncludeWorkflow" Path="Extensions\DrawStimulus.bonsai">
         <Duration>15</Duration>
-        <Rotation>60</Rotation>
+        <Rotation>90</Rotation>
         <TextureName>white</TextureName>
         <ShowSyncQuad>false</ShowSyncQuad>
       </Expression>
@@ -476,8 +474,8 @@
                   </Expression>
                   <Expression xsi:type="IncludeWorkflow" Path="Extensions\DrawStimulus.bonsai">
                     <Duration>1</Duration>
-                    <Rotation>150</Rotation>
-                    <TextureName>blue</TextureName>
+                    <Rotation>300</Rotation>
+                    <TextureName>red</TextureName>
                     <ShowSyncQuad>true</ShowSyncQuad>
                   </Expression>
                   <Expression xsi:type="SubscribeSubject">
@@ -515,49 +513,58 @@
                   </Expression>
                   <Expression xsi:type="IncludeWorkflow" Path="Extensions\DrawStimulus.bonsai">
                     <Duration>5</Duration>
-                    <Rotation>60</Rotation>
+                    <Rotation>90</Rotation>
                     <TextureName>black</TextureName>
                     <ShowSyncQuad>false</ShowSyncQuad>
                   </Expression>
                   <Expression xsi:type="WorkflowOutput" />
+                  <Expression xsi:type="MemberSelector">
+                    <Selector>Item2.Item2.ShouldRotate</Selector>
+                  </Expression>
                   <Expression xsi:type="GroupWorkflow">
                     <Workflow>
                       <Nodes>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="port:CreateSerialPort">
+                            <port:Name>LVP</port:Name>
+                            <port:PortName>COM3</port:PortName>
+                            <port:BaudRate>9600</port:BaudRate>
+                            <port:NewLine>\r\n</port:NewLine>
+                            <port:Parity>None</port:Parity>
+                            <port:ParityReplace>63</port:ParityReplace>
+                            <port:DataBits>8</port:DataBits>
+                            <port:StopBits>One</port:StopBits>
+                            <port:Handshake>None</port:Handshake>
+                            <port:DiscardNull>false</port:DiscardNull>
+                            <port:DtrEnable>false</port:DtrEnable>
+                            <port:RtsEnable>false</port:RtsEnable>
+                            <port:ReadBufferSize>4096</port:ReadBufferSize>
+                            <port:WriteBufferSize>2048</port:WriteBufferSize>
+                            <port:ReceivedBytesThreshold>1</port:ReceivedBytesThreshold>
+                          </Combinator>
+                        </Expression>
                         <Expression xsi:type="WorkflowInput">
                           <Name>Source1</Name>
                         </Expression>
-                        <Expression xsi:type="ExternalizedMapping">
-                          <Property Name="Value" DisplayName="Duration" />
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="DoubleProperty">
-                            <Value>0</Value>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="scr:ExpressionTransform">
-                          <scr:Expression>TimeSpan.FromSeconds(it)</scr:Expression>
-                        </Expression>
-                        <Expression xsi:type="PropertyMapping">
-                          <PropertyMappings>
-                            <Property Name="DueTime" />
-                          </PropertyMappings>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="gl:Timer">
-                            <gl:DueTime>PT1S</gl:DueTime>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="rx:Take">
-                            <rx:Count>1</rx:Count>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="wie:KeyDown">
-                            <wie:Filter>A</wie:Filter>
-                            <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
-                          </Combinator>
+                        <Expression xsi:type="rx:Condition">
+                          <Name>False</Name>
+                          <Workflow>
+                            <Nodes>
+                              <Expression xsi:type="WorkflowInput">
+                                <Name>Source1</Name>
+                              </Expression>
+                              <Expression xsi:type="Combinator">
+                                <Combinator xsi:type="BooleanProperty">
+                                  <Value>false</Value>
+                                </Combinator>
+                              </Expression>
+                              <Expression xsi:type="WorkflowOutput" />
+                            </Nodes>
+                            <Edges>
+                              <Edge From="0" To="1" Label="Source1" />
+                              <Edge From="1" To="2" Label="Source1" />
+                            </Edges>
+                          </Workflow>
                         </Expression>
                         <Expression xsi:type="rx:CreateObservable">
                           <Name>BrightnessMinRequest</Name>
@@ -599,11 +606,25 @@
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="rx:Concat" />
                         </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="wie:KeyDown">
-                            <wie:Filter>S</wie:Filter>
-                            <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
-                          </Combinator>
+                        <Expression xsi:type="rx:Condition">
+                          <Name>True</Name>
+                          <Workflow>
+                            <Nodes>
+                              <Expression xsi:type="WorkflowInput">
+                                <Name>Source1</Name>
+                              </Expression>
+                              <Expression xsi:type="Combinator">
+                                <Combinator xsi:type="BooleanProperty">
+                                  <Value>true</Value>
+                                </Combinator>
+                              </Expression>
+                              <Expression xsi:type="WorkflowOutput" />
+                            </Nodes>
+                            <Edges>
+                              <Edge From="0" To="1" Label="Source1" />
+                              <Edge From="1" To="2" Label="Source1" />
+                            </Edges>
+                          </Workflow>
                         </Expression>
                         <Expression xsi:type="rx:CreateObservable">
                           <Name>BrightnessMaxRequest</Name>
@@ -619,7 +640,7 @@
                                 <Combinator xsi:type="p2:GenerateLvpSetBrightnessMessage">
                                   <p2:DeviceNumber>5</p2:DeviceNumber>
                                   <p2:ControlledDevice>0</p2:ControlledDevice>
-                                  <p2:Brightness>64</p2:Brightness>
+                                  <p2:Brightness>32</p2:Brightness>
                                 </Combinator>
                               </Expression>
                               <Expression xsi:type="Combinator">
@@ -648,20 +669,18 @@
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="rx:Merge" />
                         </Expression>
+                        <Expression xsi:type="WorkflowOutput" />
                       </Nodes>
                       <Edges>
                         <Edge From="1" To="2" Label="Source1" />
+                        <Edge From="1" To="5" Label="Source1" />
                         <Edge From="2" To="3" Label="Source1" />
                         <Edge From="3" To="4" Label="Source1" />
-                        <Edge From="4" To="5" Label="Source1" />
+                        <Edge From="4" To="8" Label="Source1" />
                         <Edge From="5" To="6" Label="Source1" />
                         <Edge From="6" To="7" Label="Source1" />
+                        <Edge From="7" To="8" Label="Source2" />
                         <Edge From="8" To="9" Label="Source1" />
-                        <Edge From="9" To="10" Label="Source1" />
-                        <Edge From="10" To="14" Label="Source1" />
-                        <Edge From="11" To="12" Label="Source1" />
-                        <Edge From="12" To="13" Label="Source1" />
-                        <Edge From="13" To="14" Label="Source2" />
                       </Edges>
                     </Workflow>
                   </Expression>
@@ -675,6 +694,7 @@
                   <Edge From="6" To="7" Label="Source1" />
                   <Edge From="7" To="8" Label="Source2" />
                   <Edge From="8" To="9" Label="Source1" />
+                  <Edge From="8" To="22" Label="Source1" />
                   <Edge From="9" To="10" Label="Source1" />
                   <Edge From="10" To="20" Label="Source1" />
                   <Edge From="11" To="12" Label="Source1" />
@@ -687,6 +707,7 @@
                   <Edge From="18" To="19" Label="Source1" />
                   <Edge From="19" To="20" Label="Source4" />
                   <Edge From="20" To="21" Label="Source1" />
+                  <Edge From="22" To="23" Label="Source1" />
                 </Edges>
               </Workflow>
             </Expression>
