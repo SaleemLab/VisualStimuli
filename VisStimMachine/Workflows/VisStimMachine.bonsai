@@ -6,8 +6,8 @@
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
                  xmlns:p1="clr-namespace:StateMachine;assembly=Extensions"
-                 xmlns:wie="clr-namespace:Bonsai.Windows.Input;assembly=Bonsai.Windows.Input"
                  xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
+                 xmlns:wie="clr-namespace:Bonsai.Windows.Input;assembly=Bonsai.Windows.Input"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
@@ -137,24 +137,12 @@
       <Expression xsi:type="rx:BehaviorSubject">
         <Name>TransitionDictionary</Name>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="wie:KeyDown">
-          <wie:Filter>A</wie:Filter>
-          <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
-        </Combinator>
-      </Expression>
       <Expression xsi:type="SubscribeSubject">
         <Name>TransitionDictionary</Name>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:WithLatestFrom" />
-      </Expression>
-      <Expression xsi:type="MemberSelector">
-        <Selector>Item2</Selector>
-      </Expression>
       <Expression xsi:type="Index">
         <Operand xsi:type="StringProperty">
-          <Value>checkerboard</Value>
+          <Value>gratings</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="MulticastSubject">
@@ -333,7 +321,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Timer">
-                <rx:DueTime>PT1S</rx:DueTime>
+                <rx:DueTime>PT2S</rx:DueTime>
               </Combinator>
             </Expression>
             <Expression xsi:type="Unit" />
@@ -615,29 +603,26 @@
       <Edge From="8" To="9" Label="Source1" />
       <Edge From="9" To="10" Label="Source1" />
       <Edge From="10" To="11" Label="Source1" />
-      <Edge From="12" To="14" Label="Source1" />
-      <Edge From="13" To="14" Label="Source2" />
-      <Edge From="14" To="15" Label="Source1" />
-      <Edge From="15" To="16" Label="Source1" />
+      <Edge From="12" To="13" Label="Source1" />
+      <Edge From="13" To="14" Label="Source1" />
       <Edge From="16" To="17" Label="Source1" />
-      <Edge From="19" To="20" Label="Source1" />
-      <Edge From="20" To="21" Label="Source1" />
-      <Edge From="21" To="22" Label="Source1" />
+      <Edge From="17" To="18" Label="Source1" />
+      <Edge From="18" To="19" Label="Source1" />
+      <Edge From="20" To="22" Label="Source1" />
+      <Edge From="21" To="22" Label="Source2" />
+      <Edge From="22" To="32" Label="Source1" />
       <Edge From="23" To="25" Label="Source1" />
       <Edge From="24" To="25" Label="Source2" />
-      <Edge From="25" To="35" Label="Source1" />
+      <Edge From="25" To="32" Label="Source2" />
       <Edge From="26" To="28" Label="Source1" />
       <Edge From="27" To="28" Label="Source2" />
-      <Edge From="28" To="35" Label="Source2" />
+      <Edge From="28" To="32" Label="Source3" />
       <Edge From="29" To="31" Label="Source1" />
       <Edge From="30" To="31" Label="Source2" />
-      <Edge From="31" To="35" Label="Source3" />
-      <Edge From="32" To="34" Label="Source1" />
-      <Edge From="33" To="34" Label="Source2" />
-      <Edge From="34" To="35" Label="Source4" />
-      <Edge From="35" To="36" Label="Source1" />
-      <Edge From="36" To="37" Label="Source1" />
-      <Edge From="37" To="38" Label="Source1" />
+      <Edge From="31" To="32" Label="Source4" />
+      <Edge From="32" To="33" Label="Source1" />
+      <Edge From="33" To="34" Label="Source1" />
+      <Edge From="34" To="35" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
