@@ -13,10 +13,12 @@ class Gratings(VisualBase):
 
 class CheckerBoard(VisualBase):
     visual_type: Literal["checkerboard"]
-    spatial_frequency: float = Field(default=1.0)
+    n_rows: float = Field(default=1.0)
+    n_columns: float = Field(default=1.0)
 
-class VisualStimulus(RootModel):
-    root: Annotated[Union[Gratings, CheckerBoard], Field(discriminator="visual_type")]
+class VisualStimulus(BaseModel):
+    alias: str # The Bonsai name for this stimulus
+    stimulus: Annotated[Union[Gratings, CheckerBoard], Field(discriminator="visual_type")]
 
 class LogicBase(BaseModel):
     logic_type: str
@@ -29,8 +31,9 @@ class KeyPress(LogicBase):
     logic_type: Literal["keypress"]
     key_code: int = Field(default=13)
 
-class LogicTransition(RootModel):
-    root: Annotated[Union[Timer, KeyPress], Field(discriminator="logic_type")]
+class LogicTransition(BaseModel):
+    alias: str # The Bonsai name for this transition
+    transition: Annotated[Union[Timer, KeyPress], Field(discriminator="logic_type")]
 
 class State(BaseModel):
     alias: str
