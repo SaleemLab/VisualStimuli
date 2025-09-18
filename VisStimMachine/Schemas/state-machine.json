@@ -89,11 +89,16 @@
             }
           ],
           "title": "Transition"
+        },
+        "transitions_to": {
+          "title": "Transitions To",
+          "type": "string"
         }
       },
       "required": [
         "alias",
-        "transition"
+        "transition",
+        "transitions_to"
       ],
       "title": "LogicTransition",
       "type": "object"
@@ -113,17 +118,12 @@
           },
           "title": "Logic",
           "type": "array"
-        },
-        "transitions_to": {
-          "title": "Transitions To",
-          "type": "string"
         }
       },
       "required": [
         "alias",
         "visual",
-        "logic",
-        "transitions_to"
+        "logic"
       ],
       "title": "State",
       "type": "object"

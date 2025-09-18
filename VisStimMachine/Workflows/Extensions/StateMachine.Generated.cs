@@ -199,6 +199,8 @@ namespace StateMachine
     
         private Transition _transition;
     
+        private string _transitionsTo;
+    
         public LogicTransition()
         {
         }
@@ -207,6 +209,7 @@ namespace StateMachine
         {
             _alias = other._alias;
             _transition = other._transition;
+            _transitionsTo = other._transitionsTo;
         }
     
         [YamlDotNet.Serialization.YamlMemberAttribute(Alias="alias")]
@@ -236,6 +239,19 @@ namespace StateMachine
             }
         }
     
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="transitions_to")]
+        public string TransitionsTo
+        {
+            get
+            {
+                return _transitionsTo;
+            }
+            set
+            {
+                _transitionsTo = value;
+            }
+        }
+    
         public System.IObservable<LogicTransition> Generate()
         {
             return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new LogicTransition(this)));
@@ -249,7 +265,8 @@ namespace StateMachine
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("Alias = " + _alias + ", ");
-            stringBuilder.Append("Transition = " + _transition);
+            stringBuilder.Append("Transition = " + _transition + ", ");
+            stringBuilder.Append("TransitionsTo = " + _transitionsTo);
             return true;
         }
     
@@ -280,8 +297,6 @@ namespace StateMachine
     
         private System.Collections.Generic.List<LogicTransition> _logic;
     
-        private string _transitionsTo;
-    
         public State()
         {
             _visual = new VisualStimulus();
@@ -293,7 +308,6 @@ namespace StateMachine
             _alias = other._alias;
             _visual = other._visual;
             _logic = other._logic;
-            _transitionsTo = other._transitionsTo;
         }
     
         [YamlDotNet.Serialization.YamlMemberAttribute(Alias="alias")]
@@ -337,19 +351,6 @@ namespace StateMachine
             }
         }
     
-        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="transitions_to")]
-        public string TransitionsTo
-        {
-            get
-            {
-                return _transitionsTo;
-            }
-            set
-            {
-                _transitionsTo = value;
-            }
-        }
-    
         public System.IObservable<State> Generate()
         {
             return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new State(this)));
@@ -364,8 +365,7 @@ namespace StateMachine
         {
             stringBuilder.Append("Alias = " + _alias + ", ");
             stringBuilder.Append("Visual = " + _visual + ", ");
-            stringBuilder.Append("Logic = " + _logic + ", ");
-            stringBuilder.Append("TransitionsTo = " + _transitionsTo);
+            stringBuilder.Append("Logic = " + _logic);
             return true;
         }
     

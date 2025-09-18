@@ -38,12 +38,12 @@ class WaitForTrigger(LogicBase):
 class LogicTransition(BaseModel):
     alias: str # The Bonsai name for this transition
     transition: Annotated[Union[Timer, KeyPress, WaitForTrigger], Field(discriminator="logic_type")]
+    transitions_to: str
 
 class State(BaseModel):
     alias: str
     visual: VisualStimulus
     logic: List[LogicTransition]
-    transitions_to: str
 
 class StateMachine(BaseModel):
     state_definitions: List[State]
