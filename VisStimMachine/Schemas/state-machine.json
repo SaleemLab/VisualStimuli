@@ -72,7 +72,8 @@
           "discriminator": {
             "mapping": {
               "keypress": "#/$defs/KeyPress",
-              "timer": "#/$defs/Timer"
+              "timer": "#/$defs/Timer",
+              "waitfortrigger": "#/$defs/WaitForTrigger"
             },
             "propertyName": "logic_type"
           },
@@ -82,6 +83,9 @@
             },
             {
               "$ref": "#/$defs/KeyPress"
+            },
+            {
+              "$ref": "#/$defs/WaitForTrigger"
             }
           ],
           "title": "Transition"
@@ -169,6 +173,25 @@
         "stimulus"
       ],
       "title": "VisualStimulus",
+      "type": "object"
+    },
+    "WaitForTrigger": {
+      "properties": {
+        "logic_type": {
+          "const": "waitfortrigger",
+          "title": "Logic Type",
+          "type": "string"
+        },
+        "trigger_name": {
+          "title": "Trigger Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "logic_type",
+        "trigger_name"
+      ],
+      "title": "WaitForTrigger",
       "type": "object"
     }
   },

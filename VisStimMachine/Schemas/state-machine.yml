@@ -4,7 +4,7 @@ state_definitions: [
   {
     alias: gratings, 
     visual: {alias: gratings, stimulus: {visual_type: gratings, temporal_frequency: 2}}, 
-    logic: {alias: timer, transition: {logic_type: timer, due_time: 2}},
+    logic: {alias: waitfortrigger, transition: {logic_type: waitfortrigger, trigger_name: LickDetector}},
     transitions_to: checkerboard
   },
   {

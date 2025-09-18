@@ -518,6 +518,59 @@ namespace StateMachine
 
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (YamlDotNet v16.0.0.0)")]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    [Bonsai.CombinatorAttribute(MethodName="Generate")]
+    public partial class WaitForTrigger : Transition
+    {
+    
+        private string _triggerName;
+    
+        public WaitForTrigger()
+        {
+        }
+    
+        protected WaitForTrigger(WaitForTrigger other) : 
+                base(other)
+        {
+            _triggerName = other._triggerName;
+        }
+    
+        [YamlDotNet.Serialization.YamlMemberAttribute(Alias="trigger_name")]
+        public string TriggerName
+        {
+            get
+            {
+                return _triggerName;
+            }
+            set
+            {
+                _triggerName = value;
+            }
+        }
+    
+        public System.IObservable<WaitForTrigger> Generate()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new WaitForTrigger(this)));
+        }
+    
+        public System.IObservable<WaitForTrigger> Generate<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new WaitForTrigger(this));
+        }
+    
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
+            stringBuilder.Append("TriggerName = " + _triggerName);
+            return true;
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (YamlDotNet v16.0.0.0)")]
     [YamlDiscriminator("visual_type")]
     [JsonInheritanceAttribute("gratings", typeof(Gratings))]
     [JsonInheritanceAttribute("checkerboard", typeof(CheckerBoard))]
@@ -568,6 +621,7 @@ namespace StateMachine
     [YamlDiscriminator("logic_type")]
     [JsonInheritanceAttribute("timer", typeof(Timer))]
     [JsonInheritanceAttribute("keypress", typeof(KeyPress))]
+    [JsonInheritanceAttribute("waitfortrigger", typeof(WaitForTrigger))]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class Transition
@@ -735,6 +789,7 @@ namespace StateMachine
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Timer>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<KeyPress>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<WaitForTrigger>))]
     public partial class MatchTransition : Bonsai.Expressions.SingleArgumentExpressionBuilder
     {
     
@@ -937,6 +992,11 @@ namespace StateMachine
             return Process<VisualStimulus>(source);
         }
 
+        public System.IObservable<string> Process(System.IObservable<WaitForTrigger> source)
+        {
+            return Process<WaitForTrigger>(source);
+        }
+
         public System.IObservable<string> Process(System.IObservable<Stimulus> source)
         {
             return Process<Stimulus>(source);
@@ -968,6 +1028,7 @@ namespace StateMachine
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<State>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Timer>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<VisualStimulus>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<WaitForTrigger>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Stimulus>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Transition>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<StateMachine>))]

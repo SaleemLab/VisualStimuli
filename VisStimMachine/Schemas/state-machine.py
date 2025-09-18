@@ -31,9 +31,13 @@ class KeyPress(LogicBase):
     logic_type: Literal["keypress"]
     key_code: int = Field(default=13)
 
+class WaitForTrigger(LogicBase):
+    logic_type: Literal["waitfortrigger"]
+    trigger_name: str
+
 class LogicTransition(BaseModel):
     alias: str # The Bonsai name for this transition
-    transition: Annotated[Union[Timer, KeyPress], Field(discriminator="logic_type")]
+    transition: Annotated[Union[Timer, KeyPress, WaitForTrigger], Field(discriminator="logic_type")]
 
 class State(BaseModel):
     alias: str
