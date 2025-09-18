@@ -42,7 +42,7 @@ class LogicTransition(BaseModel):
 class State(BaseModel):
     alias: str
     visual: VisualStimulus
-    logic: LogicTransition
+    logic: List[LogicTransition]
     transitions_to: str
 
 class StateMachine(BaseModel):

@@ -278,14 +278,14 @@ namespace StateMachine
     
         private VisualStimulus _visual;
     
-        private LogicTransition _logic;
+        private System.Collections.Generic.List<LogicTransition> _logic;
     
         private string _transitionsTo;
     
         public State()
         {
             _visual = new VisualStimulus();
-            _logic = new LogicTransition();
+            _logic = new System.Collections.Generic.List<LogicTransition>();
         }
     
         protected State(State other)
@@ -325,7 +325,7 @@ namespace StateMachine
     
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [YamlDotNet.Serialization.YamlMemberAttribute(Alias="logic")]
-        public LogicTransition Logic
+        public System.Collections.Generic.List<LogicTransition> Logic
         {
             get
             {

@@ -2,15 +2,22 @@
 
 state_definitions: [
   {
+    alias: left_gratings,
+    visual: {alias: gratings, stimulus: {visual_type: gratings, temporal_frequency: 2}}, 
+    logic: [{alias: waitfortrigger, transition: {logic_type: waitfortrigger, trigger_name: LickDetector}}],
+    transitions_to: checkerboard
+  },
+  {
     alias: gratings, 
     visual: {alias: gratings, stimulus: {visual_type: gratings, temporal_frequency: 2}}, 
-    logic: {alias: waitfortrigger, transition: {logic_type: waitfortrigger, trigger_name: LickDetector}},
+    logic: [{alias: waitfortrigger, transition: {logic_type: waitfortrigger, trigger_name: LickDetector}},
+            {alias: timer, transition: {logic_type: timer, due_time: 2}}],
     transitions_to: checkerboard
   },
   {
     alias: checkerboard, 
     visual: {alias: checkerboard, stimulus: {visual_type: checkerboard, n_rows: 2, n_columns: 2}}, 
-    logic: {alias: keypress, transition: {logic_type: keypress, key_code: 13}}, 
+    logic: [{alias: keypress, transition: {logic_type: keypress, key_code: 13}}], 
     transitions_to: gratings
   }
 ]

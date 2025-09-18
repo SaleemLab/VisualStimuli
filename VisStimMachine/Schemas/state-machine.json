@@ -108,7 +108,11 @@
           "$ref": "#/$defs/VisualStimulus"
         },
         "logic": {
-          "$ref": "#/$defs/LogicTransition"
+          "items": {
+            "$ref": "#/$defs/LogicTransition"
+          },
+          "title": "Logic",
+          "type": "array"
         },
         "transitions_to": {
           "title": "Transitions To",
